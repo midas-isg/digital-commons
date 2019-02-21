@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry;
 
+import com.google.gson.JsonObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.*;
 
@@ -132,6 +134,39 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "order by name ")
     List<Object[]> findDataFormats();
 
+    @Query(nativeQuery = true, value = "select distinct content->'entry'->>'name' || \n" +
+            "CASE \n" +
+            "when content->'entry'->>'version' is null or content->'entry'->>'version' = '' then '' \n" +
+            "when content->'entry'->>'version' = '2010 U.S. Synthesized Population' then concat(' - ', content->'entry'->>'version') \n" +
+            "when left(content->'entry'->>'version',1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', content->'entry'->>'version') \n" +
+            "else concat(' - ', content->'entry'->>'version') \n" +
+            "end as name \n" +
+            FROM_ENTRY +
+            "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT + " and content->'entry'->'identifier'->>'identifier' = :dataFormatId ")
+    String findDataFormatNameByIdentifier(@Param("dataFormatId") String dataFormatId);
+
+    /*
+    @Query(nativeQuery = true, value = "select entry_lists_id as id, type, subtype, content #>> '{}' as content, is_public \n" +
+            "from entry_lists \n" +
+            "where type = :listType and subtype is null " + AND_PUBLIC )
+    List<EntryList> findEntryListsObject(@Param("listType") String type);
+
+    @Query(nativeQuery = true, value = "select entry_lists_id as identifier, content #>> '{}' as content \n" +
+            "from entry_lists \n" +
+            "where type = :listType and subtype is null " + AND_PUBLIC )
+    List<Object[]> findEntryLists(@Param("listType") String type);
+
+    @Query(nativeQuery = true, value = "select entry_lists_id as identifier, content #>> '{}' as content \n" +
+            "from entry_lists \n" +
+            "where type = :listType and subtype = :listSubType " + AND_PUBLIC )
+    List<Object[]> findEntryListsWithSubType(@Param("listType") String type, @Param("listSubType")  String subType);
+
+    @Query(nativeQuery = true, value = "select content #>> '{}' as content \n" +
+            "from entry_lists \n" +
+            "where entry_lists_id = :identifier " )
+    String findContentForEntryListByIdentifier(@Param("identifier") BigInteger identifier);
+
+*/
     @Query(nativeQuery = true, value = "select distinct jsonb_array_elements_text(content->'entry'->'licenses') \n" +
             FROM_ENTRY +
             "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT)

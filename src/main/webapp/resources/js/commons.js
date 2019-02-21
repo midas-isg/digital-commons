@@ -589,8 +589,10 @@ function replaceAll(str, find, replace) {
 function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
+    var nothingFoundMessage = 'Syntax Not Available';
 
     if (key === 'inputs' || key === 'outputs'){
+        nothingFoundMessage = 'None';
         document.getElementById("software-" + key + "-container").innerHTML = '';
         var insertTitle = '<h4 class="inline bold" id="software-' + key + '-tag">' +  key.charAt(0).toUpperCase() + key.slice(1) + ': </h4><br>'
         document.getElementById("software-" + key + "-container").insertAdjacentHTML('afterbegin', insertTitle);
@@ -629,7 +631,6 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             if (Object.prototype.toString.call( attribute ) === '[object Array]') {
                 var inputOutput = attribute;
                 for (var i = 0; i < inputOutput.length; i++) {
-                    // debugger;
                     if (inputOutput[i].hasOwnProperty(property) && inputOutput[i].hasOwnProperty('description')) {
                         var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
                         var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span class="bold" id="software-' + key + '-' + i + '-' + property + '"></span><span class="bold">: </span>' + descriptionHTML + '</div>';
@@ -650,8 +651,11 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                     if (inputOutput[i].hasOwnProperty('dataFormats')) {
                         var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', dataFormatsHTML);
-                        var dataFormats = undefined;
-                        dataFormats = inputOutput[i]['dataFormats'];
+                        var dataFormats = new Array();
+                        // dataFormats = inputOutput[i]['dataFormats'];
+                        for (var j = 0; j < inputOutput[i].dataFormats.length; j++) {
+                            dataFormats[j] = getDataFormatName(inputOutput[i].dataFormats[j]);
+                        }
 
                         $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlStringDataFormats(dataFormats));
 /*
@@ -714,7 +718,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $(containerId).show();
         // $(elementId).html('N/A');
-        $(elementId).html('Syntax Not Available');
+        $(elementId).html(nothingFoundMessage);
     } else {
         $(containerId).hide();
     }
@@ -1478,6 +1482,36 @@ function uniqueArray(arrArg) {
     return arrArg.filter(function(elem, pos,arr) {
         return arr.indexOf(elem) == pos;
     });
+}
+
+
+function getDataFormatName(identifier) {
+    var contextPath =  ctx;
+    var dataFormatName;
+    $.ajax({
+        async: false,
+        type : "GET",
+        contentType : "text/plain",
+        url : contextPath + "/get-dataFormatNameByIdentifier",
+        dataType : 'text',
+        data: {identifier: identifier},
+        timeout : 100000,
+        beforeSend : function() {
+            $(".loading").show();
+        },
+        success : function(data) {
+            dataFormatName = data;
+        },
+        error : function(xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+        },
+        complete : function () {
+            $(".loading").hide();
+        }
+    });
+    return dataFormatName;
 }
 
 function autoCompleteFields(id, name, contextPath, typeOfList, typeOfSubList, updateCardTabTitleText) {

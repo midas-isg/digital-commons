@@ -27,6 +27,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.nio.file.Path;
@@ -486,4 +488,12 @@ public class HomeController {
         return new HttpEntity<byte[]>(documentBody, header);
 
     }
+
+    @RequestMapping(value="/get-dataFormatNameByIdentifier", method = RequestMethod.GET)
+    @ResponseBody
+    public String getDataFormatNameByIdentifier(@RequestParam("identifier") String identifier, HttpServletRequest request, HttpServletResponse response) {
+        return apiUtil.getDataFormatNameByIdentifier(identifier);
+    }
+
+
 }
