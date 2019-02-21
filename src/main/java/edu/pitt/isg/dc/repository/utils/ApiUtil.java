@@ -16,6 +16,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,8 @@ public class ApiUtil {
     private EntryRepository repo;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private EntryListRepository entryListRepository;
 
     private static final String CKAN_DATE_CREATED = "CKAN metadata_created";
     private static final String CKAN_DATE_MODIFIED = "CKAN metadata_modified";
@@ -75,6 +78,38 @@ public class ApiUtil {
         return repo.findDataFormats();
     }
 
+    public String getDataFormatNameByIdentifier(String identifier) {
+        String dataFormatName = repo.findDataFormatNameByIdentifier(identifier);
+        if(isEmpty(dataFormatName)) {
+            dataFormatName = identifier;
+        }
+
+        return dataFormatName;
+    }
+
+    public List<Object[]> getEntryList(String typeOfList) {
+        return getEntryList(typeOfList, null);
+    }
+
+    public List<Object[]> getEntryList(String typeOfList, String typeOfSubList) {
+        List<EntryList> entryList = entryListRepository.findEntryListsObject(typeOfList);
+
+        if(!isEmpty(typeOfList)){
+            if(!isEmpty(typeOfSubList)){
+                return entryListRepository.findEntryListsWithSubType(typeOfList, typeOfSubList);
+            } else {
+                return entryListRepository.findEntryLists(typeOfList);
+            }
+        }
+
+        return null;
+    }
+
+    public JsonObject getContentForEntryListByIdentifier(BigInteger identifier) {
+        String content = entryListRepository.findContentForEntryListByIdentifier(identifier);
+        JsonParser parser = new JsonParser();
+        return parser.parse(content).getAsJsonObject();
+    }
 
     public List<JsonObject> getLicenseList(String typeOfLicenses) {
         List<JsonObject> licenseList = new ArrayList<>();
@@ -98,28 +133,6 @@ public class ApiUtil {
 
         return licenseList;
     }
-/*
-    public List<License> getLicenseList(String typeOfLicenses) {
-        List<License> licenseList = new ArrayList<>();
-        List<String> licenseRepositoryList = new ArrayList<>();
-
-        if(!isEmpty(typeOfLicenses)){
-            if (typeOfLicenses.equalsIgnoreCase("dataFormats")) {
-                licenseRepositoryList = repo.findDataFormatsLicenses();
-            } else if (typeOfLicenses.equalsIgnoreCase("dataRepository")) {
-                licenseRepositoryList = repo.findDataRepositoryLicenses();
-            }
-
-            Converter converter = new Converter();
-            for (String licenseJson : licenseRepositoryList) {
-                License license = (License) converter.convertFromJsonToClass(licenseJson, License.class);
-                licenseList.add(license);
-            }
-        }
-
-        return licenseList;
-    }
-*/
 
     public String getAccessUrl(String identifier, String distributionId) {
         if (distributionId == null) distributionId = "0";

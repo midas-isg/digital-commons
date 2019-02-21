@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry;
 
+import com.google.gson.JsonObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.util.*;
 
@@ -18,6 +20,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     String AND_A_PUBLIC = "AND a." + IS_PUBLIC;
     String AND_B_PUBLIC = "AND b." + IS_PUBLIC;
     String IS_DATA_FORMAT = "category_id = 4 ";
+    String FROM_ENTRY = "FROM entry ";
 
     @Transactional(readOnly=true)
     Entry findOne(EntryId id);
@@ -26,44 +29,44 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     List<Entry> findAllByStatus(String status);
 
-    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + " \n" +
             "WHERE (entry_id, revision_id) IN\n" +
-            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id " + FROM_ENTRY + " \n" +
             "GROUP BY entry_id) AND status != 'approved'")
     List<Entry> findLatestUnapprovedEntries();
 
-    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + " \n" +
             "WHERE (entry_id, revision_id) IN\n" +
-            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id " + FROM_ENTRY + " \n" +
             "GROUP BY entry_id) AND status != 'approved' AND user_id = ?1")
     List<Entry> findUserLatestUnapprovedEntries(Long userId);
 
-    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + " \n" +
             "WHERE (entry_id, revision_id) IN\n" +
-            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id " + FROM_ENTRY + " \n" +
             "WHERE status = 'approved' AND is_public=true \n " +
             "GROUP BY entry_id) AND status = 'approved' AND entry_id = ?1 AND is_public=true ")
     Entry getEntryByEntryIdAndMaxRevisionId(Long id);
 
-    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + " \n" +
             "WHERE (entry_id, revision_id) IN\n" +
-            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id " + FROM_ENTRY + " \n" +
             "GROUP BY entry_id) AND entry_id = ?1 ")
     Entry getEntryByEntryIdAndMaxRevisionIdIncludeNonPublic(Long id);
 
-    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + " \n" +
             "WHERE (entry_id, revision_id) IN\n" +
-            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id " + FROM_ENTRY + " \n" +
             "WHERE status = 'approved' GROUP BY entry_id) AND is_public = false")
     List<Entry> findLatestApprovedNotPublicEntries();
 
-    @Query(nativeQuery = true, value="SELECT * from entry where entry_id = ?1 and revision_id != ?2 and is_public = true;")
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + "  where entry_id = ?1 and revision_id != ?2 and is_public = true;")
     List<Entry> findDistinctPublicEntries(Long entryId, Long revisionId);
 
     Page<Entry> findAllByIsPublic(boolean status, Pageable pageable);
     Page<Entry> findByIdIn(Set<EntryId> ids, Pageable pageable);
 
-    @Query(nativeQuery = true, value = "SELECT DISTINCT entry_id, revision_id  FROM entry\n" +
+    @Query(nativeQuery = true, value = "SELECT DISTINCT entry_id, revision_id  " + FROM_ENTRY + " \n" +
             "WHERE EXISTS (\n" +
             "    SELECT 1 FROM jsonb_array_elements(content #> ARRAY['entry',?1]) AS about\n" +
             "    WHERE about #>> '{identifier,identifierSource}' = ?2\n" +
@@ -73,39 +76,39 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<Object[]> filterIdsByFieldAndIdentifierSource(String field, String srcId, Set<String> onlyIds);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' " +
-            "FROM entry, jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
+            FROM_ENTRY + " , jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
             "WHERE about #>> '{identifier,identifierSource}' = ?2 " +
             AND_PUBLIC)
     Set<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
 
-    @Query(nativeQuery = true, value = "SELECT entry_id, revision_id from entry " +
+    @Query(nativeQuery = true, value = "SELECT entry_id, revision_id " + FROM_ENTRY +
             "WHERE content #>> '{properties,type}' IN ?1 " +
             AND_PUBLIC)
     List<Object[]> filterIdsByTypes(Set<String> onlyTypes);
 
-    @Query(nativeQuery = true, value = "SELECT * from entry " +
+    @Query(nativeQuery = true, value = "SELECT * " + FROM_ENTRY +
             "WHERE content #>> '{properties,type}' IN ?1 " +
             AND_PUBLIC)
     List<Entry> filterEntryIdsByTypes(Set<String> onlyTypes);
 
-    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+    @Query(nativeQuery = true, value="SELECT * " + FROM_ENTRY + " \n" +
             "WHERE (entry_id, revision_id) IN\n" +
-            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id " + FROM_ENTRY + " \n" +
             "GROUP BY entry_id) AND is_public = TRUE AND content #>> '{properties,type}' IN ?1 ")
     List<Entry> filterEntryIdsByTypesMaxRevisionID(Set<String> onlyTypes);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
-            "FROM entry WHERE " + IS_PUBLIC)
+            FROM_ENTRY + "  WHERE " + IS_PUBLIC)
     List<String> listTypes();
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
-            "FROM entry " +
+            FROM_ENTRY +
             "WHERE content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true")
     List<String> listTypesForIdentifier(String identifier);
 
     @Query(nativeQuery = true, value = "select a.content #>> '{entry, title}' as s1, text(a.content #> '{entry, dataOutputFormats}') as o," +
                                        "       b.content #>> '{entry, title}' as s2 \n" +
-            "from entry a, entry b\n" +
+            FROM_ENTRY + "  a, entry b\n" +
             "where a.content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%'\n" +
             "and b.content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%'\n" +
             "and a.entry_id <> b.entry_id\n" +
@@ -126,26 +129,59 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "when left(content->'entry'->>'version',1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', content->'entry'->>'version') \n" +
             "else concat(' - ', content->'entry'->>'version') \n" +
             "end as name \n" +
-            "from entry " +
+            FROM_ENTRY +
             "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT +
             "order by name ")
     List<Object[]> findDataFormats();
 
+    @Query(nativeQuery = true, value = "select distinct content->'entry'->>'name' || \n" +
+            "CASE \n" +
+            "when content->'entry'->>'version' is null or content->'entry'->>'version' = '' then '' \n" +
+            "when content->'entry'->>'version' = '2010 U.S. Synthesized Population' then concat(' - ', content->'entry'->>'version') \n" +
+            "when left(content->'entry'->>'version',1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', content->'entry'->>'version') \n" +
+            "else concat(' - ', content->'entry'->>'version') \n" +
+            "end as name \n" +
+            FROM_ENTRY +
+            "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT + " and content->'entry'->'identifier'->>'identifier' = :dataFormatId ")
+    String findDataFormatNameByIdentifier(@Param("dataFormatId") String dataFormatId);
+
+    /*
+    @Query(nativeQuery = true, value = "select entry_lists_id as id, type, subtype, content #>> '{}' as content, is_public \n" +
+            "from entry_lists \n" +
+            "where type = :listType and subtype is null " + AND_PUBLIC )
+    List<EntryList> findEntryListsObject(@Param("listType") String type);
+
+    @Query(nativeQuery = true, value = "select entry_lists_id as identifier, content #>> '{}' as content \n" +
+            "from entry_lists \n" +
+            "where type = :listType and subtype is null " + AND_PUBLIC )
+    List<Object[]> findEntryLists(@Param("listType") String type);
+
+    @Query(nativeQuery = true, value = "select entry_lists_id as identifier, content #>> '{}' as content \n" +
+            "from entry_lists \n" +
+            "where type = :listType and subtype = :listSubType " + AND_PUBLIC )
+    List<Object[]> findEntryListsWithSubType(@Param("listType") String type, @Param("listSubType")  String subType);
+
+    @Query(nativeQuery = true, value = "select content #>> '{}' as content \n" +
+            "from entry_lists \n" +
+            "where entry_lists_id = :identifier " )
+    String findContentForEntryListByIdentifier(@Param("identifier") BigInteger identifier);
+
+*/
     @Query(nativeQuery = true, value = "select distinct jsonb_array_elements_text(content->'entry'->'licenses') \n" +
-            "from entry " +
+            FROM_ENTRY +
             "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT)
     List<String> findDataFormatsLicenses();
 
     @Query(nativeQuery = true, value = "select distinct l.license \n" +
             "from ( \n" +
                 "select jsonb_array_elements_text(content->'entry'->'storedIn'->'licenses') as license \n" +
-                "from entry \n" +
+                FROM_ENTRY + "  \n" +
                 "where content->'entry'->'storedIn'->'licenses' is not null and is_public = true \n" +
                 "union \n" +
                 "select jsonb_array_elements_text(d.distributions->'storedIn'->'licenses') as license \n" +
                 "from ( \n" +
                     "select distinct jsonb_array_elements(content->'entry'->'distributions') as distributions \n" +
-                    "from entry \n" +
+                    FROM_ENTRY + "  \n" +
                     "where content->'entry'->'distributions' is not null and is_public = true \n" +
                 ") as d \n" +
                 "where d.distributions->'storedIn'->'licenses' is not null \n" +
@@ -154,19 +190,19 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +
-            "as access_url from entry where category_id = 39 order by display_name")
+            "as access_url " + FROM_ENTRY + "  where category_id = 39 order by display_name")
     List<Object[]> spewLocationsAndAccessUrls();
 
     @Query(nativeQuery = true, value = "select distinct\n" +
             "  content->'entry'->'identifier'->>'identifier'\n" +
-            "  from entry where is_public = true\n" +
+            "  " + FROM_ENTRY + "  where is_public = true\n" +
             "                   and content->'entry'->>'identifier' != ''\n" +
             "                   and content->'entry'->'identifier'->>'identifier' != '';")
     List<String> findPublicIdentifiers();
 
     @Query(nativeQuery = true, value = "select distinct \n" +
             "  e.content->'entry'->'identifier'->>'identifier'\n" +
-            "  from entry as e \n" +
+            "  " + FROM_ENTRY + "  as e \n" +
             "  JOIN vw_findsetsview as fs \n" +
             "  ON fs.setid = e.category_id \n" +
             "  where e.is_public = true\n" +
@@ -176,16 +212,16 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<String> findFirstClassPublicIdentifiers();
 
     @Query(nativeQuery = true, value = "select distinct content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' " +
-            "from entry where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' != '' " +
+            FROM_ENTRY + "  where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' != '' " +
             "and content->'entry'->'identifier'->>'identifier' != ''" +
             "and content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     String findAccessUrlByIdentifierAndDistributionId(String identifier, String distributionId);
 
-    @Query(nativeQuery = true, value = "select * from entry where " +
+    @Query(nativeQuery = true, value = "select * " + FROM_ENTRY + "  where " +
             "content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     Entry findByMetadataIdentifier(String identifier);
 
-    @Query(nativeQuery = true, value = "select category_id from entry where " +
+    @Query(nativeQuery = true, value = "select category_id " + FROM_ENTRY + "  where " +
             "content->'entry'->'identifier'->>'identifier' = :identifier  and " +
             "is_public = true limit 1")
     Integer findCategoryIdByIdentifier(@Param("identifier") String identifier);
@@ -203,21 +239,21 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "when left(trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'version')), ',')),1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'version')), ','))) \n" +
             "else trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'version')), ',')) \n" +
             "end) \n" +
-            "from entry " +
+            FROM_ENTRY + "  " +
             "where entry_id = :entryId  and " +
             "is_public = true ")
     String findTitleByEntryId(@Param("entryId") Long entryId);
 
-    @Query(nativeQuery = true, value = "select count(*) from entry where " +
+    @Query(nativeQuery = true, value = "select count(*) " + FROM_ENTRY + "  where " +
             "content->'entry'->'identifier'->>'identifier' = :identifier  and " +
             "is_public = true ")
     Integer findCountOfIdentifier(@Param("identifier") String identifier);
 
-    @Query(nativeQuery = true, value="select * from entry where is_public = true;")
+    @Query(nativeQuery = true, value="select * " + FROM_ENTRY + "  where is_public = true;")
     List<Entry> findPublicEntries();
 
     @Query(nativeQuery = true, value="select e.* \n" +
-            "from entry as e \n" +
+            FROM_ENTRY + "  as e \n" +
             "JOIN vw_findsetsview as fs \n" +
             "ON fs.setid = e.category_id \n" +
             "where \n" +
@@ -225,7 +261,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "and is_public = true;")
     List<Entry> findFirstClassPublicEntries();
 
-    @Query(nativeQuery = true, value="select c2.category from entry " +
+    @Query(nativeQuery = true, value="select c2.category " + FROM_ENTRY + "  " +
             "join category c2 ON entry.category_id = c2.id " +
             "where content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true;")
     List<String> getCategoryForIdentifier(@Param("identifier") String identifier);
@@ -268,7 +304,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<String> getCategoriesForIdentifier(@Param("identifier") String identifier);
 
     @Query(nativeQuery = true, value=
-    "select e.* from entry as e \n" +
+    "select e.* " + FROM_ENTRY + "  as e \n" +
     "JOIN vw_findsetsview as fs \n" +
     "ON fs.setid = e.category_id \n" +
     "where date_added BETWEEN ?1 AND ?2 \n" +
@@ -280,20 +316,20 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value=
     "SELECT DISTINCT \n" +
     "content->'entry'->'identifier'->>'identifier' as identifier \n" +
-    "from entry as e \n" +
+    FROM_ENTRY + "  as e \n" +
     "JOIN \n" +
             "(select entry_id, max(revision_id) as revision_id \n" +
-            "from entry \n" +
+            FROM_ENTRY + "  \n" +
             "group by entry_id) as eid \n" +
             "on e.entry_id = eid.entry_id and e.revision_id = eid.revision_id; ")
     List<String> getAllIdentifiers();
 
     @Query(nativeQuery = true, value=
     "SELECT status \n" +
-    "from entry as e \n" +
+    FROM_ENTRY + "  as e \n" +
     "JOIN \n" +
             "(select entry_id, max(revision_id) as revision_id \n" +
-    "from entry \n" +
+    FROM_ENTRY + "  \n" +
     "group by entry_id) as eid \n" +
     "on e.entry_id = eid.entry_id and e.revision_id = eid.revision_id \n" +
     "WHERE content->'entry'->'identifier'->>'identifier' = ?1 ; ")
@@ -301,10 +337,10 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     @Query(nativeQuery = true, value =
     "SELECT * \n" +
-    "from entry as e \n" +
+    FROM_ENTRY + "  as e \n" +
     "JOIN \n" +
     "(select entry_id, max(revision_id) as revision_id \n" +
-    "from entry \n" +
+    FROM_ENTRY + "  \n" +
     "group by entry_id) as eid \n" +
     "on e.entry_id = eid.entry_id and e.revision_id = eid.revision_id \n" +
     "WHERE content->'entry'->'identifier'->>'identifier' = ?1 ; ")
