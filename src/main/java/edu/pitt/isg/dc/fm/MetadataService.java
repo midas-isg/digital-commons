@@ -89,11 +89,11 @@ public class MetadataService {
             return toStringObjectMap(json);
         } catch (Exception e) {
             log.error("Failed to get metadata for identifier: " + identifier, e);
-//            File file  = new File("/Users/mas400/Downloads/identifier_issues.txt");
-//            file.createNewFile();
-//            FileOutputStream oFile = new FileOutputStream(file, true);
-//            oFile.write(identifier.getBytes());
-//            oFile.write("\n".getBytes());
+            File file  = new File("/Users/mas400/Downloads/identifier_issues.txt");
+            file.createNewFile();
+            FileOutputStream oFile = new FileOutputStream(file, true);
+            oFile.write(identifier.getBytes());
+            oFile.write("\n".getBytes());
         }
         return null;
     }
@@ -178,7 +178,7 @@ public class MetadataService {
     private String getJson(String identifier){
         try {
             return Jsoup.connect(toMetadataUrl(identifier)).timeout(60_000).ignoreContentType(true)
-                        .header("Content-Type", "application/json")
+                        .header("Accept", "application/json")
                         .execute()
                         .body();
         } catch (IOException e) {
