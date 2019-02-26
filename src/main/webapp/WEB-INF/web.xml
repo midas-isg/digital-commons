@@ -38,7 +38,7 @@
 
 
     <session-config>
-        <session-timeout>30</session-timeout>
+        <session-timeout>43200</session-timeout>
     </session-config>
 
     <mime-mapping>
