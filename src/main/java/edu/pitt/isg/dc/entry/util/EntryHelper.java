@@ -26,6 +26,7 @@ import static edu.pitt.isg.dc.entry.Values.PENDING;
  * Created by amd176 on 6/6/17.
  */
 public class EntryHelper {
+
     private static String ENTRIES_FILEPATH = "";
     private static String TEMP_FILEPATH = "";
     public static String ENTRIES_AUTHENTICATION = "";

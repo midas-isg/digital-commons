@@ -161,6 +161,8 @@ public class CategoryHelper {
     }
 
     public String getTopCategory(Category categoryObject) {
+        return categoryRepository.getTopCategory(categoryObject.getId());
+/*
         if(subcategoriesToCategories.size() == 0) {
             this.getCategoryOrderMap();
         }
@@ -171,6 +173,7 @@ public class CategoryHelper {
         }
         String[] tokens = category.split(" ");
         return String.join(" ", Arrays.copyOf(tokens, tokens.length - 1));
+*/
     }
 
     private Map<String, String> getInfoByCountry() {

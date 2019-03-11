@@ -99,7 +99,7 @@
             </c:choose>
 
             <div class="d-flex justify-content-center align-items-center">
-                <div class="card-label">${label}</div>
+                <div class="card-label<c:if test="${label.length() > 10 and not label.contains(' ')}">-small-font</c:if>">${label}</div>
                 <div class="card-icon"><i class="${cardIcon}"></i></div>
             </div>
         </div>

@@ -29,5 +29,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
                     "WHERE e.content->'entry'->'identifier'->>'identifier' = ?1 and e.is_public = true;")
     List<String> getCategoryPathForIdentifier(@Param("identifier") String identifier);
 
+    @Query(nativeQuery = true, value="select top_category \n" +
+            "from vw_findsetsview as fs \n" +
+            "where fs.setid = :identifier ;")
+    String getTopCategory(@Param("identifier") Long identifier);
 
 }

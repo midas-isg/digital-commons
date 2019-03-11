@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.EntryLists;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
@@ -260,6 +261,9 @@ public class DatasetWebflowValidator {
     }
 
     public Object editDigitalObject(Long entryId) {
+        List<EntryLists> licenseEntryLists = apiUtil.getEntryLists("license");
+
+
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 

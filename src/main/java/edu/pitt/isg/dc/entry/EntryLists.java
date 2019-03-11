@@ -5,31 +5,31 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.HashMap;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @TypeDef(name = JsonbType.NAME, typeClass = JsonbType.class, parameters = {
         @Parameter(name = JsonbType.CLASS, value = "java.util.HashMap")})
-public class EntryList {
+public class EntryLists {
 
-    @EmbeddedId
-    @Type(type="pg-uuid")
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
+
     @Type(type = JsonbType.NAME)
     private HashMap content;
-/*
-    private String content;
-*/
     private String type;
     private String subType;
-    private boolean is_Public;
+    private boolean is_public;
 
 
-    public Integer getId() {return  id;}
+    public Long getId() {return  id;}
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,14 +39,6 @@ public class EntryList {
     public void setContent(HashMap content) {
         this.content = content;
     }
-
-/*
-    public String getContent() { return content; }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-*/
 
     public String getType() {return type;}
 
@@ -61,11 +53,20 @@ public class EntryList {
     }
 
     public boolean getIsPublic() {
-        return is_Public;
+        return is_public;
     }
 
     public void setIsPublic(boolean is_Public) {
-        this.is_Public = is_Public;
+        this.is_public = is_Public;
     }
+
+/*
+    @PostLoad
+    public void addIdToContent() {
+        if(!this.content.containsKey(this.getType())){
+            this.content.put(this.getType(), this.getId());
+        }
+    }
+*/
 
 }

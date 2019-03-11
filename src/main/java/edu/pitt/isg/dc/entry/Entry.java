@@ -2,9 +2,11 @@ package edu.pitt.isg.dc.entry;
 
 
 import edu.pitt.isg.dc.config.hibernate.JsonbType;
+import edu.pitt.isg.dc.entry.util.EntryListsHelper;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -111,4 +113,18 @@ public class Entry {
     protected void onCreate() {
         dateAdded = new Date();
     }
+
+    @PostLoad
+    private void replaceIdsForEntryListsContent() {
+        if(this.id.getEntryId().equals(1209L)){
+            System.out.println(this.getId().getEntryId().toString());
+            System.out.println(((HashMap) this.content.get("entry")).get("licenses").toString());
+            if(this.content.containsKey("entry")){
+                EntryListsHelper entryListsHelper = new EntryListsHelper();
+                this.content.put("entry", entryListsHelper.convertListIdToContent((HashMap) this.content.get("entry")));
+            }
+            System.out.println(((HashMap) this.content.get("entry")).get("licenses").toString());
+        }
+    }
+
 }

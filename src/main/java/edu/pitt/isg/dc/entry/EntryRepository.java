@@ -149,7 +149,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value = "select entry_lists_id as id, type, subtype, content #>> '{}' as content, is_public \n" +
             "from entry_lists \n" +
             "where type = :listType and subtype is null " + AND_PUBLIC )
-    List<EntryList> findEntryListsObject(@Param("listType") String type);
+    List<EntryLists> findEntryListsObject(@Param("listType") String type);
 
     @Query(nativeQuery = true, value = "select entry_lists_id as identifier, content #>> '{}' as content \n" +
             "from entry_lists \n" +

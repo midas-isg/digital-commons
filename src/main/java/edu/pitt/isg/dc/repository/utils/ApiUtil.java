@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.mdc.dats2_2.License;
 import org.jsoup.Jsoup;
 import org.openarchives.oai._2.*;
 import org.openarchives.oai._2_0.oai_dc.OaiDcType;
@@ -36,7 +35,7 @@ public class ApiUtil {
     @Autowired
     private CategoryRepository categoryRepository;
     @Autowired
-    private EntryListRepository entryListRepository;
+    private EntryListsRepository entryListsRepository;
 
     private static final String CKAN_DATE_CREATED = "CKAN metadata_created";
     private static final String CKAN_DATE_MODIFIED = "CKAN metadata_modified";
@@ -87,29 +86,33 @@ public class ApiUtil {
         return dataFormatName;
     }
 
-    public List<Object[]> getEntryList(String typeOfList) {
-        return getEntryList(typeOfList, null);
+    public List<EntryLists> getEntryLists(String typeOfList) {
+        return getEntryLists(typeOfList, null);
     }
 
-    public List<Object[]> getEntryList(String typeOfList, String typeOfSubList) {
-        List<EntryList> entryList = entryListRepository.findEntryListsObject(typeOfList);
-
+    public List<EntryLists> getEntryLists(String typeOfList, String typeOfSubList) {
         if(!isEmpty(typeOfList)){
             if(!isEmpty(typeOfSubList)){
-                return entryListRepository.findEntryListsWithSubType(typeOfList, typeOfSubList);
+                return entryListsRepository.findEntryListsWithSubType(typeOfList, typeOfSubList);
             } else {
-                return entryListRepository.findEntryLists(typeOfList);
+                return entryListsRepository.findEntryLists(typeOfList);
             }
         }
 
         return null;
     }
 
+    public HashMap getContentFromEntryListsForIdentifier(BigInteger identifier) {
+        return entryListsRepository.findContentForEntryListsByIdentifier(identifier);
+    }
+
+/*
     public JsonObject getContentForEntryListByIdentifier(BigInteger identifier) {
-        String content = entryListRepository.findContentForEntryListByIdentifier(identifier);
+        String content = entryListsRepository.findContentForEntryListsByIdentifier(identifier);
         JsonParser parser = new JsonParser();
         return parser.parse(content).getAsJsonObject();
     }
+*/
 
     public List<JsonObject> getLicenseList(String typeOfLicenses) {
         List<JsonObject> licenseList = new ArrayList<>();
@@ -222,6 +225,7 @@ public class ApiUtil {
         if (categoryId != null) {
             categories.add(categoryRepository.findOne(new Long(categoryId)));
             Integer categoryForSubcategory = categoryOrderRepository.findCategoryIdForSubcategory(categoryId);
+//            TODO: investigate this!!!
             while (categoryForSubcategory != null) {
                 categories.add(categoryRepository.findOne(new Long(categoryForSubcategory)));
                 categoryForSubcategory = categoryOrderRepository.findCategoryIdForSubcategory(categoryForSubcategory);
@@ -230,102 +234,102 @@ public class ApiUtil {
         return categories;
     }
 
-/*
-4.1 GetRecord
-Summary and Usage Notes
-This verb is used to retrieve an individual metadata record from a repository. Required arguments specify the
-identifier of the item from which the record is requested and the format of the metadata that should be included
-in the record. Depending on the level at which a repository tracks deletions, a header with a "deleted" value for
-the status attribute may be returned, in case the metadata format specified by the metadataPrefix is no longer
-available from the repository or from the specified item.
-Arguments
-identifier a required argument that specifies the unique identifier of the item in the repository from which the
-    record must be disseminated.
-metadataPrefix a required argument that specifies the metadataPrefix of the format that should be included in the
-    metadata part of the returned record . A record should only be returned if the format specified by the metadataPrefix
-    can be disseminated from the item identified by the value of the identifier argument. The metadata formats supported
-    by a repository and for a particular record can be retrieved using the ListMetadataFormats request.
- */
-public OAIPMHtype getRecord(String identifier){
-    OAIPMHtype oaipmHtype = new OAIPMHtype();
-    oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.GET_RECORD);
+    /*
+    4.1 GetRecord
+    Summary and Usage Notes
+    This verb is used to retrieve an individual metadata record from a repository. Required arguments specify the
+    identifier of the item from which the record is requested and the format of the metadata that should be included
+    in the record. Depending on the level at which a repository tracks deletions, a header with a "deleted" value for
+    the status attribute may be returned, in case the metadata format specified by the metadataPrefix is no longer
+    available from the repository or from the specified item.
+    Arguments
+    identifier a required argument that specifies the unique identifier of the item in the repository from which the
+        record must be disseminated.
+    metadataPrefix a required argument that specifies the metadataPrefix of the format that should be included in the
+        metadata part of the returned record . A record should only be returned if the format specified by the metadataPrefix
+        can be disseminated from the item identified by the value of the identifier argument. The metadata formats supported
+        by a repository and for a particular record can be retrieved using the ListMetadataFormats request.
+     */
+    public OAIPMHtype getRecord(String identifier){
+        OAIPMHtype oaipmHtype = new OAIPMHtype();
+        oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.GET_RECORD);
 
-    EntryView entryView = new EntryView();
-    entryView = getEntryView(identifier);
-    Entry entry = new Entry();
-    entry = repo.findOne(entryView.getId());
+        EntryView entryView = new EntryView();
+        entryView = getEntryView(identifier);
+        Entry entry = new Entry();
+        entry = repo.findOne(entryView.getId());
 
-    RecordType recordType = new RecordType();
-    HeaderType headerType = new HeaderType();
-    if(entry.getId() != null){
-        headerType.setIdentifier(identifier);
+        RecordType recordType = new RecordType();
+        HeaderType headerType = new HeaderType();
+        if(entry.getId() != null){
+            headerType.setIdentifier(identifier);
+        }
+        if(entry.getDateAdded() != null){
+            XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(entry.getDateAdded());
+            headerType.setDatestamp(xmlGregorianCalendar.toString());
+            //headerType.setDatestamp(entry.getDateAdded().toString());
+        }
+
+        headerType = getCategoriesforIdentifier(headerType, identifier, null);
+        recordType.setHeader(headerType);
+        MetadataType metadataType = new MetadataType();
+        if(entry.getContent() != null){
+            OaiDcType oaiDcType = setOaiDcType(entry);
+            JAXBElement<OaiDcType> jaxbOaiDcType = new org.openarchives.oai._2_0.oai_dc.ObjectFactory().createDc(oaiDcType);
+            metadataType.setAny(jaxbOaiDcType);
+        }
+        recordType.setMetadata(metadataType);
+        GetRecordType getRecordType = new GetRecordType();
+        getRecordType.setRecord(recordType);
+        oaipmHtype.setGetRecord(getRecordType);
+
+        return oaipmHtype;
     }
-    if(entry.getDateAdded() != null){
-        XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(entry.getDateAdded());
-        headerType.setDatestamp(xmlGregorianCalendar.toString());
-        //headerType.setDatestamp(entry.getDateAdded().toString());
+
+
+    /*
+    4.2 Identify
+    Summary and Usage Notes
+    This verb is used to retrieve information about a repository. Some of the information returned is required as part of
+    the OAI-PMH. Repositories may also employ the Identify verb to return additional descriptive information.
+     */
+    public OAIPMHtype getIdentifyInfo(){
+        OAIPMHtype oaipmHtype = new OAIPMHtype();
+        oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.IDENTIFY);
+
+        IdentifyType identifyType = new IdentifyType();
+        identifyType.setRepositoryName("MIDAS Digital Commons");
+        identifyType.setBaseURL("http://epimodels.org/apps/mdc");
+        //identifyType.getAdminEmail().add("admin@mdc.pitt.edu");
+        identifyType.getAdminEmail().add("isg-feedback@list.pitt.edu");
+        identifyType.setProtocolVersion("2.0");
+
+        identifyType.setGranularity(GranularityType.YYYY_MM_DD_THH_MM_SS_Z);
+        identifyType.setDeletedRecord(DeletedRecordType.NO);
+        identifyType.setEarliestDatestamp("2017-10-10T12:30:16Z");
+
+        oaipmHtype.setIdentify(identifyType);
+        return oaipmHtype;
     }
 
-    headerType = getCategoriesforIdentifier(headerType, identifier, null);
-    recordType.setHeader(headerType);
-    MetadataType metadataType = new MetadataType();
-    if(entry.getContent() != null){
-        OaiDcType oaiDcType = setOaiDcType(entry);
-        JAXBElement<OaiDcType> jaxbOaiDcType = new org.openarchives.oai._2_0.oai_dc.ObjectFactory().createDc(oaiDcType);
-        metadataType.setAny(jaxbOaiDcType);
-    }
-    recordType.setMetadata(metadataType);
-    GetRecordType getRecordType = new GetRecordType();
-    getRecordType.setRecord(recordType);
-    oaipmHtype.setGetRecord(getRecordType);
-
-    return oaipmHtype;
-}
-
-
-/*
-4.2 Identify
-Summary and Usage Notes
-This verb is used to retrieve information about a repository. Some of the information returned is required as part of
-the OAI-PMH. Repositories may also employ the Identify verb to return additional descriptive information.
- */
-public OAIPMHtype getIdentifyInfo(){
-    OAIPMHtype oaipmHtype = new OAIPMHtype();
-    oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.IDENTIFY);
-
-    IdentifyType identifyType = new IdentifyType();
-    identifyType.setRepositoryName("MIDAS Digital Commons");
-    identifyType.setBaseURL("http://epimodels.org/apps/mdc");
-    //identifyType.getAdminEmail().add("admin@mdc.pitt.edu");
-    identifyType.getAdminEmail().add("isg-feedback@list.pitt.edu");
-    identifyType.setProtocolVersion("2.0");
-
-    identifyType.setGranularity(GranularityType.YYYY_MM_DD_THH_MM_SS_Z);
-    identifyType.setDeletedRecord(DeletedRecordType.NO);
-    identifyType.setEarliestDatestamp("2017-10-10T12:30:16Z");
-
-    oaipmHtype.setIdentify(identifyType);
-    return oaipmHtype;
-}
-
-/*
-4.3 ListIdentifiers
-Summary and Usage Notes
-This verb is an abbreviated form of ListRecords, retrieving only headers rather than records.
-Optional arguments permit selective harvesting of headers based on set membership and/or datestamp.
-Depending on the repository's support for deletions, a returned header may have a status attribute of "deleted" if a
-record matching the arguments specified in the request has been deleted.
-Arguments
-from an optional argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting.
-until an optional argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.
-metadataPrefix a required argument, which specifies that headers should be returned only if the metadata
-    format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions,
-    has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using
-    the ListMetadataFormats request.
-set an optional argument with a setSpec value , which specifies set criteria for selective harvesting.
-resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
-    ListIdentifiers request that issued an incomplete list.
-*/
+    /*
+    4.3 ListIdentifiers
+    Summary and Usage Notes
+    This verb is an abbreviated form of ListRecords, retrieving only headers rather than records.
+    Optional arguments permit selective harvesting of headers based on set membership and/or datestamp.
+    Depending on the repository's support for deletions, a returned header may have a status attribute of "deleted" if a
+    record matching the arguments specified in the request has been deleted.
+    Arguments
+    from an optional argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting.
+    until an optional argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.
+    metadataPrefix a required argument, which specifies that headers should be returned only if the metadata
+        format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions,
+        has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using
+        the ListMetadataFormats request.
+    set an optional argument with a setSpec value , which specifies set criteria for selective harvesting.
+    resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
+        ListIdentifiers request that issued an incomplete list.
+    */
     public OAIPMHtype getIdentifiersList(Date from, Date until, String metadataPrefix, String set, String resumptionToken){
         //List<String> unparsedIdentifiers = repo.findPublicIdentifiers();
         List<String> unparsedIdentifiers = repo.findFirstClassPublicIdentifiers();
@@ -394,54 +398,54 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         }
     }
 
-/*
-4.4 ListMetadataFormats
-Summary and Usage Notes
-This verb is used to retrieve the metadata formats available from a repository. An optional argument restricts the
-request to the formats available for a specific item.
-Arguments
-identifier an optional argument that specifies the unique identifier of the item for which available metadata
-    formats are being requested. If this argument is omitted, then the response includes all metadata formats
-    supported by this repository. Note that the fact that a metadata format is supported by a repository does
-    not mean that it can be disseminated from all items in the repository.
-*/
-public OAIPMHtype getMetadataFormatsAll() {
-    //List<String> unparsedTypes = repo.listTypes();
-    OAIPMHtype oaipmHtype = new OAIPMHtype();
-    oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_METADATA_FORMATS);
-    ListMetadataFormatsType listMetadataFormatsType = new ListMetadataFormatsType();
+    /*
+    4.4 ListMetadataFormats
+    Summary and Usage Notes
+    This verb is used to retrieve the metadata formats available from a repository. An optional argument restricts the
+    request to the formats available for a specific item.
+    Arguments
+    identifier an optional argument that specifies the unique identifier of the item for which available metadata
+        formats are being requested. If this argument is omitted, then the response includes all metadata formats
+        supported by this repository. Note that the fact that a metadata format is supported by a repository does
+        not mean that it can be disseminated from all items in the repository.
+    */
+    public OAIPMHtype getMetadataFormatsAll() {
+        //List<String> unparsedTypes = repo.listTypes();
+        OAIPMHtype oaipmHtype = new OAIPMHtype();
+        oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_METADATA_FORMATS);
+        ListMetadataFormatsType listMetadataFormatsType = new ListMetadataFormatsType();
 
-    MetadataFormatType metadataFormatType = new MetadataFormatType();
-    metadataFormatType.setMetadataPrefix("oai_dc");
-    metadataFormatType.setMetadataNamespace("http://www.openarchives.org/OAI/2.0/oai_dc.xsd");
-    metadataFormatType.setSchema("http://www.openarchives.org/OAI/2.0/oai_dc/");
+        MetadataFormatType metadataFormatType = new MetadataFormatType();
+        metadataFormatType.setMetadataPrefix("oai_dc");
+        metadataFormatType.setMetadataNamespace("http://www.openarchives.org/OAI/2.0/oai_dc.xsd");
+        metadataFormatType.setSchema("http://www.openarchives.org/OAI/2.0/oai_dc/");
 
-    //oaipmHtype = getMetadataFormats(oaipmHtype, unparsedTypes);
-    listMetadataFormatsType.getMetadataFormat().add(metadataFormatType);
-    oaipmHtype.setListMetadataFormats(listMetadataFormatsType);
+        //oaipmHtype = getMetadataFormats(oaipmHtype, unparsedTypes);
+        listMetadataFormatsType.getMetadataFormat().add(metadataFormatType);
+        oaipmHtype.setListMetadataFormats(listMetadataFormatsType);
 
-    return oaipmHtype;
-}
+        return oaipmHtype;
+    }
 
-/*
-4.5 ListRecords
-Summary and Usage Notes
-This verb is used to harvest records from a repository. Optional arguments permit selective harvesting of records based
-on set membership and/or datestamp. Depending on the repository's support for deletions, a returned header may have
-a status attribute of "deleted" if a record matching the arguments specified in the request has been deleted.
-No metadata will be present for records with deleted status.
-Arguments
-from an optional argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting.
-until an optional argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.
-set an optional argument with a setSpec value , which specifies set criteria for selective harvesting.
-resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
-    ListRecords request that issued an incomplete list.
-metadataPrefix a required argument (unless the exclusive argument resumptionToken is used) that specifies the
-    metadataPrefix of the format that should be included in the metadata part of the returned records.
-    Records should be included only for items from which the metadata format matching the metadataPrefix can
-    be disseminated. The metadata formats supported by a repository and for a particular item can be retrieved
-    using the ListMetadataFormats request.
-*/
+    /*
+    4.5 ListRecords
+    Summary and Usage Notes
+    This verb is used to harvest records from a repository. Optional arguments permit selective harvesting of records based
+    on set membership and/or datestamp. Depending on the repository's support for deletions, a returned header may have
+    a status attribute of "deleted" if a record matching the arguments specified in the request has been deleted.
+    No metadata will be present for records with deleted status.
+    Arguments
+    from an optional argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting.
+    until an optional argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.
+    set an optional argument with a setSpec value , which specifies set criteria for selective harvesting.
+    resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
+        ListRecords request that issued an incomplete list.
+    metadataPrefix a required argument (unless the exclusive argument resumptionToken is used) that specifies the
+        metadataPrefix of the format that should be included in the metadata part of the returned records.
+        Records should be included only for items from which the metadata format matching the metadataPrefix can
+        be disseminated. The metadata formats supported by a repository and for a particular item can be retrieved
+        using the ListMetadataFormats request.
+    */
     public OAIPMHtype getRecords(Date from, Date until, String metadataFormat, String set, String resumptionToken) {
         //List<Entry> unparsedRecords = getPublicEntryContents();
         List<Entry> unparsedRecords = null;
@@ -522,14 +526,14 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
         return oaipmHtype;
     }
 
-/*
-4.6 ListSets
-Summary and Usage Notes
-This verb is used to retrieve the set structure of a repository, useful for selective harvesting.
-Arguments
-resumptionToken an exclusive argument with a value that is the flow control token returned by a previous ListSets
-    request that issued an incomplete list.
- */
+    /*
+    4.6 ListSets
+    Summary and Usage Notes
+    This verb is used to retrieve the set structure of a repository, useful for selective harvesting.
+    Arguments
+    resumptionToken an exclusive argument with a value that is the flow control token returned by a previous ListSets
+        request that issued an incomplete list.
+     */
     public OAIPMHtype getSets() {
         List<String> unparsedSets = categoryRepository.findSets();
         ListSetsType listSets = new ListSetsType();
@@ -563,7 +567,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         return oaipmHtype;
     }
 
-//set Date
+    //set Date
 //look into resumption token --  i believe this token is only pertinent in some cases (ie. ListRecords, ListSets...)
     private OAIPMHtype setDefaultInfoOAIPMHtype(OAIPMHtype oaipmHtype, VerbType verbType){
 
