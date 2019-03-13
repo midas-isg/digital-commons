@@ -17,7 +17,7 @@ public interface EntryListsRepository extends JpaRepository<EntryLists, Integer>
     String FROM_ENTRY_LISTS = " FROM entry_lists \n ";
 
     @Transactional(readOnly=true)
-    EntryLists findOne(Integer id);
+    EntryLists findOne(Long id);
 
     @Query(nativeQuery = true, value = "select id, type, sub_type, content, is_public \n" +
             FROM_ENTRY_LISTS +
@@ -39,6 +39,6 @@ public interface EntryListsRepository extends JpaRepository<EntryLists, Integer>
     @Query(nativeQuery = true, value = "select content \n" +
             FROM_ENTRY_LISTS +
             "where id = :identifier " )
-    HashMap findContentForEntryListsByIdentifier(@Param("identifier") BigInteger identifier);
+    HashMap findContentForEntryListsByIdentifier(@Param("identifier") Integer identifier);
 
 }

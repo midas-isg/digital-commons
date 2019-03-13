@@ -1,8 +1,7 @@
 package edu.pitt.isg.dc.entry.util;
 
 import edu.pitt.isg.dc.entry.EntryLists;
-import edu.pitt.isg.dc.entry.EntryListsRepository;
-import edu.pitt.isg.dc.repository.utils.ApiUtil;
+import edu.pitt.isg.dc.entry.EntryListsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +13,7 @@ import java.util.List;
 @Component
 public class EntryListsHelper {
     @Autowired
-    private EntryListsRepository entryListsRepository;
-    @Autowired
-    private ApiUtil apiUtil;
+    private EntryListsService entryListsService;
 
     public HashMap<String, Object> convertListIdToContent(HashMap<String, Object> entryMap) {
         //License
@@ -81,12 +78,12 @@ public class EntryListsHelper {
     private List<HashMap<String, Object>> convertIdentifierToListsContent(ArrayList<HashMap<String, Object>> entryMapList, String identifier, List<String> keyList) {
         for(HashMap<String, Object> entryMap : entryMapList){
             if(entryMap.containsKey(identifier)) {
-                Integer listsId = Integer.valueOf(entryMap.get(identifier).toString());
+                Long listsId = Long.valueOf(entryMap.get(identifier).toString());
                 HashMap<String, Object> listsContent = new HashMap<String, Object>();
-//                    listsContent = getListsContent(listsId);
+                    listsContent = getListsContent(listsId);
 //                    listsContent.put("identifier", "Attribution-NonCommercial-ShareAlike 4.0 International");
-                listsContent.put("name", "Attribution-NonCommercial-ShareAlike 4.0 International");
-                listsContent.put("version", "4.00");
+//                listsContent.put("name", "Attribution-NonCommercial-ShareAlike 4.0 International");
+//                listsContent.put("version", "4.00");
 //                    listsContent.put("creators", "Attribution-NonCommercial-ShareAlike 4.0 International");
 
                 for (String key : keyList) {
@@ -101,8 +98,10 @@ public class EntryListsHelper {
         return entryMapList;
     }
 
-    private HashMap getListsContent(Integer identifier) {
-        EntryLists entryLists = entryListsRepository.findOne(identifier);
+    private HashMap getListsContent(Long identifier) {
+
+//        EntryLists entryLists = apiUtil.getEntryListsForIdentifier(identifier);
+        EntryLists entryLists = entryListsService.findOne(identifier);
         return entryLists.getContent();
     }
 

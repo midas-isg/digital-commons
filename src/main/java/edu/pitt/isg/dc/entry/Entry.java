@@ -119,11 +119,13 @@ public class Entry {
         if(this.id.getEntryId().equals(1209L)){
             System.out.println(this.getId().getEntryId().toString());
             System.out.println(((HashMap) this.content.get("entry")).get("licenses").toString());
+/*
             if(this.content.containsKey("entry")){
                 EntryListsHelper entryListsHelper = new EntryListsHelper();
                 this.content.put("entry", entryListsHelper.convertListIdToContent((HashMap) this.content.get("entry")));
             }
             System.out.println(((HashMap) this.content.get("entry")).get("licenses").toString());
+*/
         }
     }
 

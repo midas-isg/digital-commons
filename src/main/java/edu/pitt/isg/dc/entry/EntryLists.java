@@ -60,13 +60,4 @@ public class EntryLists {
         this.is_public = is_Public;
     }
 
-/*
-    @PostLoad
-    public void addIdToContent() {
-        if(!this.content.containsKey(this.getType())){
-            this.content.put(this.getType(), this.getId());
-        }
-    }
-*/
-
 }

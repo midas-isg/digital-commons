@@ -102,8 +102,12 @@ public class ApiUtil {
         return null;
     }
 
-    public HashMap getContentFromEntryListsForIdentifier(BigInteger identifier) {
+    public HashMap getContentFromEntryListsForIdentifier(Integer identifier) {
         return entryListsRepository.findContentForEntryListsByIdentifier(identifier);
+    }
+
+    public EntryLists getEntryListsForIdentifier(Integer identifier) {
+        return entryListsRepository.findOne(identifier);
     }
 
 /*
