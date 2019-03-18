@@ -106,6 +106,13 @@
                                         listItems="${digitalObject.inputs}"
                                         tagName="dataInputs">
             </myTags:editMasterUnbounded>
+            <myTags:editYesNoUnknownEnum path="isListOfInputsComplete"
+                                         specifier="isListOfInputsComplete"
+                                         label="Is List Of Inputs Complete"
+                                         yesNoUnknown="${digitalObject.isListOfInputsComplete}"
+                                         tagName="yesNoUnknownEnum"
+                                         id="isListOfInputsComplete">
+            </myTags:editYesNoUnknownEnum>
 
 <%--
             <fmt:message key="software.dataOutputFormats" var="dataOutputFormatsPlaceHolder" />
@@ -133,6 +140,13 @@
                                         cardText="${dataOutputFormatsPlaceHolder}"
                                         listItems="${digitalObject.outputs}">
             </myTags:editMasterUnbounded>
+            <myTags:editYesNoUnknownEnum path="isListOfOutputsComplete"
+                                         specifier="isListOfOutputsComplete"
+                                         label="Is List Of Outputs Complete"
+                                         yesNoUnknown="${digitalObject.isListOfOutputsComplete}"
+                                         tagName="yesNoUnknownEnum"
+                                         id="isListOfOutputsComplete">
+            </myTags:editYesNoUnknownEnum>
 
             <fmt:message key="software.webApplication" var="webApplicationPlaceHolder" />
             <myTags:editMasterUnbounded label="Web Applications"

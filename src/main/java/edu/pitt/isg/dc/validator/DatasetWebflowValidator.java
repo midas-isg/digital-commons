@@ -69,6 +69,8 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
+    public List getYesNoUnknownEnums(){return Arrays.asList(YesNoUnknownEnum.class.getEnumConstants());}
+
     public Map<String, String> getDataFormatsEnums() {
         Map<String, String> dataFormats = new LinkedHashMap<String, String>();
         List<Object[]> dataFormatsObjectList = apiUtil.getDataFormats();

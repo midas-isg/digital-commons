@@ -84,6 +84,14 @@
 </myTags:editMasterUnbounded>
 --%>
 
+<myTags:editYesNoUnknownEnum path="${path}.isListOfDataFormatsComplete"
+                             specifier="${specifier}-isListOfDataFormatsComplete"
+                             label="Is List Of Data Formats Complete"
+                             yesNoUnknown="${dataOutputs.isListOfDataFormatsComplete}"
+                             tagName="dataInputs"
+                             id="${specifier}-isListOfDataFormatsComplete">
+</myTags:editYesNoUnknownEnum>
+
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${dataOutputs}"
