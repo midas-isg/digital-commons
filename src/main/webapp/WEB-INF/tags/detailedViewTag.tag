@@ -88,7 +88,12 @@
     <div class="metadata-wrapper">
         <section>
             <div class="metadata-header-wrapper">
-                <h2 class="sub-title-font">About this ${type.replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2")}</h2>
+                <c:set var="typeTitle" value="${type.replaceAll('(\\p{Ll})(\\p{Lu})','$1 $2')}"/>
+                <c:if test="${fn:substring(typeTitle, typeTitle.length()-1, typeTitle.length()) == 's'}">
+                    <c:set var="typeTitle" value="${fn:substring(typeTitle, 0, typeTitle.length()-1)}"/>
+                </c:if>
+
+                <h2 class="sub-title-font">About this ${typeTitle}</h2>
             </div>
             <div class="section-content">
                 <dl class="metadata-column fancy">
