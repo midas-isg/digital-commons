@@ -97,7 +97,7 @@ public class DataEntryController {
     @Autowired
     private ApiUtil apiUtil;
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     private Converter converter = new Converter();
     @Autowired
     private ServletContext context;

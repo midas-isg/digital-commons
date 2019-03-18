@@ -33,7 +33,7 @@ public class NcbiRule {
     @Autowired
     private NcbiRepository repo;
     @Autowired
-    private EntryRepository entryRepo;
+    private EntryService entryRepo;
 
     @Value("${app.identifierSource.ncbi}")
     private String identifierSource;

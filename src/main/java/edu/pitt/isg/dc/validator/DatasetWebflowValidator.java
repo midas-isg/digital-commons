@@ -10,6 +10,7 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.util.EntryListsHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
@@ -57,6 +58,8 @@ public class DatasetWebflowValidator {
     private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
     @Autowired
     private CategoryHelper categoryHelper;
+    @Autowired
+    private EntryListsHelper entryListsHelper;
     private static String ENTRIES_AUTHENTICATION = "";
 
     static {
@@ -717,6 +720,7 @@ public class DatasetWebflowValidator {
 
         JsonObject json = converter.toJsonObject(clazz, digitalObject);
         json.remove("class");
+        json = entryListsHelper.convertContentToListId(json);
         entryObject.setEntry(json);
         entryObject.setProperty("type", clazz.getName());
 

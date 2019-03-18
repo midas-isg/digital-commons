@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.dc.entry.EntryService;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
@@ -49,7 +49,7 @@ public class ResolveHttpIdentifiersTest {
     @Autowired
     private ApiUtil apiUtil;
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
 
     @Test

@@ -12,7 +12,7 @@ class EntryAid {
     }
 
     static Set<EntryId> filterEntryId(
-            EntryRepository repo,
+            EntryService repo,
             Stream<String> stream,
             String idSrc,
             Set<String> onlyIds) {

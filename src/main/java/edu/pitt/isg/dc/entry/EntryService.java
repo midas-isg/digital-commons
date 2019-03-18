@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,11 +14,34 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public abstract class EntryService implements EntryRepository {
+public class EntryService {
     @Autowired
     private EntryRepository entryRepository;
     @Autowired
     private EntryListsHelper entryListsHelper;
+
+    public void delete(EntryId id){
+        entryRepository.delete(id);
+    }
+
+    public void deleteAllInBatch(){
+        entryRepository.deleteAllInBatch();
+    }
+
+    public Long count() {
+        return entryRepository.count();
+    }
+
+    public List<Entry> findAllByStatus(String status) {
+        return getContentFromEntryLists(entryRepository.findAllByStatus(status));
+    }
+
+    public List<Entry> findAll() {
+        return getContentFromEntryLists(entryRepository.findAll());
+    }
+    public void save(Entry s){
+        entryRepository.save(s);
+    }
 
     private Entry getContentFromEntryLists(Entry entry){
         if(entry.getContent().containsKey("entry")){

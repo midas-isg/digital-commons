@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TypeRule {
-    private final EntryRepository entryRepo;
+    private final EntryService entryRepo;
 
     public List<String> findAll() {
         return entryRepo.listTypes();

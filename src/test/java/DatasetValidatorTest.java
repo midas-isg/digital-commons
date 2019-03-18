@@ -8,7 +8,7 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.TestConvertDatsToJava;
 import edu.pitt.isg.dc.WebApplication;
 import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.dc.entry.EntryService;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
@@ -46,7 +46,7 @@ public class DatasetValidatorTest {
     @Autowired
     private ApiUtil apiUtil;
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
 
     @Test

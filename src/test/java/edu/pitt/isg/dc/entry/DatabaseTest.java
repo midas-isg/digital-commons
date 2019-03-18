@@ -91,7 +91,7 @@ public class DatabaseTest {
     @Autowired
     private Datastore datastore;
     @Autowired
-    private EntryRepository entryRepo;
+    private EntryService entryRepo;
     @Autowired
     private NcbiRepository ncbiRepo;
     @Autowired

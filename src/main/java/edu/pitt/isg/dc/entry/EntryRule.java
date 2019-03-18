@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.toSet;
 @Service
 public class EntryRule {
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     @Autowired
     private NcbiRule ncbi;
     @Autowired

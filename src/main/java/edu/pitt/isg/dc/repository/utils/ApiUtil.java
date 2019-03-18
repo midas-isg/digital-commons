@@ -31,7 +31,7 @@ public class ApiUtil {
     @Autowired
     CategoryOrderRepository categoryOrderRepository;
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     @Autowired
     private CategoryRepository categoryRepository;
     @Autowired
@@ -101,22 +101,6 @@ public class ApiUtil {
 
         return null;
     }
-
-    public HashMap getContentFromEntryListsForIdentifier(Integer identifier) {
-        return entryListsRepository.findContentForEntryListsByIdentifier(identifier);
-    }
-
-    public EntryLists getEntryListsForIdentifier(Integer identifier) {
-        return entryListsRepository.findOne(identifier);
-    }
-
-/*
-    public JsonObject getContentForEntryListByIdentifier(BigInteger identifier) {
-        String content = entryListsRepository.findContentForEntryListsByIdentifier(identifier);
-        JsonParser parser = new JsonParser();
-        return parser.parse(content).getAsJsonObject();
-    }
-*/
 
     public List<JsonObject> getLicenseList(String typeOfLicenses) {
         List<JsonObject> licenseList = new ArrayList<>();

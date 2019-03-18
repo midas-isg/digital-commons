@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataGov implements DataGovInterface {
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     @Autowired
     private EntrySubmissionInterface entrySubmissionInterface;
     @Autowired

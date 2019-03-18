@@ -7,7 +7,7 @@ import com.google.gson.*;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
-import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.dc.entry.EntryService;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.v1_0.*;
@@ -40,7 +40,7 @@ public class TestConvertDatsToJava {
     Converter converter = new Converter();
     Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
 
     public static int indexOfDifference(CharSequence cs1, CharSequence cs2) {
         if (cs1 == cs2) {

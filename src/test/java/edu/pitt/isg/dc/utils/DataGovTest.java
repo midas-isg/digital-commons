@@ -33,7 +33,7 @@ import static org.junit.Assert.assertFalse;
 @TestPropertySource("/application.properties")
 public class DataGovTest {
     @Autowired
-    private EntryRepository repo;
+    private EntryService repo;
     @Autowired
     private EntrySubmissionInterface entrySubmissionInterface;
     @Autowired

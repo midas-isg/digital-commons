@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Repository
-public interface EntryListsRepository extends JpaRepository<EntryLists, Integer> {
+public interface EntryListsRepository extends JpaRepository<EntryLists, Long> {
     String IS_PUBLIC = " is_public = true ";
     String AND_PUBLIC = " AND " + IS_PUBLIC;
     String FROM_ENTRY_LISTS = " FROM entry_lists \n ";

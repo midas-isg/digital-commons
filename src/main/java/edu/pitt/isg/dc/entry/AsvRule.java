@@ -27,7 +27,7 @@ import static java.util.stream.Collectors.toSet;
 @Slf4j
 public class AsvRule {
     private static final String SEPARATOR = ",";
-    private final EntryRepository entryRepo;
+    private final EntryService entryRepo;
     private final AsvRepository repo;
 
     @Value("${app.identifierSource.sv}")

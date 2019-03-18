@@ -32,7 +32,7 @@ public class LocationRule {
     private static final List<String> fields = asList(
             SPATIAL_COVERAGE,
             LOCATION_COVERAGE);
-    private final EntryRepository entryRepo;
+    private final EntryService entryRepo;
     private final LocationProxy proxy;
 
     @Value("${app.identifierSource.ls}")

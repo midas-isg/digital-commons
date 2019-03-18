@@ -20,7 +20,6 @@ import java.util.List;
 public class Datastore implements MdcEntryDatastoreInterface {
     @Autowired
     private EntryService repo;
-//    private EntryRepository repo;
 
     @Autowired
     private CommentsRepository commentsRepo;
