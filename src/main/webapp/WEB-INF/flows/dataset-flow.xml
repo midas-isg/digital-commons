@@ -318,6 +318,10 @@
     <!-- Licenses -->
     <!--Form page 10-->
     <view-state id="datasetForm10" model="flowScope.digitalObject">
+        <on-render>
+            <set name="requestScope.licenseListSubType" value="'dataFormats'"/>
+            <set name="requestScope.licenses" value="datasetWebflowValidator.getLicenseList(requestScope.licenseListSubType.toString())"/>
+        </on-render>
         <transition on="previous" to="validateForm10">
             <set name="flowScope.indexValue" value="'creators'"/>
         </transition>

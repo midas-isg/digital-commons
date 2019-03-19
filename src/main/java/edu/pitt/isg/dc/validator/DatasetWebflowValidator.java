@@ -266,7 +266,7 @@ public class DatasetWebflowValidator {
     }
 
     public Object editDigitalObject(Long entryId) {
-        List<EntryLists> licenseEntryLists = apiUtil.getEntryLists("license");
+//        List<EntryLists> licenseEntryLists = apiUtil.getEntryLists("license");
 
 
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);

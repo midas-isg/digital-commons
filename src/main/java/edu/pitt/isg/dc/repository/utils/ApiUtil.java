@@ -15,7 +15,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,7 +34,7 @@ public class ApiUtil {
     @Autowired
     private CategoryRepository categoryRepository;
     @Autowired
-    private EntryListsRepository entryListsRepository;
+    private EntryListsService entryListsService;
 
     private static final String CKAN_DATE_CREATED = "CKAN metadata_created";
     private static final String CKAN_DATE_MODIFIED = "CKAN metadata_modified";
@@ -93,9 +92,9 @@ public class ApiUtil {
     public List<EntryLists> getEntryLists(String typeOfList, String typeOfSubList) {
         if(!isEmpty(typeOfList)){
             if(!isEmpty(typeOfSubList)){
-                return entryListsRepository.findEntryListsWithSubType(typeOfList, typeOfSubList);
+                return entryListsService.findEntryListsWithSubType(typeOfList, typeOfSubList);
             } else {
-                return entryListsRepository.findEntryLists(typeOfList);
+                return entryListsService.findEntryLists(typeOfList);
             }
         }
 
