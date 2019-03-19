@@ -421,7 +421,7 @@ function listToHtmlString(attributeList) {
 }
 
 function listToHtmlStringDataFormats(attributeList) {
-    var htmlStr = '<ul style="padding-left:35px"><li>';
+    var htmlStr = '<ul style="margin-bottom:0rem; padding-left:35px"><li>';
     attributeList = attributeList.join('</li><li>');
     htmlStr += attributeList + '</ul>';
     return htmlStr;
@@ -551,6 +551,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             } else {
                 $(containerId).hide();
             }
+        } else if (key === 'isListOfInputsComplete' || key === 'isListOfOutputsComplete' || key === 'isListOfDataFormatsComplete') {
+            attribute = toTitleCase(attribute);
+            hasNulls = false;
         } else {
             hasNulls = false;
         }
@@ -578,6 +581,14 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     }
 }
 
+function toTitleCase(str) {
+    return str.replace(
+        /\w\S*/g,
+        function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+    );
+}
 function escapeRegExp(str) {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
@@ -667,6 +678,12 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
 */
                     } else {
                         $('#software-' + key + '-' + i + '-dataFormats').remove();
+                    }
+                    if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
+                        var isListOfDataFormatsCompleteHTML = '<span style="padding-left:20px" id="software-' + key + '-' + i + '-isListOfDataFormatsComplete-tag">Is List Of Data Formats Complete: </span>';
+                        isListOfDataFormatsCompleteHTML = isListOfDataFormatsCompleteHTML + '<span id="software-' + key + '-' + i + '-isListOfDataFormatsComplete"></span>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',isListOfDataFormatsCompleteHTML);
+                        toggleModalItem('isListOfDataFormatsComplete', inputOutput[i], key + '-' + i + '-isListOfDataFormatsComplete', false, false);
                     }
                 }
             }

@@ -261,7 +261,9 @@ function toggleModalItems(entry, type) {
     // toggleRequiredModalItem('dataInputFormats', entry, 'data-input-formats', false, true, type, true);
     // toggleRequiredModalItem('dataOutputFormats', entry, 'data-output-formats', false, true, type, true);
     toggleRequiredModalItem('inputs', entry, 'inputs', false, true, type, true);
+    toggleModalItem('isListOfInputsComplete', entry, 'isListOfInputsComplete', false, false);
     toggleRequiredModalItem('outputs', entry, 'outputs', false, true, type, true);
+    toggleModalItem('isListOfOutputsComplete', entry, 'isListOfOutputsComplete', false, false);
 
     toggleModalItem('type', entry, 'type', false, false);
     toggleModalItem('populationSpeciesIncluded', entry, 'population-species', false, false);
