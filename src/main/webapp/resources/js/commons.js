@@ -642,8 +642,33 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             if (Object.prototype.toString.call( attribute ) === '[object Array]') {
                 var inputOutput = attribute;
                 for (var i = 0; i < inputOutput.length; i++) {
+                    var descriptionHTML = '';
+                    var isListOfDataFormatsCompleteDisplayHTML = '';
+                    if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
+                        var isListOfDataFormatsComplete = inputOutput[i]['isListOfDataFormatsComplete'];
+                        if(isListOfDataFormatsComplete === 'YES'){
+                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is a complete listing of this data format.)</span>'
+                        } else if(isListOfDataFormatsComplete === 'NO'){
+                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is not a complete listing of this data format.)</span>'
+                        } else if(isListOfDataFormatsComplete === 'UNKNOWN'){
+                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(It is unknown if this is a complete listing of this data format.)</span>'
+                        }
+                    }
+                    if(inputOutput[i].hasOwnProperty('description')){
+                        descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
+                    }
+                    descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
+                    if(inputOutput[i].hasOwnProperty(property)){
+                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span class="bold" id="software-' + key + '-' + i + '-' + property + '"></span><span class="bold">: </span>' + descriptionHTML + '</div>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
+                        toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
+                        toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
+                    }
+
+/*
                     if (inputOutput[i].hasOwnProperty(property) && inputOutput[i].hasOwnProperty('description')) {
                         var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
+                        descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
                         var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span class="bold" id="software-' + key + '-' + i + '-' + property + '"></span><span class="bold">: </span>' + descriptionHTML + '</div>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
@@ -656,9 +681,11 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                     }
                     if (inputOutput[i].hasOwnProperty('description') && !inputOutput[i].hasOwnProperty(property)) {
                         var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
+                        descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',descriptionHTML);
                         toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
                     }
+*/
                     if (inputOutput[i].hasOwnProperty('dataFormats')) {
                         var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', dataFormatsHTML);
@@ -678,12 +705,6 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
 */
                     } else {
                         $('#software-' + key + '-' + i + '-dataFormats').remove();
-                    }
-                    if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
-                        var isListOfDataFormatsCompleteHTML = '<span style="padding-left:20px" id="software-' + key + '-' + i + '-isListOfDataFormatsComplete-tag">Is List Of Data Formats Complete: </span>';
-                        isListOfDataFormatsCompleteHTML = isListOfDataFormatsCompleteHTML + '<span id="software-' + key + '-' + i + '-isListOfDataFormatsComplete"></span>';
-                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',isListOfDataFormatsCompleteHTML);
-                        toggleModalItem('isListOfDataFormatsComplete', inputOutput[i], key + '-' + i + '-isListOfDataFormatsComplete', false, false);
                     }
                 }
             }
@@ -776,7 +797,7 @@ $('#commons-body').on('click', function (e) {
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
-    $(".multiSelect").select2();
+    // $(".multiSelect").select2();
 
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
@@ -1356,13 +1377,14 @@ function setCardTabTitle(id, specifier, cardTabTitle){
 }
 
 function clearMultiSelectIfEmpty(id) {
+    debugger;
     var multiSelectId = "#" + id;
     if($(multiSelectId + " :selected").length === 0) {
         $(multiSelectId + " > option").each(function() {
             this.disabled = false;
         });
         setTimeout(function(){
-            $(multiSelectId).select2();
+            // $(multiSelectId).select2();
             $(multiSelectId).val('');
 
         });
@@ -1375,23 +1397,27 @@ function clearMultiSelectIfEmpty(id) {
                 $(multiSelectId).val(values).change();
             }
         }
-        if($(multiSelectId).val().includes('Syntax Not Available') && $(multiSelectId).val().length > 1) {
-            var i = values.indexOf('Syntax Not Available');
+/*
+        if($(multiSelectId).val().includes('Data Format Is Not Documented') && $(multiSelectId).val().length > 1) {
+            var i = values.indexOf('Data Format Is Not Documented');
             if (i >= 0) {
                 values.splice(i, 1);
                 $(multiSelectId).val(values).change();
             }
         }
+*/
 
 
 
-        if(!$(multiSelectId).val().includes('Syntax Not Available')) {
+/*
+        if(!$(multiSelectId).val().includes('Data Format Is Not Documented')) {
             $(multiSelectId + " > option").each(function() {
-                if(this.value === 'Syntax Not Available')
+                if(this.value === 'Data Format Is Not Documented')
                     this.disabled = true;
             });
             $(multiSelectId).select2();
         }
+*/
 
     }
 }
@@ -1701,9 +1727,11 @@ function destroySelect2() {
 }
 
 function createSelect2() {
+/*
     $(".multiSelect").select2({
         placeholder: "Please Select... "
     });
+*/
 
     $(".autoCompleteSelect").select2({
         placeholder: "License name",
