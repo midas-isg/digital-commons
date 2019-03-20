@@ -605,7 +605,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     if (key === 'inputs' || key === 'outputs'){
         nothingFoundMessage = 'None';
         document.getElementById("software-" + key + "-container").innerHTML = '';
-        var insertTitle = '<h4 class="inline bold" id="software-' + key + '-tag">' + key.charAt(0).toUpperCase() + key.slice(1) + ' and Their Required Formats: </h4><br>';
+        var insertTitle = '<h4 class="inline bold" id="software-' + key + '-tag">' + key.charAt(0).toUpperCase() + key.slice(1) + ' and their required formats: </h4><br>';
         document.getElementById("software-" + key + "-container").insertAdjacentHTML('afterbegin', insertTitle);
         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', '<span id="software-' + key + '"></span>');
     }

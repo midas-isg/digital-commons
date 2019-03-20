@@ -75,13 +75,13 @@
 
 <myTags:softwareModalItem id="inputs" title="Inputs"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="isListOfInputsComplete" title="Is List Of Inputs Complete"></myTags:softwareModalItem>
+<myTags:softwareModalItem id="isListOfInputsComplete" title="Is list of inputs complete"></myTags:softwareModalItem>
 
 <%--<myTags:softwareModalItem id="data-output-formats" title="Formats for data output"></myTags:softwareModalItem>--%>
 
 <myTags:softwareModalItem id="outputs" title="Outputs"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="isListOfOutputsComplete" title="Is List Of Outputs Complete"></myTags:softwareModalItem>
+<myTags:softwareModalItem id="isListOfOutputsComplete" title="Is list of outputs complete"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="visualization-type" title="Types of visualizations"></myTags:softwareModalItem>
 
