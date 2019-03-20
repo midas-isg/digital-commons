@@ -44,9 +44,12 @@ public class EntryService {
     }
 
     private Entry getContentFromEntryLists(Entry entry){
+        //convert ids to content
+/*
         if(entry.getContent().containsKey("entry")){
             entry.getContent().put("entry", entryListsHelper.convertListIdToContent((HashMap<String, Object>) entry.getContent().get("entry")));
         }
+*/
         return entry;
     }
 

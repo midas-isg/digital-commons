@@ -19,8 +19,9 @@ public class EntryListsHelper {
     }.getType();
 
     public HashMap<String, Object> convertListIdToContent(HashMap<String, Object> entryMap) {
+        //when ready to use uncomment call from getContentFromEntryLists in EntryService
         //License
-//        entryMap = checkEachLicenseIdForIdentifier(entryMap);
+        entryMap = checkEachLicenseIdForIdentifier(entryMap);
 
         return entryMap;
     }
@@ -108,8 +109,9 @@ public class EntryListsHelper {
 
 
     public JsonObject convertContentToListId(JsonObject jsonObject) {
+        //when ready to use uncomment call from submitDigitalObject in DatasetWebflowValidator
         //License
-//        jsonObject = checkEachLicenseIdForContent(jsonObject);
+        jsonObject = checkEachLicenseIdForContent(jsonObject);
 
         return jsonObject;
     }

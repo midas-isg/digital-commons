@@ -80,73 +80,25 @@
                                            label="Identifier">
             </myTags:editSoftwareIdentifier>
 
-<%--
             <fmt:message key="software.dataInputFormats" var="dataInputFormatsPlaceHolder" />
-            <myTags:editMasterUnbounded label="Data Input Formats"
-                                        addButtonLabel="Data Input Format"
-                                        placeholder="${dataInputFormatsPlaceHolder}"
-                                        path="dataInputFormats"
-                                        specifier="dataInputFormats"
-                                        isRequired="${false}"
-                                        cardIcon="fas fa-sign-in-alt"
-                                        cardText="${dataInputFormatsPlaceHolder}"
-                                        listItems="${digitalObject.dataInputFormats}"
-                                        tagName="string">
-            </myTags:editMasterUnbounded>
---%>
-            <fmt:message key="software.dataInputFormats" var="dataInputFormatsPlaceHolder" />
-            <myTags:editMasterUnbounded label="Inputs"
-                                        addButtonLabel="Input"
-                                        placeholder="${dataInputFormatsPlaceHolder}"
-                                        path="inputs"
-                                        specifier="inputs"
-                                        isRequired="${false}"
-                                        cardIcon="fas fa-sign-in-alt"
-                                        cardText="${dataInputFormatsPlaceHolder}"
-                                        listItems="${digitalObject.inputs}"
-                                        tagName="dataInputs">
-            </myTags:editMasterUnbounded>
-            <myTags:editYesNoUnknownEnum path="isListOfInputsComplete"
-                                         specifier="isListOfInputsComplete"
-                                         label="Is List Of Inputs Complete"
-                                         yesNoUnknown="${digitalObject.isListOfInputsComplete}"
-                                         tagName="yesNoUnknownEnum"
-                                         id="isListOfInputsComplete">
-            </myTags:editYesNoUnknownEnum>
+            <myTags:editDataInputsWrapper path="inputs"
+                                          specifier="inputs"
+                                          label="Input Information"
+                                          id="inputs"
+                                          tagName="dataInputsWrapper"
+                                          digitalObject="${digitalObject}"
+                                          isUnboundedList="${false}">
+            </myTags:editDataInputsWrapper>
 
-<%--
             <fmt:message key="software.dataOutputFormats" var="dataOutputFormatsPlaceHolder" />
-            <myTags:editMasterUnbounded label="Data Output Formats"
-                                        addButtonLabel="Data Output Format"
-                                        placeholder="${dataOutputFormatsPlaceHolder}"
-                                        path="dataOutputFormats"
-                                        specifier="data-output-format"
-                                        isRequired="${false}"
-                                        tagName="string"
-                                        cardIcon="fas fa-sign-out-alt"
-                                        cardText="${dataOutputFormatsPlaceHolder}"
-                                        listItems="${digitalObject.dataOutputFormats}">
-            </myTags:editMasterUnbounded>
---%>
-            <fmt:message key="software.dataOutputFormats" var="dataOutputFormatsPlaceHolder" />
-            <myTags:editMasterUnbounded label="Outputs"
-                                        addButtonLabel="Output"
-                                        placeholder="${dataOutputFormatsPlaceHolder}"
-                                        path="outputs"
-                                        specifier="outputs"
-                                        isRequired="${false}"
-                                        tagName="dataOutputs"
-                                        cardIcon="fas fa-sign-out-alt"
-                                        cardText="${dataOutputFormatsPlaceHolder}"
-                                        listItems="${digitalObject.outputs}">
-            </myTags:editMasterUnbounded>
-            <myTags:editYesNoUnknownEnum path="isListOfOutputsComplete"
-                                         specifier="isListOfOutputsComplete"
-                                         label="Is List Of Outputs Complete"
-                                         yesNoUnknown="${digitalObject.isListOfOutputsComplete}"
-                                         tagName="yesNoUnknownEnum"
-                                         id="isListOfOutputsComplete">
-            </myTags:editYesNoUnknownEnum>
+            <myTags:editDataOutputsWrapper path="outputs"
+                                          specifier="outputs"
+                                          label="Output Information"
+                                          id="outputs"
+                                          tagName="dataOutputsWrapper"
+                                          digitalObject="${digitalObject}"
+                                          isUnboundedList="${false}">
+            </myTags:editDataOutputsWrapper>
 
             <fmt:message key="software.webApplication" var="webApplicationPlaceHolder" />
             <myTags:editMasterUnbounded label="Web Applications"

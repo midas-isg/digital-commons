@@ -82,7 +82,7 @@ public class DatasetWebflowValidator {
             }
         }
 
-        dataFormats.put("Syntax Not Available", "Syntax Not Available");
+        dataFormats.put("Data Format Is Not Documented", "Data Format Is Not Documented");
 
         return dataFormats;
     }
@@ -722,7 +722,7 @@ public class DatasetWebflowValidator {
 
         JsonObject json = converter.toJsonObject(clazz, digitalObject);
         json.remove("class");
-        json = entryListsHelper.convertContentToListId(json);
+//        json = entryListsHelper.convertContentToListId(json);
         entryObject.setEntry(json);
         entryObject.setProperty("type", clazz.getName());
 
