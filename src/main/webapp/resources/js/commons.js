@@ -451,7 +451,7 @@ function parseAttributeList(attributeList, hasNulls) {
 
 var convertToHtml = [
     "publicationsThatUsedRelease",
-    "publicatoinsAboutRelease",
+    "publicationsAboutRelease",
     "forecasts",
     "executables",
     "dataInputFormats",
@@ -701,8 +701,8 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                     if(inputOutput[i].hasOwnProperty('description')){
                         descriptionHTML = '<span class="italic" id="software-' + key + '-' + i + '-description"></span>.';
                     }
-                    if(inputOutput[i].hasOwnProperty('isInputOptional')){
-                        if(inputOutput[i]['isInputOptional'] === 'YES'){
+                    if(inputOutput[i].hasOwnProperty('isOptional')){
+                        if(inputOutput[i]['isOptional'] === 'YES'){
                             optionalHTML = ' (optional)';
                         }
                     }

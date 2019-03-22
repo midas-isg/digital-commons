@@ -71,12 +71,12 @@
                    cardText="${dataFormatsPlaceHolder}">
 </myTags:editSelect>
 
-<myTags:editYesNoUnknownEnum path="${path}.isOutputOptional"
-                             specifier="${specifier}-isOutputOptional"
+<myTags:editYesNoUnknownEnum path="${path}.isOptional"
+                             specifier="${specifier}-isOptional"
                              label="Is Output Optional"
-                             yesNoUnknown="${dataInputs.isOutputOptional}"
+                             yesNoUnknown="${dataInputs.isOptional}"
                              tagName="dataOutputs"
-                             id="${specifier}-isOutputOptional">
+                             id="${specifier}-isOptional">
 </myTags:editYesNoUnknownEnum>
 
 <myTags:editYesNoUnknownEnum path="${path}.isListOfDataFormatsComplete"
