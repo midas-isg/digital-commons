@@ -51,7 +51,7 @@
 
 <myTags:softwareModalItem id="validator" title="Validator" hasHref="true"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>
+<%--<myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>--%>
 
 <myTags:softwareModalItem id="forecast-frequency" title="Frequency of forecast"></myTags:softwareModalItem>
 
