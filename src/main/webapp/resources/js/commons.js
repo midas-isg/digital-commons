@@ -421,7 +421,7 @@ function listToHtmlString(attributeList) {
 }
 
 function listToHtmlStringDataFormats(attributeList) {
-    var htmlStr = '<ul style="margin-bottom:0rem; padding-left:35px"><li>';
+    var htmlStr = '<ul style="list-style-type: none; font-style: italic; margin-bottom:0rem; padding-left:35px"><li>';
     attributeList = attributeList.join('</li><li>');
     htmlStr += attributeList + '</ul>';
     return htmlStr;
@@ -643,68 +643,87 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 var inputOutput = attribute;
                 for (var i = 0; i < inputOutput.length; i++) {
                     var descriptionHTML = '';
-                    var isListOfDataFormatsCompleteDisplayHTML = '';
+                    // var isListOfDataFormatsCompleteDisplayHTML = '';
+                    var optionalHTML = '';
+                    var noDocumentedDataFormats = '';
+                    var numberOfDataFormats = 0;
+                    var numUndocumented = 0;
+                    var numDocumented = 0;
+                    var singluarOrPluralDataFormats = 'Data Format:'
+
+                    if (inputOutput[i].hasOwnProperty('dataFormats')) {
+                        var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
+                        var dataFormats = new Array();
+                        for (var j = 0; j < inputOutput[i].dataFormats.length; j++) {
+                            var dataFormatName = getDataFormatName(inputOutput[i].dataFormats[j]);
+                            if(dataFormatName === 'Undocumented'){
+                                numUndocumented++;
+                            } else {
+                                dataFormats[numDocumented] = dataFormatName;
+                                numDocumented++;
+                            }
+                        }
+                        var ioNumber = i + 1;
+                        if(numUndocumented > 0){
+                            if(numDocumented > 0){
+                                dataFormats[numDocumented] = '(' + toTitleCase(key).slice(0, -1) + ' ' + ioNumber + ' has additional undocumented data formats)';
+                            } else {
+                                $('#software-' + key + '-' + i + '-dataFormats').remove();
+                                noDocumentedDataFormats = ' Undocumented';
+                            }
+                        } else if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')){
+                            if(inputOutput[i]['isListOfDataFormatsComplete'] === 'UNKNOWN'){
+                                dataFormats[numDocumented] = '(' + toTitleCase(key).slice(0, -1) + ' ' + ioNumber + ' may accept additional data formats)';
+                            }
+                        }
+
+                    } else {
+                        $('#software-' + key + '-' + i + '-dataFormats').remove();
+                        noDocumentedDataFormats = ' Undocumented';
+                    }
+
+                    if(numDocumented + numUndocumented > 1){
+                        singluarOrPluralDataFormats = 'Data Formats:'
+                    }
+
+/*
                     if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
                         var isListOfDataFormatsComplete = inputOutput[i]['isListOfDataFormatsComplete'];
                         if(isListOfDataFormatsComplete === 'YES'){
-                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is a complete listing of this data format.)</span>'
+                            isListOfDataFormatsCompleteDisplayHTML = '';
                         } else if(isListOfDataFormatsComplete === 'NO'){
-                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is not a complete listing of this data format.)</span>'
+                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is not a complete listing of data formats for this '+key.slice(0,-1)+'.)</span>'
                         } else if(isListOfDataFormatsComplete === 'UNKNOWN'){
-                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(It is unknown if this is a complete listing of this data format.)</span>'
+                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(We (or \'the curator\') has not determined whether this is a complete listing of data formats for this '+key.slice(0,-1)+'.)</span>'
                         }
                     }
+*/
                     if(inputOutput[i].hasOwnProperty('description')){
-                        descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
+                        descriptionHTML = '<span class="italic" id="software-' + key + '-' + i + '-description"></span>.';
                     }
-                    descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
+                    if(inputOutput[i].hasOwnProperty('isInputOptional')){
+                        if(inputOutput[i]['isInputOptional'] === 'YES'){
+                            optionalHTML = ' (optional)';
+                        }
+                    }
+                    // var dataFormatsTextForDescriptionHTML = '<div style="padding-left:19px">Data Format(s):</div>';
+                    var dataFormatsTextForDescriptionHTML = '<span style="padding-left:10px">'+ singluarOrPluralDataFormats + noDocumentedDataFormats + '</span>';
+                    // descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
+                    descriptionHTML = descriptionHTML + dataFormatsTextForDescriptionHTML;
                     if(inputOutput[i].hasOwnProperty(property)){
-                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span class="bold" id="software-' + key + '-' + i + '-' + property + '"></span><span class="bold">: </span>' + descriptionHTML + '</div>';
+                        // var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span>'+toTitleCase(key).slice(0,-1)+' </span><span id="software-' + key + '-' + i + '-' + property + '"></span><span>' + optionalHTML + ': </span>' + descriptionHTML + '</div>';
+                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container">';
+                        insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span>' + toTitleCase(key).slice(0,-1) + ' </span>';
+                        insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span id="software-' + key + '-' + i + '-' + property + '"></span>';
+                        insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span>' + optionalHTML + ': </span>' + descriptionHTML + '</div>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
                         toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
                     }
 
-/*
-                    if (inputOutput[i].hasOwnProperty(property) && inputOutput[i].hasOwnProperty('description')) {
-                        var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
-                        descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
-                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span class="bold" id="software-' + key + '-' + i + '-' + property + '"></span><span class="bold">: </span>' + descriptionHTML + '</div>';
-                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
-                        toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
-                        toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
-                    }
-                    if (inputOutput[i].hasOwnProperty(property) && !inputOutput[i].hasOwnProperty('description')) {
-                        var insertHTML = '<div class="bold" id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span>: </div>';
-                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertHTML);
-                        toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
-                    }
-                    if (inputOutput[i].hasOwnProperty('description') && !inputOutput[i].hasOwnProperty(property)) {
-                        var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
-                        descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
-                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',descriptionHTML);
-                        toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
-                    }
-*/
                     if (inputOutput[i].hasOwnProperty('dataFormats')) {
-                        var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', dataFormatsHTML);
-                        var dataFormats = new Array();
-                        // dataFormats = inputOutput[i]['dataFormats'];
-                        for (var j = 0; j < inputOutput[i].dataFormats.length; j++) {
-                            dataFormats[j] = getDataFormatName(inputOutput[i].dataFormats[j]);
-                        }
-
                         $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlStringDataFormats(dataFormats));
-/*
-                        if (convertToHtml.indexOf(key) > -1 && dataFormats.length > 1) {
-                            $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlString(dataFormats));
-                        } else {
-                            $('#software-' + key + '-' + i + '-dataFormats').text(displayList(dataFormats));
-                        }
-*/
-                    } else {
-                        $('#software-' + key + '-' + i + '-dataFormats').remove();
                     }
                 }
             }
@@ -797,6 +816,7 @@ $('#commons-body').on('click', function (e) {
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
+    //comment out to turn off select2
     // $(".multiSelect").select2();
 
     if ($(window).width() < 768) {
@@ -1377,13 +1397,14 @@ function setCardTabTitle(id, specifier, cardTabTitle){
 }
 
 function clearMultiSelectIfEmpty(id) {
-    debugger;
+    // debugger;
     var multiSelectId = "#" + id;
     if($(multiSelectId + " :selected").length === 0) {
         $(multiSelectId + " > option").each(function() {
             this.disabled = false;
         });
         setTimeout(function(){
+            //comment out to turn off select2
             // $(multiSelectId).select2();
             $(multiSelectId).val('');
 
@@ -1727,6 +1748,7 @@ function destroySelect2() {
 }
 
 function createSelect2() {
+    //comment out to turn off select2
 /*
     $(".multiSelect").select2({
         placeholder: "Please Select... "

@@ -82,7 +82,7 @@ public class DatasetWebflowValidator {
             }
         }
 
-        dataFormats.put("Data Format Is Not Documented", "Data Format Is Not Documented");
+        dataFormats.put("Undocumented", "Undocumented");
 
         return dataFormats;
     }

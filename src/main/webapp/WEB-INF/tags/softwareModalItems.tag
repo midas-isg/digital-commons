@@ -125,7 +125,7 @@
 <myTags:softwareModalItem id="publications-about-release" title="Publications about release"
                           hasHref="false"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="publications-that-used-release" title="Publications that used release"
+<myTags:softwareModalItem id="publications-that-used-release" title="Publications that used this version"
                           hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="spatial-coverage" title="Spatial coverage" hasHref="false"></myTags:softwareModalItem>

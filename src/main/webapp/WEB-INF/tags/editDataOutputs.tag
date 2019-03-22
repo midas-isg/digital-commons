@@ -71,18 +71,13 @@
                    cardText="${dataFormatsPlaceHolder}">
 </myTags:editSelect>
 
-<%--
-<myTags:editMasterUnbounded path="${path}.dataFormats"
-                            specifier="${specifier}-dataFormats"
-                            label="Data Formats"
-                            addButtonLabel="Data Format"
-                            listItems="${dataOutputs.dataFormats}"
-                            isFirstRequired="${false}"
-                            cardText="${dataFormatsPlaceHolder}"
-                            cardIcon=""
-                            tagName="string">
-</myTags:editMasterUnbounded>
---%>
+<myTags:editYesNoUnknownEnum path="${path}.isOutputOptional"
+                             specifier="${specifier}-isOutputOptional"
+                             label="Is Output Optional"
+                             yesNoUnknown="${dataInputs.isOutputOptional}"
+                             tagName="dataOutputs"
+                             id="${specifier}-isOutputOptional">
+</myTags:editYesNoUnknownEnum>
 
 <myTags:editYesNoUnknownEnum path="${path}.isListOfDataFormatsComplete"
                              specifier="${specifier}-isListOfDataFormatsComplete"
