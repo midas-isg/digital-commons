@@ -244,24 +244,29 @@ public class DatasetWebflowValidator {
         Object digitalObject = editDigitalObject(entryId);
         RequestContext requestContext = RequestContextHolder.getRequestContext();
         requestContext.getFlowScope().put("entryID", null);
+        String copyMessage = "This entry was derived from: ";
 
         switch (dataType) {
             case "Dataset":
                 if (!isEmpty(((Dataset) digitalObject).getTitle())) {
+                    copyMessage = copyMessage + ((Dataset) digitalObject).getTitle();
                     ((Dataset) digitalObject).setTitle("Copy of (" + ((Dataset) digitalObject).getTitle() + ")");
                 }
                 break;
             case "DataStandard":
                 if (!isEmpty(((DataStandard) digitalObject).getName())) {
+                    copyMessage = copyMessage + ((DataStandard) digitalObject).getName();
                     ((DataStandard) digitalObject).setName("Copy of (" + ((DataStandard) digitalObject).getName() + ")");
                 }
                 break;
             case "Software":
                 if (!isEmpty(((Software) digitalObject).getTitle())) {
+                    copyMessage = copyMessage + ((Software) digitalObject).getTitle();
                     ((Software) digitalObject).setTitle("Copy of (" + ((Software) digitalObject).getTitle() + ")");
                 }
                 break;
         }
+        requestContext.getFlowScope().put("copyMessage", copyMessage);
         return digitalObject;
     }
 

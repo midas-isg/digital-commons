@@ -23,6 +23,7 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <label class="bold">${copyMessage}</label>
             <fmt:message key="software.title" var="titlePlaceHolder" />
             <myTags:editNonZeroLengthString label="Title"
                                             placeholder="${titlePlaceHolder}"
