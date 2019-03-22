@@ -21,6 +21,7 @@
     <div id="entryFormContent">
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${showCategories}"></myTags:wizardHeader>
+            <label class="bold">${copyMessage}</label>
             <fmt:message key="dataset.title" var="titlePlaceHolder" />
             <myTags:editNonZeroLengthString label="Title"
                                             path="title"

@@ -23,6 +23,7 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}" wantLoader="${true}"></myTags:wizardHeader>
 
+            <label class="bold">${copyMessage}</label>
             <myTags:editNonZeroLengthString placeholder=" Name"
                                             label="Name"
                                             string="${digitalObject.name}"
