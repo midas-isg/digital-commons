@@ -122,7 +122,7 @@
 
 <myTags:softwareModalItem id="license" title="License" hasHref="false"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="publications-about-release" title="Publications about release"
+<myTags:softwareModalItem id="publications-about-release" title="Publications about this version"
                           hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="publications-that-used-release" title="Publications that used this version"
