@@ -43,8 +43,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
-import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
+//import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
+//import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 import static edu.pitt.isg.dc.controller.HomeController.*;
 
 /**
@@ -165,11 +165,11 @@ public class DataEntryController {
         if (ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
 
-        if (ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if (ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+//        if (ifMDCEditor(session))
+//            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+//
+//        if (ifISGAdmin(session))
+//            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
 
         if (!model.containsAttribute("adminType")) {
             return "accessDenied";

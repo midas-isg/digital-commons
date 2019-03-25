@@ -38,8 +38,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
-import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
+//import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
+//import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 import static edu.pitt.isg.dc.entry.util.TreeAid.toForest;
 import static java.util.Comparator.comparing;
 
@@ -94,16 +94,16 @@ public class HomeController {
     }
 
     public static Boolean ifMDCEditor(HttpSession session) {
-        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(MDC_EDITOR_TOKEN)) {
-            return true;
-        }
+//        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(MDC_EDITOR_TOKEN)) {
+//            return true;
+//        }
         return false;
     }
 
     public static Boolean ifISGAdmin(HttpSession session) {
-        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(ISG_ADMIN_TOKEN)) {
-            return true;
-        }
+//        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(ISG_ADMIN_TOKEN)) {
+//            return true;
+//        }
         return false;
     }
 
@@ -220,11 +220,11 @@ public class HomeController {
         if(ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
 
-        if(ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if(ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+//        if(ifMDCEditor(session))
+//            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+//
+//        if(ifISGAdmin(session))
+//            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "search";
     }
 
@@ -242,11 +242,11 @@ public class HomeController {
         if(ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
 
-        if(ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if(ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+//        if(ifMDCEditor(session))
+//            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+//
+//        if(ifISGAdmin(session))
+//            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "commons";
     }
 
