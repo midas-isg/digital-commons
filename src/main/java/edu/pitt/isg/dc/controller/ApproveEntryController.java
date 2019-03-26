@@ -22,9 +22,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import static edu.pitt.isg.dc.controller.HomeController.*;
+import static edu.pitt.isg.dc.controller.Interceptor.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.Interceptor.ifMDCEditor;
 
 /**
  * Created by jdl50 on 6/5/17.
@@ -51,13 +56,13 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/add/review", method = RequestMethod.GET)
     public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session) || ifMDCEditor(session)) {
+        if (ifISGAdmin(session) || ifMDCEditor(session)) {
             List<EntryView> entries = new ArrayList<>();
 
-            if(ifISGAdmin(session)) {
+            if (ifISGAdmin(session)) {
                 entries = entryApprovalInterface.getUnapprovedEntries();
             }
-            if(ifMDCEditor(session)) {
+            if (ifMDCEditor(session)) {
                 Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
                 entries = entryApprovalInterface.getUserCreatedUnapprovedEntries(user.getId());
             }
@@ -65,10 +70,10 @@ public class ApproveEntryController {
             List<EntryView> dataStandardEntries = new ArrayList<>();
             List<EntryView> softwareEntries = new ArrayList<>();
 
-            for(EntryView entryObject : entries) {
-                if(entryObject.getEntryType().contains("Dataset")) {
+            for (EntryView entryObject : entries) {
+                if (entryObject.getEntryType().contains("Dataset")) {
                     datasetEntries.add(entryObject);
-                } else if(entryObject.getEntryType().contains("DataStandard")) {
+                } else if (entryObject.getEntryType().contains("DataStandard")) {
                     dataStandardEntries.add(entryObject);
                 } else {
                     softwareEntries.add(entryObject);
@@ -77,7 +82,6 @@ public class ApproveEntryController {
 
             Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
 
-            model.addAttribute("adminType", session.getAttribute(ADMIN_TYPE));
             model.addAttribute("entries", entries);
             model.addAttribute("categoryPaths", categoryPaths);
             model.addAttribute("datasetEntries", datasetEntries);
@@ -97,12 +101,12 @@ public class ApproveEntryController {
                           @RequestParam(value = "revisionId", required = true) long revisionId,
                           @RequestParam(value = "categoryId", required = true) long categoryId,
                           Model model) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session)) {
+        if (ifISGAdmin(session)) {
             String status = "success";
             try {
                 EntryId entryId = new EntryId(id, revisionId);
                 entryApprovalInterface.acceptEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
-            } catch(MdcEntryDatastoreException e) {
+            } catch (MdcEntryDatastoreException e) {
                 status = "fail";
             }
             return status;
@@ -114,16 +118,16 @@ public class ApproveEntryController {
     @RequestMapping(value = "/add/make-public", method = RequestMethod.POST)
     @ResponseBody
     public String makePublic(HttpSession session,
-                          @RequestParam(value = "entryId", required = true) long id,
-                          @RequestParam(value = "revisionId", required = true) long revisionId,
-                          @RequestParam(value = "categoryId", required = true) long categoryId,
-                          Model model) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session)) {
+                             @RequestParam(value = "entryId", required = true) long id,
+                             @RequestParam(value = "revisionId", required = true) long revisionId,
+                             @RequestParam(value = "categoryId", required = true) long categoryId,
+                             Model model) throws MdcEntryDatastoreException {
+        if (ifISGAdmin(session)) {
             String status = "success";
             try {
                 EntryId entryId = new EntryId(id, revisionId);
                 entryApprovalInterface.makePublicEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
-            } catch(MdcEntryDatastoreException e) {
+            } catch (MdcEntryDatastoreException e) {
                 status = "fail";
             }
             return status;
@@ -139,13 +143,13 @@ public class ApproveEntryController {
                          @RequestParam(value = "revisionId", required = true) long revisionId,
                          @RequestParam(value = "comments[]", required = false) String[] comments,
                          Model model) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session)) {
+        if (ifISGAdmin(session)) {
             String status = "success";
             try {
                 EntryId entryId = new EntryId(id, revisionId);
                 Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
                 entryApprovalInterface.rejectEntry(entryId, EntryHelper.getServerAuthentication(), comments, user);
-            } catch(MdcEntryDatastoreException e) {
+            } catch (MdcEntryDatastoreException e) {
                 status = "fail";
             }
             return status;
@@ -195,11 +199,11 @@ public class ApproveEntryController {
     @RequestMapping(value = "/add/comment/delete", method = RequestMethod.POST)
     @ResponseBody
     public String deleteComment(HttpSession session, @RequestParam(value = "commentId", required = true) long commentId) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session)) {
+        if (ifISGAdmin(session)) {
             String status = "success";
             try {
                 datastore.deleteComment(commentId);
-            } catch(MdcEntryDatastoreException e) {
+            } catch (MdcEntryDatastoreException e) {
                 status = "fail";
             }
             return status;
@@ -229,8 +233,8 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/add/populate", method = RequestMethod.GET)
     public ResponseEntity<String> populate(HttpSession session,
-                                           Model model) throws MdcEntryDatastoreException  {
-        if(ifISGAdmin(session)) {
+                                           Model model) throws MdcEntryDatastoreException {
+        if (ifISGAdmin(session)) {
             try {
                 PopulateDatastore populateDatastore = new PopulateDatastore(datastore);
 
@@ -247,8 +251,8 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/add/items", method = RequestMethod.GET)
     public ResponseEntity<String> addItems(HttpSession session,
-                                           Model model) throws MdcEntryDatastoreException  {
-        if(ifISGAdmin(session)) {
+                                           Model model) throws MdcEntryDatastoreException {
+        if (ifISGAdmin(session)) {
             try {
                 return ResponseEntity.ok(datastore.getEntryIds().size() + " total entries.");
             } catch (Exception e) {
@@ -261,8 +265,8 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/add/exportDatastore", method = RequestMethod.GET)
     public ResponseEntity<String> exportDatastore(HttpSession session,
-                                                  Model model) throws MdcEntryDatastoreException  {
-        if(ifISGAdmin(session)) {
+                                                  Model model) throws MdcEntryDatastoreException {
+        if (ifISGAdmin(session)) {
             try {
                 datastore.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
                 EntryHelper.copyDatastore();
@@ -276,21 +280,21 @@ public class ApproveEntryController {
     }
 
     @RequestMapping(value = "/add/item/{itemId}", method = RequestMethod.GET)
-    public ResponseEntity<String> getItem(@PathVariable(value="itemId") long itemId,
+    public ResponseEntity<String> getItem(@PathVariable(value = "itemId") long itemId,
                                           @RequestParam(value = "revisionId", required = false) long revisionId,
                                           Model model) throws MdcEntryDatastoreException {
-            try {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                return ResponseEntity.ok(gson.toJson(datastore.getEntry(new EntryId(itemId, revisionId))));
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-            }
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return ResponseEntity.ok(gson.toJson(datastore.getEntry(new EntryId(itemId, revisionId))));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @RequestMapping(value = "/add/pending", method = RequestMethod.GET)
     public ResponseEntity<String> getPending(HttpSession session,
                                              Model model) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session)) {
+        if (ifISGAdmin(session)) {
             try {
                 List<EntryView> entries = datastore.getPendingEntries();
                 String ids = "";
@@ -306,9 +310,9 @@ public class ApproveEntryController {
         }
     }
 
-    @ExceptionHandler (MdcEntryDatastoreException.class)
+    @ExceptionHandler(MdcEntryDatastoreException.class)
     public ResponseEntity<String> handleException(MdcEntryDatastoreException e) {
-        if(e.getMessage().equals("Unauthorized Access Attempt"))
+        if (e.getMessage().equals("Unauthorized Access Attempt"))
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         else
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

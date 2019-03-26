@@ -5,10 +5,22 @@ import edu.pitt.isg.dc.security.service.SecurityService;
 import edu.pitt.isg.dc.security.service.UserService;
 import edu.pitt.isg.dc.security.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import static edu.pitt.isg.dc.controller.Interceptor.ifLoggedIn;
+
 
 @Controller
 public class UserController {
@@ -40,11 +52,15 @@ public class UserController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/welcome";
+        return "redirect:/main";
     }
 
     @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
+    public String login(HttpSession session, Model model, String error, String logout) {
+        if (ifLoggedIn(session)) {
+            return "redirect:/main";
+        }
+
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
@@ -54,8 +70,12 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if (auth != null){
+        new SecurityContextLogoutHandler().logout(request, response, auth);
+    }
+    return "redirect:/main";
     }
 }

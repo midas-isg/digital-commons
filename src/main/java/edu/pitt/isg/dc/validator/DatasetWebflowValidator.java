@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
-import edu.pitt.isg.dc.entry.EntryLists;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
@@ -17,9 +16,7 @@ import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Geometry;
-import edu.pitt.isg.mdc.dats2_2.License;
 import edu.pitt.isg.mdc.v1_0.*;
-import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +37,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.*;
 
-import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
-import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
+import static edu.pitt.isg.dc.controller.Interceptor.*;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
 
@@ -135,6 +131,14 @@ public class DatasetWebflowValidator {
     public String isLoggedIn(RequestContext context) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
         if (ifMDCEditor(session) || ifISGAdmin(session)) {
+            context.getFlowScope().put("loggedIn", true);
+
+            if (ifMDCEditor(session))
+                context.getFlowScope().put("adminType", MDC_EDITOR_TOKEN);
+
+            if (ifISGAdmin(session))
+                context.getFlowScope().put("adminType", ISG_ADMIN_TOKEN);
+
             return "true";
         }
         return "false";

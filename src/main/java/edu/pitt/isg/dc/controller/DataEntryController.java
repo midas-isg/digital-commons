@@ -46,6 +46,8 @@ import java.util.Properties;
 //import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
 //import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 import static edu.pitt.isg.dc.controller.HomeController.*;
+import static edu.pitt.isg.dc.controller.Interceptor.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.Interceptor.ifMDCEditor;
 
 /**
  * Created by TPS23 on 5/10/2017.
@@ -162,16 +164,8 @@ public class DataEntryController {
     public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         //model.addAttribute("category", category);
-        if (ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
 
-//        if (ifMDCEditor(session))
-//            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-//
-//        if (ifISGAdmin(session))
-//            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
-
-        if (!model.containsAttribute("adminType")) {
+        if (!ifISGAdmin(session) && !ifMDCEditor(session)) {
             return "accessDenied";
         }
 
