@@ -20,6 +20,8 @@ public class User {
 
     private String password;
 
+    private String resetToken;
+
     @Transient
     private String passwordConfirm;
 
@@ -88,5 +90,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 }
