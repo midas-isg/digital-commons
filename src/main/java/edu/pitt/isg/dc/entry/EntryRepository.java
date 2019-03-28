@@ -106,6 +106,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "WHERE content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true")
     List<String> listTypesForIdentifier(String identifier);
 
+/*
     @Query(nativeQuery = true, value = "select a.content #>> '{entry, title}' as s1, text(a.content #> '{entry, dataOutputFormats}') as o," +
                                        "       b.content #>> '{entry, title}' as s2 \n" +
             FROM_ENTRY + "  a, entry b\n" +
@@ -121,6 +122,43 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "order by s1"
     )
     List<Object[]> match2Software();
+*/
+@Query(nativeQuery = true, value = "select \n" +
+        "  a.title as s1 \n" +
+        "  , text(a.outputs) as o \n" +
+        "  , b.title as s2 \n" +
+        "from \n" +
+        "(select \n" +
+        "      entry_id, \n" +
+        "       content #>> '{entry, title}' as title, \n" +
+        "      jsonb_array_elements(content #> '{entry, outputs}') #> '{dataFormats}' as outputs \n" +
+        "from entry \n" +
+        "where \n" +
+        "    content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%' \n" +
+        "  and \n" +
+        "    is_public = true) as a \n" +
+        "join \n" +
+        "(select \n" +
+        "    entry_id, \n" +
+        "    content #>> '{entry, title}' as title, \n" +
+        "    jsonb_array_elements(content #> '{entry, inputs}') #> '{dataFormats}' as inputs \n" +
+        "from entry \n" +
+        "where \n" +
+        "    content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%' \n" +
+        "  and \n" +
+        "    is_public = true) as b \n" +
+        "on \n" +
+        "  a.entry_id <> b.entry_id \n" +
+        "  and \n" +
+        "  text(a.outputs) not like '%Undocumented%' \n" +
+        "  and \n" +
+        "  ( b.inputs @> a.outputs \n" +
+        "      or \n" +
+        "    b.inputs <@ a.outputs ) \n" +
+        "order by s1"
+)
+List<Object[]> match2Software();
+
 
     @Query(nativeQuery = true, value = "select distinct content->'entry'->'identifier'->>'identifier' as identifier, content->'entry'->>'name' || \n" +
             "CASE \n" +
