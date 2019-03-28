@@ -1,7 +1,10 @@
 package edu.pitt.isg.dc.config;
 
+import com.auth0.Tokens;
 import com.auth0.spring.security.mvc.Auth0AuthenticationFilter;
 import com.auth0.spring.security.mvc.Auth0Config;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +15,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -24,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Base64;
 
 @Configuration
 @EnableWebSecurity(debug = !true)
@@ -58,6 +64,33 @@ public class Auth0Configuration extends Auth0Config {
         @Override
         public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
             fillRequestUrlIntoSession((HttpServletRequest) request);
+
+            HttpServletRequest req = (HttpServletRequest) request;
+            HttpSession session = req.getSession();
+            if(session.getAttribute("tokens") != null) {
+                String token = ((Tokens)session.getAttribute("tokens")).getIdToken();
+
+                Base64.Decoder decoder = Base64.getUrlDecoder();
+                String[] parts = token.split("\\.");
+                String jsonString = new String(decoder.decode(parts[1]));
+
+                try {
+                    Object obj = new JSONParser().parse(jsonString);
+                    JSONObject jsonObject = (JSONObject) obj;
+                    long expire = (long)jsonObject.get("exp");
+                    long epoch = (System.currentTimeMillis() / 1000L);
+
+                    if (epoch > expire) {
+                        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+                        if (auth != null) {
+                            new SecurityContextLogoutHandler().logout(req, (HttpServletResponse)response, auth);
+                        }
+                        SecurityContextHolder.getContext().setAuthentication(null);
+                        SecurityContextHolder.clearContext();
+                        session.invalidate();
+                    }
+                } catch (Exception e){}
+            }
             chain.doFilter(request, response);
         }
 
