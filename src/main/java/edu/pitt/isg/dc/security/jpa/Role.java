@@ -1,5 +1,7 @@
 package edu.pitt.isg.dc.security.jpa;
 
+import edu.pitt.isg.dc.entry.Users;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -12,8 +14,8 @@ public class Role {
 
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+    private Set<Users> users;
 
     public Long getId() {
         return id;
@@ -31,11 +33,11 @@ public class Role {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
+    public Set<Users> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Set<Users> users) {
         this.users = users;
     }
 }

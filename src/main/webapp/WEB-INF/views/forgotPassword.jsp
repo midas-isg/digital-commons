@@ -15,20 +15,44 @@
 </head>
 
 <body>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">${successMessage}</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div class="container">
     <form method="POST" action="${contextPath}/forgot" class="form-forgot-password">
         <h2 class="form-heading">Forgot Password</h2>
 
         <div class="form-group ${errorMessage != null ? 'has-error' : ''}">
-            <span>${errorMessage}</span>
-            <input name="email" type="text" class="form-control" placeholder="Email address"
-                   autofocus="true"/>
+            <div class="form-group">
+
+                <span>${errorMessage}</span>
+                <input name="email" type="text" class="form-control" placeholder="Email address"
+                       autofocus="true"/>
+            </div>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </div>
     </form>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        if ("${successMessage}" != "") {
+            $("#myModal").modal('show');
+        }
+    });
+</script>
 <myTags:analytics/>
 
 </body>

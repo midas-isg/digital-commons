@@ -11,6 +11,7 @@ import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.util.EntryListsHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
+import edu.pitt.isg.dc.security.service.UserService;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
@@ -51,6 +52,8 @@ public class DatasetWebflowValidator {
     UsersSubmissionInterface usersSubmissionInterface;
     @Autowired
     private ApiUtil apiUtil;
+    @Autowired
+    private UserService userService;
     private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
     @Autowired
     private CategoryHelper categoryHelper;
@@ -736,7 +739,8 @@ public class DatasetWebflowValidator {
         entryObject.setProperty("type", clazz.getName());
 
         try {
-            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+            Users user = userService.findUserForSubmissionByUserId(session.getAttribute("username").toString());
+//            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
             entrySubmissionInterface.submitEntry(entryObject, entryIdentifier, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
         } catch (Exception e) {
             e.printStackTrace();

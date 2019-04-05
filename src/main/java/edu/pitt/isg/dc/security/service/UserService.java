@@ -1,13 +1,15 @@
 package edu.pitt.isg.dc.security.service;
 
-import edu.pitt.isg.dc.security.jpa.User;
+import edu.pitt.isg.dc.entry.Users;
 
 public interface UserService {
-    void save(User user);
+    void save(Users user);
 
-    User findByUsername(String username);
+    Users findUserForSubmissionByUserId(String userId);
 
-    User findByEmail(String email);
+    Users findByUserId(String userId);
 
-    User findByResetToken(String resetToken);
+    Users findByEmail(String email);
+
+    Users findByResetToken(String resetToken);
 }

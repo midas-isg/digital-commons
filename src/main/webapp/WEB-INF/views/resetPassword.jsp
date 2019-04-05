@@ -17,21 +17,31 @@
 <body>
 
 <div class="container">
-    <form method="POST" action="${contextPath}/reset" class="form-reset-password">
-        <h2 class="form-heading">Reset Password</h2>
+    <h2 class="form-heading">Reset Password</h2>
 
-        <div class="form-group ${errorMessage != null ? 'has-error' : ''}">
-            <span>${errorMessage}</span>
-            <input name="password" type="password" class="form-control" placeholder="Password"
-                   autofocus="true"/>
+    <form:form method="POST" modelAttribute="resetForm" class="form-reset">
+        <spring:bind path="password">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="password" class="form-control"
+                            placeholder="Password"></form:input>
+                <form:errors path="password"></form:errors>
+            </div>
+        </spring:bind>
 
-            <input name="confirmPassword" type="password" class="form-control" placeholder="Confirm password">
+        <spring:bind path="passwordConfirm">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="passwordConfirm" class="form-control"
+                            placeholder="Confirm your password"></form:input>
+                <form:errors path="passwordConfirm"></form:errors>
+            </div>
+        </spring:bind>
 
-            <input type="hidden" name="resetToken" value="${resetToken}"/>
+        <input type="hidden" name="resetToken" value="${resetToken}"/>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-        </div>
-    </form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form:form>
+
+
 </div>
 <myTags:analytics/>
 

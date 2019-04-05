@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,6 +47,8 @@ public class Interceptor implements HandlerInterceptor {
     public static Boolean ifLoggedIn(HttpSession session) {
         SecurityContext ctx = (SecurityContext) session.getAttribute("SPRING_SECURITY_CONTEXT");
         if (ctx != null) {
+            Authentication authentication = ctx.getAuthentication();
+            session.setAttribute("username", ((User)authentication.getPrincipal()).getUsername());
             return true;
         }
 
