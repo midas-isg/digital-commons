@@ -2,12 +2,14 @@ package edu.pitt.isg.dc.security.service;
 
 import edu.pitt.isg.dc.entry.UserRepository;
 import edu.pitt.isg.dc.entry.Users;
+import edu.pitt.isg.dc.security.jpa.Role;
 import edu.pitt.isg.dc.security.repo.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,7 +23,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(Users user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet<>(roleRepository.findAll()));
+        Set<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findOne(3L));
+        user.setRoles(roles);
         userRepository.save(user);
     }
 
