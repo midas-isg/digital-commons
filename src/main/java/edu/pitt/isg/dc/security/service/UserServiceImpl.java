@@ -34,7 +34,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public Users findUserForSubmissionByUserId(String userId) {
         Users user = userRepository.findByUserId(userId);
-        user.setRoles(null);
+        for (Role role : user.getRoles()) {
+            role.setUsers(null);
+        }
         return user;
     }
 
