@@ -631,12 +631,15 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         } else if (key === 'inputs' || key === 'outputs'){
             var property = '';
             var label = '';
+            var acceptOrProduce = '';
             if (key === 'inputs') {
                 property = 'inputNumber';
                 label = '';
+                acceptOrProduce = 'accept';
             } else if (key === 'outputs') {
                 property = 'outputNumber';
                 label = '';
+                acceptOrProduce = 'accept';
             }
             // debugger;
             if (Object.prototype.toString.call( attribute ) === '[object Array]') {
@@ -649,7 +652,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                     var numberOfDataFormats = 0;
                     var numUndocumented = 0;
                     var numDocumented = 0;
-                    var singluarOrPluralDataFormats = 'Data Format:'
+                    var singluarOrPluralDataFormats = 'Data Format:';
 
                     if (inputOutput[i].hasOwnProperty('dataFormats')) {
                         var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
@@ -673,7 +676,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                             }
                         } else if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')){
                             if(inputOutput[i]['isListOfDataFormatsComplete'] === 'UNKNOWN'){
-                                dataFormats[numDocumented] = '(' + toTitleCase(key).slice(0, -1) + ' ' + ioNumber + ' may accept additional data formats)';
+                                dataFormats[numDocumented] = '(' + toTitleCase(key).slice(0, -1) + ' ' + ioNumber + ' may ' + acceptOrProduce + ' additional data formats)';
                             }
                         }
 
@@ -817,7 +820,7 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
     //comment out to turn off select2
-    // $(".multiSelect").select2();
+    $(".multiSelect").select2();
 
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
@@ -1191,7 +1194,7 @@ function toggleLoadingScreen() {
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount, isAutoComplete) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
-    destroySelect2();
+    // destroySelect2();
 
     $("#" + specifier + "-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
@@ -1223,6 +1226,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     regexSpecifier = new RegExp(specifier + '\\-00', "g");
     html = html.replace(regexPath, path+'[' + listItemCount + ']')
         .replace(regexSpecifier, specifier+'-' + listItemCount);
+    debugger;
 
     newDivId = html.match(specifier+"-\\d*[A-Za-z\-]*")[0];
     $("."+specifier+"-"+tagName+"-add-more").before(html);
@@ -1405,7 +1409,7 @@ function clearMultiSelectIfEmpty(id) {
         });
         setTimeout(function(){
             //comment out to turn off select2
-            // $(multiSelectId).select2();
+            $(multiSelectId).select2();
             $(multiSelectId).val('');
 
         });
@@ -1419,8 +1423,8 @@ function clearMultiSelectIfEmpty(id) {
             }
         }
 /*
-        if($(multiSelectId).val().includes('Data Format Is Not Documented') && $(multiSelectId).val().length > 1) {
-            var i = values.indexOf('Data Format Is Not Documented');
+        if($(multiSelectId).val().includes('Undocumented') && $(multiSelectId).val().length > 1) {
+            var i = values.indexOf('Undocumented');
             if (i >= 0) {
                 values.splice(i, 1);
                 $(multiSelectId).val(values).change();
@@ -1431,9 +1435,9 @@ function clearMultiSelectIfEmpty(id) {
 
 
 /*
-        if(!$(multiSelectId).val().includes('Data Format Is Not Documented')) {
+        if(!$(multiSelectId).val().includes('Undocumented')) {
             $(multiSelectId + " > option").each(function() {
-                if(this.value === 'Data Format Is Not Documented')
+                if(this.value === 'Undocumented')
                     this.disabled = true;
             });
             $(multiSelectId).select2();
@@ -1749,11 +1753,9 @@ function destroySelect2() {
 
 function createSelect2() {
     //comment out to turn off select2
-/*
     $(".multiSelect").select2({
         placeholder: "Please Select... "
     });
-*/
 
     $(".autoCompleteSelect").select2({
         placeholder: "License name",
