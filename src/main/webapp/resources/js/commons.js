@@ -468,9 +468,6 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
 
-    if(key == 'diseases'){
-        debugger;
-    }
     if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage')) {
         var attribute;
         if(key in attrs) {
