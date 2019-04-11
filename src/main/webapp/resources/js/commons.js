@@ -511,8 +511,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         var hasNulls = true;
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
-                if(attrs.hasOwnProperty('class')){
+                if(key == 'diseases' && attrs.hasOwnProperty('class')){
                     if(attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters'){
+                        debugger;
                         attribute[i] = identifierToString(attribute[i], true);
                     }
                 } else attribute[i] = identifierToString(attribute[i]);
@@ -828,7 +829,7 @@ $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
     //comment out to turn off select2
-    $(".multiSelect").select2();
+    // $(".multiSelect").select2();
 
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
@@ -1417,8 +1418,8 @@ function clearMultiSelectIfEmpty(id) {
         });
         setTimeout(function(){
             //comment out to turn off select2
-            $(multiSelectId).select2();
-            $(multiSelectId).val('');
+            // $(multiSelectId).select2();
+            // $(multiSelectId).val('');
 
         });
     } else {
@@ -1761,9 +1762,11 @@ function destroySelect2() {
 
 function createSelect2() {
     //comment out to turn off select2
+/*
     $(".multiSelect").select2({
         placeholder: "Please Select... "
     });
+*/
 
     $(".autoCompleteSelect").select2({
         placeholder: "License name",
