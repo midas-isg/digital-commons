@@ -385,10 +385,14 @@ identifierCodes = {
     "542920": "South America"
 };
 
-function identifierToString(attribute) {
+function identifierToString(attribute, useDescription) {
+    var overrideWithDescription = false;
+    if(useDescription){
+        overrideWithDescription = true;
+    }
     if(attribute.hasOwnProperty('identifier')) {
         var identifier = attribute['identifier'];
-        if(identifierCodes.hasOwnProperty(identifier['identifier'])) {
+        if(!overrideWithDescription && identifierCodes.hasOwnProperty(identifier['identifier'])) {
             attribute = identifierCodes[identifier['identifier']];
         } else if(identifier.hasOwnProperty('identifierDescription') ) {
             attribute = identifier['identifierDescription'];
@@ -464,6 +468,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
 
+    if(key == 'diseases'){
+        debugger;
+    }
     if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage')) {
         var attribute;
         if(key in attrs) {
@@ -507,7 +514,11 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         var hasNulls = true;
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
-                attribute[i] = identifierToString(attribute[i]);
+                if(attrs.hasOwnProperty('class')){
+                    if(attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters'){
+                        attribute[i] = identifierToString(attribute[i], true);
+                    }
+                } else attribute[i] = identifierToString(attribute[i]);
                 if (attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
