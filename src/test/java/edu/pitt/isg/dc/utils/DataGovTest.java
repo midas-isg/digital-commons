@@ -166,30 +166,30 @@ public class DataGovTest {
         }
     }
 
-    @Test
-    public void submitDataGovEntryTest(){
-        String catalogURL = "http://catalog.data.gov/";
-        Long categoryId = 191L;
-        String identifier = "02b5e413-d746-43ee-bd52-eac4e33ecb41";
-        String title = "NNDSS - Table I. infrequently reported notifiable diseases (2017)";
-        String result = "";
-        Users user = null;
-        try {
-            user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
-        } catch (MdcEntryDatastoreException e) {
-            e.printStackTrace();
-            e.getMessage();
-            assertTrue(false);
-        }
-
-        try {
-            result = dg.submitDataGovEntry(user, catalogURL, categoryId, identifier, title);
-        } catch (DataGovGeneralException e){
-            e.printStackTrace();
-            e.getMessage();
-        }
-        assertEquals("Success", result);
-
-    }
+//    @Test
+//    public void submitDataGovEntryTest(){
+//        String catalogURL = "http://catalog.data.gov/";
+//        Long categoryId = 191L;
+//        String identifier = "02b5e413-d746-43ee-bd52-eac4e33ecb41";
+//        String title = "NNDSS - Table I. infrequently reported notifiable diseases (2017)";
+//        String result = "";
+//        Users user = null;
+//        try {
+//            user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
+//        } catch (MdcEntryDatastoreException e) {
+//            e.printStackTrace();
+//            e.getMessage();
+//            assertTrue(false);
+//        }
+//
+//        try {
+//            result = dg.submitDataGovEntry(user, catalogURL, categoryId, identifier, title);
+//        } catch (DataGovGeneralException e){
+//            e.printStackTrace();
+//            e.getMessage();
+//        }
+//        assertEquals("Success", result);
+//
+//    }
 
 }

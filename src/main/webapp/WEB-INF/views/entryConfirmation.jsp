@@ -13,7 +13,7 @@
 <div class="container-fluid">
     <myTags:header
             pageTitle="MIDAS Digital Commons"
-            loggedIn="${loggedIn}" addEntry="${true}"/>
+            loggedIn="${true}" addEntry="${true}"/>
     <div class="row">
         <div class="col-md-12">
             <br>

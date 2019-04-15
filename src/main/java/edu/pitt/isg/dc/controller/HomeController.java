@@ -14,7 +14,6 @@ import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.vm.QueryTree;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -22,7 +21,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.access.method.P;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +39,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
-import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 import static edu.pitt.isg.dc.entry.util.TreeAid.toForest;
 import static java.util.Comparator.comparing;
 
@@ -52,9 +51,9 @@ public class HomeController {
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private static String TREE_INFO_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
-    public static final String LOGGED_IN_PROPERTY = "loggedIn";
-    public static final String ADMIN_TYPE = "adminType";
-    private static List<Map<String,String>> treeInfoArr;
+
+    private static List<Map<String, String>> treeInfoArr;
+
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         VIEWER_URL = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_URL);
@@ -63,6 +62,7 @@ public class HomeController {
         LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
         TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.TREE_INFO_CACHE_FILE_LOCATION);
     }
+
     @Autowired
     private EntryRule entryRule;
     @Autowired
@@ -86,34 +86,13 @@ public class HomeController {
     private Integer spewCount;
     private Integer spewAmericaCount;
 
-    public static Boolean ifLoggedIn(HttpSession session) {
-        if(session.getAttribute(LOGGED_IN_PROPERTY) != null && session.getAttribute(LOGGED_IN_PROPERTY).equals(true)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static Boolean ifMDCEditor(HttpSession session) {
-        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(MDC_EDITOR_TOKEN)) {
-            return true;
-        }
-        return false;
-    }
-
-    public static Boolean ifISGAdmin(HttpSession session) {
-        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(ISG_ADMIN_TOKEN)) {
-            return true;
-        }
-        return false;
-    }
-
     private void recurseSpewTree(SpewLocation location, boolean usa) {
-        for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
+        for (Map.Entry<String, SpewLocation> entry : location.getChildren().entrySet()) {
             SpewLocation subLocation = entry.getValue();
-            if(subLocation.getName().equals("united states of america")) {
+            if (subLocation.getName().equals("united states of america")) {
                 recurseSpewTree(subLocation, true);
             }
-            if(subLocation.getChildren() != null && !usa) {
+            if (subLocation.getChildren() != null && !usa) {
                 recurseSpewTree(subLocation, false);
             } else {
                 spewCount++;
@@ -122,12 +101,12 @@ public class HomeController {
     }
 
     private void recureAmericaTree(SpewLocation location, boolean usa) {
-        for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
+        for (Map.Entry<String, SpewLocation> entry : location.getChildren().entrySet()) {
             SpewLocation subLocation = entry.getValue();
-            if(subLocation.getName().equals("united states of america")) {
+            if (subLocation.getName().equals("united states of america")) {
                 recureAmericaTree(subLocation, true);
             }
-            if(subLocation.getChildren() != null && !usa) {
+            if (subLocation.getChildren() != null && !usa) {
                 recureAmericaTree(subLocation, false);
             } else {
                 spewAmericaCount++;
@@ -173,9 +152,9 @@ public class HomeController {
 
         Pattern pattern = Pattern.compile(".*(\\d{2}).tar.gz");
         List<String[]> workflowLocationsAndIds = new ArrayList<>();
-        for(Object[] spewLocationAndAccessUrl : spewLocationsAndAccessUrls) {
+        for (Object[] spewLocationAndAccessUrl : spewLocationsAndAccessUrls) {
             Matcher matcher = pattern.matcher(spewLocationAndAccessUrl[1].toString());
-            if(matcher.matches()) {
+            if (matcher.matches()) {
                 String location = spewLocationAndAccessUrl[0].toString();
                 String id = matcher.group(1);
                 String[] locationAndId = {location, id};
@@ -183,7 +162,7 @@ public class HomeController {
             }
         }
 
-        if(treeInfoArr == null) {
+        if (treeInfoArr == null) {
             treeInfoArr = categoryHelper.getEntryTrees();
             writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
         }
@@ -204,7 +183,8 @@ public class HomeController {
     public String search(Model model, HttpSession session) throws Exception {
         final List<QueryTree<Ncbi>> hosts = toForest(ncbiRule.findHostsInEntries());
         final List<QueryTree<Ncbi>> pathogens = toForest(ncbiRule.findPathogensInEntries());
-        final List<QueryTree<Asv>> controlMeasures = toForest(asvRule.findControlMeasuresInEntries());;
+        final List<QueryTree<Asv>> controlMeasures = toForest(asvRule.findControlMeasuresInEntries());
+        ;
         final List<QueryTree<Location>> locations = toForest(locationRule.findLocationsInEntries());
         final List<String[]> types = typeRule.findAll().stream()
                 .map(this::formatType)
@@ -217,14 +197,6 @@ public class HomeController {
         model.addAttribute("controlMeasures", gson.toJson(controlMeasures));
         model.addAttribute("locations", gson.toJson(locations));
 
-        if(ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
-
-        if(ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if(ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "search";
     }
 
@@ -239,14 +211,6 @@ public class HomeController {
     public String hello(Model model, HttpSession session) throws Exception {
         populateCommonsMainModel(model);
 
-        if(ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
-
-        if(ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if(ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "commons";
     }
 
@@ -255,7 +219,7 @@ public class HomeController {
     @ResponseBody
     String getCollectionsJson() throws Exception {
 
-        if(!libraryCollectionsJson.equals("") && !libraryCollectionsJson.equals("{}")) {
+        if (!libraryCollectionsJson.equals("") && !libraryCollectionsJson.equals("{}")) {
 
             return libraryCollectionsJson;
         } else {
@@ -343,16 +307,16 @@ public class HomeController {
     @RequestMapping(value = "/getTreeInformation", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
-    List<Map<String,String>> getTreeInformation() throws Exception {
+    List<Map<String, String>> getTreeInformation() throws Exception {
 
-        if(!treeInfoArr.isEmpty() && treeInfoArr != null) {
+        if (!treeInfoArr.isEmpty() && treeInfoArr != null) {
             return treeInfoArr;
         } else {
             try {
                 Path path = Paths.get(TREE_INFO_CACHE_FILE);
                 FileInputStream fis = new FileInputStream(path.toFile());
                 ObjectInputStream ois = new ObjectInputStream(fis);
-                treeInfoArr = (List<Map<String,String>>) ois.readObject();
+                treeInfoArr = (List<Map<String, String>>) ois.readObject();
                 return treeInfoArr;
             } catch (Exception e) {
                 treeInfoArr = categoryHelper.getEntryTrees();
@@ -369,9 +333,9 @@ public class HomeController {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(fileToWrite);
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
@@ -396,9 +360,10 @@ public class HomeController {
 
 
     @RequestMapping(value = "api/cache-tree-info-json", method = RequestMethod.GET)
-    public @ResponseBody Map<String, String> cacheTreeInfoJSON() {
+    public @ResponseBody
+    Map<String, String> cacheTreeInfoJSON() {
 
-        Map<String,String> resultMap = new HashMap<>();
+        Map<String, String> resultMap = new HashMap<>();
         try {
             treeInfoArr = categoryHelper.getEntryTrees();
             Path path = Paths.get(TREE_INFO_CACHE_FILE);
@@ -407,10 +372,10 @@ public class HomeController {
 
             oos.writeObject(treeInfoArr);
 
-            resultMap.put("result","success");
+            resultMap.put("result", "success");
 
         } catch (Exception e) {
-            resultMap.put("result","fail");
+            resultMap.put("result", "fail");
         }
 
         return resultMap;
@@ -423,7 +388,7 @@ public class HomeController {
 
 
     @RequestMapping(value = "/detailed-view", method = RequestMethod.GET)
-    public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id) throws Exception {
+    public String detailedView(Model model, HttpSession session, @RequestParam(value = "id") long id) throws Exception {
         //public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
         model.addAttribute("id", id);
         //model.addAttribute("revId", revId);
@@ -455,7 +420,8 @@ public class HomeController {
             String description = (String) ((LinkedHashMap) entry.getContent().get("entry")).get("description");
             description = description.replaceAll("[�ʉ]", "").replaceAll(" (\\*+)", "<br>$1").replace("\n", "<br>").replaceAll("(Footnotes?:)", "<br>$1");
             model.addAttribute("description", description);
-        } catch (NullPointerException e){}
+        } catch (NullPointerException e) {
+        }
         return "detailedView";
     }
 
@@ -466,14 +432,14 @@ public class HomeController {
         Entry entry = apiUtil.getEntryById(id);
 
         //we are then trying to get non-public metadata
-        if(entry == null) {
+        if (entry == null) {
             entry = apiUtil.getEntryByIdIncludeNonPublic(id);
         }
         EntryView entryView = new EntryView(entry);
         String documentText;
 
         HttpHeaders header = new HttpHeaders();
-        if(entryView.getXmlString() != null) {
+        if (entryView.getXmlString() != null) {
             documentText = entryView.getXmlString();
             header.setContentType(new org.springframework.http.MediaType("application", "xml"));
 
@@ -489,7 +455,7 @@ public class HomeController {
 
     }
 
-    @RequestMapping(value="/get-dataFormatNameByIdentifier", method = RequestMethod.GET)
+    @RequestMapping(value = "/get-dataFormatNameByIdentifier", method = RequestMethod.GET)
     @ResponseBody
     public String getDataFormatNameByIdentifier(@RequestParam("identifier") String identifier, HttpServletRequest request, HttpServletResponse response) {
         return apiUtil.getDataFormatNameByIdentifier(identifier);
