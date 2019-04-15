@@ -470,6 +470,11 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 
     if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage')) {
         var attribute;
+        var isDiseaseForecaster = false;
+        if(attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters'){
+            isDiseaseForecaster = true;
+        }
+
         if(key in attrs) {
             attribute = attrs[key];
         } else if(attrs['distributions'] !== null) {
@@ -511,11 +516,8 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         var hasNulls = true;
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
-                if(key == 'diseases' && attrs.hasOwnProperty('class')){
-                    if(attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters'){
-                        debugger;
-                        attribute[i] = identifierToString(attribute[i], true);
-                    }
+                if(key == 'diseases' && attribute[i]['identifier']['identifierDescription'] === 'influenza-like illness'){
+                    attribute[i] = identifierToString(attribute[i], true);
                 } else attribute[i] = identifierToString(attribute[i]);
                 if (attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
