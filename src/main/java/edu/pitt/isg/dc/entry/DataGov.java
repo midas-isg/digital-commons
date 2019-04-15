@@ -7,6 +7,7 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.DataGovGeneralException;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
+import edu.pitt.isg.dc.security.service.UserService;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import eu.trentorise.opendata.jackan.CkanClient;
 import eu.trentorise.opendata.jackan.model.CkanDataset;
@@ -32,7 +33,7 @@ public class DataGov implements DataGovInterface {
     @Autowired
     private EntrySubmissionInterface entrySubmissionInterface;
     @Autowired
-    private UsersSubmissionInterface usersSubmissionInterface;
+    private UserService userService;
 
     private static final String CKAN_DATE_CREATED = "CKAN metadata_created";
     private static final String CKAN_DATE_MODIFIED = "CKAN metadata_modified";
@@ -309,6 +310,7 @@ public class DataGov implements DataGovInterface {
 
             try {
                 //Users user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
+                user = userService.findUserForSubmissionByUserId(user.getUserId());
                 entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
             } catch (MdcEntryDatastoreException e) {
                 System.out.println(e.toString());

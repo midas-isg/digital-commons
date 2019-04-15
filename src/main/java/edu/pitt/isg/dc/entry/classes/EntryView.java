@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.entry.classes;
 import com.google.gson.*;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.security.jpa.Role;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import java.lang.reflect.Type;
@@ -30,6 +31,7 @@ public class EntryView extends EntryObject {
 
     public static Entry toEntry(EntryId id, EntryView entryObject) {
         final Entry entry = new Entry();
+        setUserRole(entryObject);
         final String json = gson.toJson(entryObject);
         final HashMap hashMap = gson.fromJson(json, HashMap.class);
         cleanUpMap(hashMap);
@@ -90,6 +92,11 @@ public class EntryView extends EntryObject {
         }
     }
 
+    private static void setUserRole(EntryView entryView){
+        for (Role role : entryView.getUsersId().getRoles()) {
+            role.setUsers(null);
+        }
+    }
     public String getEntryJsonString() {
         return StringEscapeUtils.escapeJavaScript(content);
     }

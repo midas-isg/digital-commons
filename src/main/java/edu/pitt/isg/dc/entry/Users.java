@@ -1,16 +1,30 @@
 package edu.pitt.isg.dc.entry;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.pitt.isg.dc.security.jpa.Role;
+
 import javax.persistence.*;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"userId", "email", "name"}))
 public class Users {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String userId;
     private String email;
     private String name;
+    private String password;
+    private String resetToken;
+
+    @Transient
+    private String passwordConfirm;
+
+    @ManyToMany(fetch=FetchType.EAGER)
+    private Set<Role> roles;
 
     public Users() {
     }
@@ -21,8 +35,7 @@ public class Users {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+
     public Long getId() {
         return id;
     }
@@ -53,6 +66,39 @@ public class Users {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+   public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    @JsonIgnore
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 }
 

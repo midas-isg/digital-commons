@@ -1,7 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
@@ -9,43 +8,27 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
-import edu.pitt.isg.dc.utils.DatasetFactory;
+import edu.pitt.isg.dc.security.service.UserService;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
-import edu.pitt.isg.dc.validator.*;
-import edu.pitt.isg.mdc.dats2_2.DataStandard;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.License;
-import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.webflow.execution.RequestContext;
-import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
-import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
-import static edu.pitt.isg.dc.controller.HomeController.*;
+import static edu.pitt.isg.dc.controller.Interceptor.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.Interceptor.ifMDCEditor;
 
 /**
  * Created by TPS23 on 5/10/2017.
@@ -105,7 +88,8 @@ public class DataEntryController {
     private CategoryHelper categoryHelper;
     @Autowired
     private DataGovInterface dataGovInterface;
-
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)
     public @ResponseBody
@@ -145,7 +129,8 @@ public class DataEntryController {
             entry.remove("class");
             entryObject.setEntry(entry);
 
-            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+            Users user = userService.findUserForSubmissionByUserId(session.getAttribute("username").toString());
+//            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
 
             entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
 
@@ -162,16 +147,8 @@ public class DataEntryController {
     public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         //model.addAttribute("category", category);
-        if (ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
 
-        if (ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if (ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
-
-        if (!model.containsAttribute("adminType")) {
+        if (!ifISGAdmin(session) && !ifMDCEditor(session)) {
             return "accessDenied";
         }
 
@@ -181,7 +158,8 @@ public class DataEntryController {
     @RequestMapping(value = "/add-datagov-entry", method = RequestMethod.POST)
     public String addNewEntry(HttpServletRequest request, HttpSession session, Model model) throws Exception {
         Long category = null;
-        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+        Users user = userService.findByUserId(session.getAttribute("username").toString());
+//        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
 
         try {
             category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("category"), "UTF-8"));

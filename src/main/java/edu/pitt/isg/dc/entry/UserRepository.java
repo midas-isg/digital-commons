@@ -9,6 +9,13 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
+    @Transactional
+    Users findByUserId(String userId);
+    @Transactional
+    Users findByEmail(String email);
+    @Transactional
+    Users findByResetToken(String resetToken);
+
     @Transactional(readOnly=true)
     public List<Users> findAll();
 
