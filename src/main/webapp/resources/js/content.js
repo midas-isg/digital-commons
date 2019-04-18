@@ -179,6 +179,11 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
     var singular = capitalizeFirst(elementName);
     var plural = singular + 's';
 
+    if(key === 'softwareVersion'){
+        singular = singular.replace(/-/g, ' ');
+        plural = plural.replace(/-/g, ' ');
+    }
+
     var attribute;
     var length;
     if(key in entry) {
@@ -251,9 +256,11 @@ function setDataServiceDescription(entry) {
 function toggleModalItems(entry, type) {
     setModalHeader(entry, type);
 
+    setSingularOrPluralModalItem(entry, 'authors', 'author');
     setSingularOrPluralModalItem(entry, 'developers', 'developer');
     setSingularOrPluralModalItem(entry, 'creator', 'creator');
     setSingularOrPluralModalItem(entry, 'version', 'version');
+    setSingularOrPluralModalItem(entry, 'softwareVersion', 'software-version');
 
     entry = setDataServiceDescription(entry);
 
@@ -267,6 +274,7 @@ function toggleModalItems(entry, type) {
 
     toggleModalItem('type', entry, 'type', false, false);
     toggleModalItem('populationSpeciesIncluded', entry, 'population-species', false, false);
+    toggleModalItem('codeRepository', entry, 'code-repository', true, false);
     toggleModalItem('source', entry, 'source-code', true, false);
     toggleModalItem('pathogenCoverage', entry, 'pathogen-coverage', false, false);
     toggleModalItem('locationCoverage', entry, 'location-coverage', false, false);
@@ -280,6 +288,7 @@ function toggleModalItems(entry, type) {
     toggleModalItem('publicationsThatUsedRelease', entry, 'publications-that-used-release', false, true);
     toggleModalItem('webApplication', entry, 'web-application', true, false);
     toggleModalItem('userGuidesAndManuals', entry, 'user-guides-and-manuals', true, false);
+    toggleModalItem('binaryUrl', entry, 'binaryUrl', false, true);
     toggleModalItem('executables', entry, 'executables', false, true);
     toggleModalItem('license', entry, 'license', false, true);
     toggleModalItem('endpointPrefix', entry, 'end-point-prefix', true, false);

@@ -457,6 +457,7 @@ var convertToHtml = [
     "publicationsThatUsedRelease",
     "publicationsAboutRelease",
     "forecasts",
+    "binaryUrl",
     "executables",
     "dataInputFormats",
     "dataOutputFormats",
@@ -467,6 +468,12 @@ var convertToHtml = [
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
+
+/*
+    if (key === 'binaryUrl') {
+        debugger;
+    }
+*/
 
     if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage')) {
         var attribute;
@@ -1237,7 +1244,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     regexSpecifier = new RegExp(specifier + '\\-00', "g");
     html = html.replace(regexPath, path+'[' + listItemCount + ']')
         .replace(regexSpecifier, specifier+'-' + listItemCount);
-    debugger;
+    // debugger;
 
     newDivId = html.match(specifier+"-\\d*[A-Za-z\-]*")[0];
     $("."+specifier+"-"+tagName+"-add-more").before(html);

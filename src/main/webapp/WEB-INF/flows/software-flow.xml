@@ -61,14 +61,14 @@
         <transition on="sourceCodeRelease" to="softwareForm1"/>
         <transition on="webApplications" to="softwareForm1"/>
         <transition on="license" to="softwareForm2"/>
-        <transition on="source" to="softwareForm2"/>
-        <transition on="developers" to="softwareForm2"/>
+        <transition on="codeRepository" to="softwareForm2"/>
+        <transition on="authors" to="softwareForm2"/>
         <transition on="website" to="softwareForm2"/>
         <transition on="documentation" to="softwareForm2"/>
         <transition on="publicationsThatUsedRelease" to="softwareForm2"/>
         <transition on="publicationsAboutRelease" to="softwareForm2"/>
-        <transition on="executables" to="softwareForm2"/>
-        <transition on="version" to="softwareForm2"/>
+        <transition on="binaryUrl" to="softwareForm2"/>
+        <transition on="softwareVersion" to="softwareForm2"/>
         <transition on="grants" to="softwareForm2"/>
         <transition on="locationCoverage" to="softwareForm2"/>
         <transition on="availableOnOlympus" to="softwareForm2"/>

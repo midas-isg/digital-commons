@@ -33,15 +33,15 @@
                                             id="license"
                                             label="License"></myTags:editNonZeroLengthString>
 
-            <fmt:message key="software.source" var="sourcePlaceHolder" />
-            <myTags:editNonZeroLengthString path="source" string="${digitalObject.source}"
-                                            specifier="source"
-                                            placeholder="${sourcePlaceHolder}"
+            <fmt:message key="software.codeRepository" var="codeRepositoryPlaceHolder" />
+            <myTags:editNonZeroLengthString path="codeRepository" string="${digitalObject.codeRepository}"
+                                            specifier="codeRepository"
+                                            placeholder="${codeRepositoryPlaceHolder}"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
                                             isInputGroup="${true}"
-                                            id="source"
-                                            label="Source"></myTags:editNonZeroLengthString>
+                                            id="codeRepository"
+                                            label="Code Repository"></myTags:editNonZeroLengthString>
 
             <fmt:message key="software.website" var="websitePlaceHolder" />
             <myTags:editNonZeroLengthString path="website" string="${digitalObject.website}"
@@ -63,17 +63,17 @@
                                             id="documentation"
                                             label="Documentation"></myTags:editNonZeroLengthString>
 
-            <fmt:message key="software.developers" var="developersPlaceHolder" />
-            <myTags:editMasterUnbounded label="Developers"
-                                        addButtonLabel="Developer"
-                                        placeholder="${developersPlaceHolder}"
-                                        path="developers"
-                                        specifier="developers"
-                                        cardText="${developersPlaceHolder}"
+            <fmt:message key="software.authors" var="authorsPlaceHolder" />
+            <myTags:editMasterUnbounded label="Authors"
+                                        addButtonLabel="Author"
+                                        placeholder="${authorsPlaceHolder}"
+                                        path="authors"
+                                        specifier="authors"
+                                        cardText="${authorsPlaceHolder}"
                                         cardIcon="fas fa-users"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
+                                        listItems="${digitalObject.authors}"></myTags:editMasterUnbounded>
 
             <fmt:message key="software.publicationsThatUsedRelease" var="publicationsThatUsedReleasePlaceHolder" />
             <myTags:editMasterUnbounded label="Publications That Used Release"
@@ -87,27 +87,27 @@
                                         tagName="string"
                                         listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
 
-            <fmt:message key="software.executables" var="executablesPlaceHolder" />
-            <myTags:editMasterUnbounded label="Executables"
-                                        addButtonLabel="Executable"
-                                        placeholder="${executablesPlaceHolder}"
-                                        path="executables" specifier="executables"
+            <fmt:message key="software.binaryUrl" var="binaryUrlPlaceHolder" />
+            <myTags:editMasterUnbounded label="Binary Url"
+                                        addButtonLabel="Binary Url"
+                                        placeholder="${binaryUrlPlaceHolder}"
+                                        path="binaryUrl" specifier="binaryUrl"
                                         isRequired="${false}"
                                         tagName="string"
                                         cardIcon="far fa-file-code"
-                                        cardText="${executablesPlaceHolder}"
-                                        listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
+                                        cardText="${binaryUrlPlaceHolder}"
+                                        listItems="${digitalObject.binaryUrl}"></myTags:editMasterUnbounded>
 
-            <fmt:message key="software.version" var="versionPlaceHolder" />
-            <myTags:editMasterUnbounded label="Versions"
-                                        addButtonLabel="Version"
-                                        placeholder="${versionPlaceHolder}"
-                                        path="version" specifier="version"
+            <fmt:message key="software.softwareVersion" var="softwareVersionPlaceHolder" />
+            <myTags:editMasterUnbounded label="Software Versions"
+                                        addButtonLabel="Software Version"
+                                        placeholder="${softwareVersionPlaceHolder}"
+                                        path="softwareVersion" specifier="softwareVersion"
                                         isRequired="${false}"
                                         tagName="string"
                                         cardIcon="fas fa-layer-group"
-                                        cardText="${versionPlaceHolder}"
-                                        listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
+                                        cardText="${softwareVersionPlaceHolder}"
+                                        listItems="${digitalObject.softwareVersion}"></myTags:editMasterUnbounded>
 
             <fmt:message key="software.publicationsAboutRelease" var="publicationsAboutReleasePlaceHolder" />
             <myTags:editMasterUnbounded label="Publications About Release"

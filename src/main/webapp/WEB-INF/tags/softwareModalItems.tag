@@ -39,9 +39,9 @@
 
 <myTags:softwareModalItem id="control-measures" title="Control measures"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
+<myTags:softwareModalItem id="author" title=""></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
+<myTags:softwareModalItem id="software-version" title="Software version"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="human-readable-specification" title="Human readable specification"
                           hasHref="true"></myTags:softwareModalItem>
@@ -69,7 +69,7 @@
 
 <myTags:softwareModalItem id="website" title="Website" hasHref="true"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
+<myTags:softwareModalItem id="binaryUrl" title="Binary Url" hasHref="false"></myTags:softwareModalItem>
 
 <%--<myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>--%>
 

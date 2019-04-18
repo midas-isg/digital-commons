@@ -34,10 +34,10 @@ public class DataServiceValidator implements Validator {
         clearStringList(dataService.getDataInputFormats().listIterator());
         clearStringList(dataService.getDataOutputFormats().listIterator());
         clearStringList(dataService.getWebApplication().listIterator());
-        clearStringList(dataService.getDevelopers().listIterator());
+        clearStringList(dataService.getAuthors().listIterator());
         clearStringList(dataService.getPublicationsThatUsedRelease().listIterator());
-        clearStringList(dataService.getExecutables().listIterator());
-        clearStringList(dataService.getVersion().listIterator());
+        clearStringList(dataService.getBinaryUrl().listIterator());
+        clearStringList(dataService.getSoftwareVersion().listIterator());
         clearStringList(dataService.getPublicationsAboutRelease().listIterator());
         clearStringList(dataService.getGrants().listIterator());
         clearNestedIdentifier(dataService.getLocationCoverage().listIterator());

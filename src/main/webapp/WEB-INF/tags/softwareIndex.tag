@@ -30,16 +30,16 @@
 
             <ul class="collapse list-unstyled" id="softwareForm2">
                 <li><a href="#" onclick="submitForm('license')">License</a></li>
-                <li><a href="#" onclick="submitForm('source')">Source</a></li>
+                <li><a href="#" onclick="submitForm('codeRepository')">Code Repository</a></li>
                 <li><a href="#" onclick="submitForm('website')">Website</a></li>
                 <li><a href="#" onclick="submitForm('documentation')">Documentation</a></li>
                 <li><a href="#" onclick="submitForm('availableOnOlympus')">Available On Olympus</a></li>
                 <li><a href="#" onclick="submitForm('availableOnUIDS')">Available On UIDS</a></li>
                 <li><a href="#" onclick="submitForm('signInRequired')">Sign In Required</a></li>
-                <li><a href="#" onclick="submitForm('developers')">Developers</a></li>
+                <li><a href="#" onclick="submitForm('authors')">Authors</a></li>
                 <li><a href="#" onclick="submitForm('publicationsThatUsedRelease')">Publications That Used Release</a></li>
-                <li><a href="#" onclick="submitForm('executables')">Executables</a></li>
-                <li><a href="#" onclick="submitForm('version')">Version</a></li>
+                <li><a href="#" onclick="submitForm('binaryUrl')">Binary Url</a></li>
+                <li><a href="#" onclick="submitForm('softwareVersion')">Software Version</a></li>
                 <li><a href="#" onclick="submitForm('publicationsAboutRelease')">Publications About Release</a></li>
                 <li><a href="#" onclick="submitForm('grants')">Grants</a></li>
                 <li><a href="#" onclick="submitForm('locationCoverage')">Location Coverage</a></li>
