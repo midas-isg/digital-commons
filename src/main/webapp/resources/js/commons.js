@@ -275,6 +275,8 @@ function getNodeData(name, key, treeDictionary) {
     var title = key;
     if('version' in treeDictionary[key]) {
         title = getSoftwareTitle(treeDictionary[key]['title'], treeDictionary[key]['version'].join(', '));
+    } else if('softwareVersion' in treeDictionary[key]) {
+        title = getSoftwareTitle(treeDictionary[key]['title'], treeDictionary[key]['softwareVersion'].join(', '));
     } else {
         title = treeDictionary[key]['title'];
     }

@@ -149,6 +149,26 @@ public class EntryObject {
             }
         }
 
+        if(entryData.containsKey("softwareVersion")) {
+            Object versionObj = entryData.get("softwareVersion");
+            if(versionObj instanceof String) {
+                version = (String) versionObj;
+            } else {
+                List<String> versionList = (ArrayList<String>) entryData.get("softwareVersion");
+                String[] versions = new String[versionList.size()];
+                versionList.toArray(versions);
+                version = StringUtils.join(versions, ", ");
+            }
+
+            if(version.length() > 0) {
+                if(!version.toUpperCase().matches("^[A-Z].*$") && !version.toUpperCase().matches("^\\d{4}.*$")) {
+                    version = " - v" + version;
+                } else {
+                    version = " - " + version;
+                }
+            }
+        }
+
         title = name + version;
         return title;
     }

@@ -143,7 +143,10 @@ function setModalHeader(entry, type) {
     if(title === undefined && Object.keys(entry['name']).length !== 0) {
         title = entry['name'];
     }
-    var version = entry["version"];
+    var version = '';
+    if ('softwareVersion' in entry) {
+        version = entry["softwareVersion"];
+    } else version = entry["version"];
 
     var modalHeaderId = '#software-name';
     var modalHeaderText = title;

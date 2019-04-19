@@ -271,6 +271,8 @@ List<Object[]> match2Software();
             "else content->'entry'->>'title' \n" +
             "end, \n" +
             "CASE \n" +
+            "when left(trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'softwareVersion')), ',')),1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'softwareVersion')), ','))) \n" +
+            "when content->'entry'->>'softwareVersion' is not null then trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'softwareVersion')), ',')) \n" +
             "when content->'entry'->>'version' is null or content->'entry'->>'version' = '' then '' \n" +
             "when content->'entry'->>'version' = '2010 U.S. Synthesized Population' then concat(' - ', content->'entry'->>'version') \n" +
             "when category_id = 4 and left(content->'entry'->>'version',1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', content->'entry'->>'version') \n" +
