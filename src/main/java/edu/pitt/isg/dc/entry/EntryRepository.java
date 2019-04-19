@@ -386,5 +386,44 @@ List<Object[]> match2Software();
     Entry findByMetadataIdentifierIncludeNotPublic(String identifier);
 
 
+    @Query(nativeQuery = true, value =
+    "select e.* \n" +
+            "from entry as e \n" +
+            "       join vw_findsetsview as fsv \n" +
+            "         on e.category_id = fsv.setid \n" +
+            "where \n" +
+            "    (fsv.top_category = 'Disease forecasters' \n" +
+            "        or \n" +
+            "      e.category_id in (458, 466) \n" +
+            "    ) \n" +
+            "  and \n" +
+            "    e.is_public = true \n" +
+            "union \n" +
+            "select * \n" +
+            "from entry \n" +
+            "where category_id = 4 \n" +
+            "  and is_public = true \n" +
+            "  and content #> '{entry, identifier, identifier}' in \n" +
+            "      ( \n" +
+            "      select distinct jsonb_array_elements(jsonb_array_elements(e.content #> '{entry, inputs}') #> '{dataFormats}') \n" +
+            "      from entry as e \n" +
+            "             join vw_findsetsview as fsv \n" +
+            "               on e.category_id = fsv.setid \n" +
+            "      where \n" +
+            "          fsv.top_category = 'Disease forecasters' \n" +
+            "        and \n" +
+            "          e.is_public = true \n" +
+            "      union \n" +
+            "      select distinct jsonb_array_elements(jsonb_array_elements(e.content #> '{entry, outputs}') #> '{dataFormats}') \n" +
+            "      from entry as e \n" +
+            "             join vw_findsetsview as fsv \n" +
+            "               on e.category_id = fsv.setid \n" +
+            "      where \n" +
+            "          fsv.top_category = 'Disease forecasters' \n" +
+            "        and \n" +
+            "          e.is_public = true \n" +
+            "      );"
+    )
+    List<Entry> getDiseaseForecasterEntries();
 
 }

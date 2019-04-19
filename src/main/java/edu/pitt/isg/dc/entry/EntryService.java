@@ -8,10 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class EntryService {
@@ -216,5 +213,8 @@ public class EntryService {
         return getContentFromEntryLists(entryRepository.findByMetadataIdentifierIncludeNotPublic(identifier));
     }
 
+    public List<Entry> getDiseaseForecasterEntries() {
+        return entryRepository.getDiseaseForecasterEntries();
+    }
 
 }
