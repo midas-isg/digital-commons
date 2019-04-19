@@ -231,6 +231,8 @@ public class CategoryHelper {
                 tree = this.recurseCategories(node.getCategory(), categoryOrderMap, categoryEntryMap, tree);
                 JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
 
+                cleanTreeNodes(treeNodes);
+
                 Map<String, String> treeInfo = new HashMap<>();
                 treeInfo.put("category", node.getCategoryName());
                 treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
@@ -240,6 +242,20 @@ public class CategoryHelper {
 
         treeInfoArr.add(this.getInfoByCountry());
         return treeInfoArr;
+    }
+
+    private void cleanTreeNodes(JsonArray treeNodes) {
+        for (Iterator<JsonElement> iterator = treeNodes.iterator(); iterator.hasNext(); ) {
+            JsonElement treeNode = iterator.next();
+            if(treeNode.getAsJsonObject().has("count")) {
+                int count = treeNode.getAsJsonObject().get("count").getAsInt();
+                if (count == 0) {
+                    iterator.remove();
+                } else if(treeNode.getAsJsonObject().has("nodes")) {
+                    cleanTreeNodes(treeNode.getAsJsonObject().get("nodes").getAsJsonArray());
+                }
+            }
+        }
     }
 
     private JsonArray recurseCategories(Category category, Map<Category, List<CategoryWithOrder>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, JsonArray tree) {

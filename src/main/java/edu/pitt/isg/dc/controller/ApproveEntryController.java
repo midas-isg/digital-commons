@@ -85,7 +85,7 @@ public class ApproveEntryController {
                 }
             }
 
-            Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
+            Map<Long, String> categoryPaths = categoryHelper.getTreePaths("AllEntries");
 
             model.addAttribute("entries", entries);
             model.addAttribute("categoryPaths", categoryPaths);

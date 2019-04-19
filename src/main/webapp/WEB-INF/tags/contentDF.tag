@@ -24,15 +24,19 @@
                     </div>
             </c:when>
             <c:when test="${treeInfo.category == 'Websites with data'}">
+<%--
                 <div class="col-sm-12">
                     <h3 class="content-title-font">Standard Identifiers</h3>
                     <div id="standard-identifiers-treeview" class="treeview"></div>
                 </div>
+--%>
 
+<%--
                 <div class="col-sm-12">
                     <h3 class="content-title-font">${treeInfo.category}</h3>
                     <div id="tree-${treeLoop.index}" class="treeview" style="display: block"></div>
                 </div>
+--%>
                 </div>
                 </div>
             </c:when>
