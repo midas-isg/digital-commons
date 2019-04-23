@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -213,8 +212,24 @@ public class EntryService {
         return getContentFromEntryLists(entryRepository.findByMetadataIdentifierIncludeNotPublic(identifier));
     }
 
-    public List<Entry> getDiseaseForecasterEntries() {
-        return entryRepository.getDiseaseForecasterEntries();
+    public List<Entry> getAllEntriesPertainingToCategory(String categoryName) {
+        String category = categoryName;
+
+        switch (categoryName) {
+            case "Disease forecasters":
+                break;
+            case "DiseaseForecasters":
+                category = "Disease forecasters";
+                break;
+            case "Disease Forecasters":
+                category = "Disease forecasters";
+                break;
+            case "diseaseforecasters":
+                category = "Disease forecasters";
+                break;
+        }
+
+        return entryRepository.getAllEntriesPertainingToCategory(category);
     }
 
 }

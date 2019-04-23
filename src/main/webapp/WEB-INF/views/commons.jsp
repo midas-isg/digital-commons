@@ -11,6 +11,7 @@
 
 <myTags:header
         pageTitle="MIDAS Digital Commons"
+        addEntry="${true}"
         loggedIn="${loggedIn}"/>
 
     <body id="commons-body">

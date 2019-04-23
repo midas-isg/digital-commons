@@ -223,7 +223,7 @@ public class HomeController {
         return "commons";
     }
 
-    @RequestMapping(value = "/main/DiseaseForecasters", method = RequestMethod.GET)
+    @RequestMapping(value = "/disease-forecasters", method = RequestMethod.GET)
     public String showDiseaseForecasters(Model model, HttpSession session) throws Exception {
         populateCommonsMainModel(model);
 

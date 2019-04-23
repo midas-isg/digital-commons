@@ -51,6 +51,7 @@
                             </c:forEach>
 
                             <h3 class="content-title-font">${treeInfo.category}
+<%--
                                 <div class="btn-group mr-1 mb-1">
                                     <button type="button" class="btn btn-default sort-by-dropdown btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by Category
@@ -60,11 +61,14 @@
                                         <a href="#" class="dropdown-item" id="drop-down-location" value="${treeLoop.index}">Location</a>
                                     </div>
                                 </div>
+--%>
                             </h3>
                             <div id="tree-${country_index}" class="treeview" style="display: none"></div>
                         </c:when>
                         <c:otherwise>
-                            <h3 class="content-title-font">${treeInfo.category}</h3>
+                            <h3 class="content-title-font">${treeInfo.category}
+                                <c:if test="${treeInfo.category == 'Disease forecasters'}"> Jeff</c:if>
+                            </h3>
                         </c:otherwise>
                     </c:choose>
 

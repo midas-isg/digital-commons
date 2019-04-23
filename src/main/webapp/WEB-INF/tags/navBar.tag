@@ -8,7 +8,19 @@
 <%@attribute name="adminType" type="java.lang.Boolean" %>
 
 <ul class="nav nav-tabs navbar-nav col-12" role="tablist">
-    <li><a id="content-tab" class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
+    <%--<li><a id="content-tab" class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>--%>
+    <%--<li><a id="content-tab" class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}">Content</a></li>--%>
+
+    <li class="dropdown">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" id="navbarContentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Content
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}">All Content</a>
+            <a class="dropdown-item" data-toggle="${dataToggle}" href="${contextPath}/disease-forecasters">Disease forecasters</a>
+        </div>
+    </li>
+
     <li class="dropdown">
         <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search

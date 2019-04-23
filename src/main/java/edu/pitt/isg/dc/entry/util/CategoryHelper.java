@@ -142,9 +142,9 @@ public class CategoryHelper {
             Map<Long, Long> subsetEntryMap = new HashMap<Long, Long>();
             if (entriesSubset.equalsIgnoreCase("DiseaseForecasters")) {
                 showAllEntries = false;
-                List<Entry> entriesDiseaseForecasters = entryService.getDiseaseForecasterEntries();
-                for (Entry entryDF : entriesDiseaseForecasters) {
-                    subsetEntryMap.put(entryDF.getId().getEntryId(), entryDF.getCategory().getId());
+                List<Entry> entriesSubCategory = entryService.getAllEntriesPertainingToCategory(entriesSubset);
+                for (Entry entrySubCategory : entriesSubCategory) {
+                    subsetEntryMap.put(entrySubCategory.getId().getEntryId(), entrySubCategory.getCategory().getId());
                 }
             }
 
@@ -231,6 +231,7 @@ public class CategoryHelper {
                 tree = this.recurseCategories(node.getCategory(), categoryOrderMap, categoryEntryMap, tree);
                 JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
 
+                //Remove nodes with Zero count
                 cleanTreeNodes(treeNodes);
 
                 Map<String, String> treeInfo = new HashMap<>();
@@ -240,7 +241,9 @@ public class CategoryHelper {
             }
         }
 
-        treeInfoArr.add(this.getInfoByCountry());
+        if(entriesSubset.equalsIgnoreCase("AllEntries")){
+            treeInfoArr.add(this.getInfoByCountry());
+        }
         return treeInfoArr;
     }
 
@@ -252,7 +255,7 @@ public class CategoryHelper {
                 if (count == 0) {
                     iterator.remove();
                 } else if(treeNode.getAsJsonObject().has("nodes")) {
-                    cleanTreeNodes(treeNode.getAsJsonObject().get("nodes").getAsJsonArray());
+                        cleanTreeNodes(treeNode.getAsJsonObject().get("nodes").getAsJsonArray());
                 }
             }
         }
