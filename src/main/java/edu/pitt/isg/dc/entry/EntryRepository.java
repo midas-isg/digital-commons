@@ -388,5 +388,92 @@ List<Object[]> match2Software();
     Entry findByMetadataIdentifierIncludeNotPublic(String identifier);
 
 
+    @Query(nativeQuery = true, value =
+            "select e.* \n" +
+                    "from entry as e \n" +
+                    "       join vw_findsetsview as fsv  \n" +
+                    "         on e.category_id = fsv.setid \n" +
+                    "where \n" +
+                    "    fsv.top_category = ?1 \n" +
+                    "  and \n" +
+                    "    e.is_public = true \n" +
+                    "union \n" +
+                    "select e.* \n" +
+                    "from entry as e \n" +
+                    "where category_id = 4 \n" +
+                    "  and is_public = true \n" +
+                    "  and content #> '{entry, identifier, identifier}' in \n" +
+                    "      ( \n" +
+                    "      select distinct jsonb_array_elements(jsonb_array_elements(e.content #> '{entry, inputs}') #> '{dataFormats}') \n" +
+                    "      from entry as e \n" +
+                    "             join vw_findsetsview as fsv \n" +
+                    "               on e.category_id = fsv.setid \n" +
+                    "      where \n" +
+                    "          fsv.top_category = ?1 \n" +
+                    "        and \n" +
+                    "          e.is_public = true \n" +
+                    "      union \n" +
+                    "      select distinct jsonb_array_elements(jsonb_array_elements(e.content #> '{entry, outputs}') #> '{dataFormats}') \n" +
+                    "      from entry as e \n" +
+                    "             join vw_findsetsview as fsv \n" +
+                    "               on e.category_id = fsv.setid \n" +
+                    "      where \n" +
+                    "          fsv.top_category = ?1 \n" +
+                    "        and \n" +
+                    "          e.is_public = true \n" +
+                    "      ) \n" +
+                    "union \n" +
+                    "select \n" +
+                    "      e.entry_id \n" +
+                    "    , e.revision_id \n" +
+                    "    , e.content \n" +
+                    "    , e.display_name \n" +
+                    "    , e.is_public \n" +
+                    "    , e.status \n" +
+                    "    , e.category_id \n" +
+                    "    , e.date_added \n" +
+                    "    , e.user_id \n" +
+                    "from \n" +
+                    " (select \n" +
+                    "  entry_id \n" +
+                    "  , revision_id \n" +
+                    "  , content \n" +
+                    "  , display_name \n" +
+                    "  , is_public \n" +
+                    "  , status \n" +
+                    "  , category_id \n" +
+                    "  , date_added \n" +
+                    "  , user_id \n" +
+                    "  , jsonb_array_elements(jsonb_array_elements(content #> '{entry, distributions}') #> '{conformsTo}') #> '{identifier, identifier}' as identifier \n" +
+                    "from entry) as e \n" +
+                    "join \n" +
+                    "   (select content #> '{entry, identifier, identifier}' as identifier \n" +
+                    "     from entry \n" +
+                    "     where category_id = 4 \n" +
+                    "       and is_public = true \n" +
+                    "       and content #> '{entry, identifier, identifier}' in \n" +
+                    "       (select distinct jsonb_array_elements(jsonb_array_elements(e.content #> '{entry, inputs}') #> '{dataFormats}') \n" +
+                    "         from entry as e \n" +
+                    "                join vw_findsetsview as fsv \n" +
+                    "                  on e.category_id = fsv.setid \n" +
+                    "         where \n" +
+                    "             fsv.top_category = ?1 \n" +
+                    "           and \n" +
+                    "             e.is_public = true \n" +
+                    "         union \n" +
+                    "         select distinct jsonb_array_elements(jsonb_array_elements(e.content #> '{entry, outputs}') #> '{dataFormats}') \n" +
+                    "         from entry as e \n" +
+                    "                join vw_findsetsview as fsv \n" +
+                    "                  on e.category_id = fsv.setid \n" +
+                    "         where \n" +
+                    "             fsv.top_category = ?1 \n" +
+                    "           and \n" +
+                    "             e.is_public = true \n" +
+                    "       ) \n" +
+                    "   ) as d \n" +
+                    "on e.identifier = d.identifier \n" +
+                    "where \n" +
+                    "    e.is_public = true; ")
+    List<Entry> getAllEntriesPertainingToCategory(@Param("category") String category);
 
 }

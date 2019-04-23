@@ -31,6 +31,9 @@ public class CategoryHelper {
     @Autowired
     private LocationRule locationRule;
 
+    @Autowired
+    private EntryService entryService;
+
     private Map<String, String> subcategoriesToCategories;
 
     Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
@@ -126,7 +129,9 @@ public class CategoryHelper {
         }
     }
 
-    private Map<Long, List<EntryView>> getCategoryEntryMap(Boolean resetTree) throws MdcEntryDatastoreException {
+    private Map<Long, List<EntryView>> getCategoryEntryMap(Boolean resetTree, String entriesSubset) throws MdcEntryDatastoreException {
+        boolean showAllEntries = true;
+
         if (categoryEntryMap.size() == 0 || resetTree) {
             List<Category> categories = categoryRepository.findAll();
             for (Category category : categories) {
@@ -134,20 +139,30 @@ public class CategoryHelper {
             }
 
             List<EntryView> entries = entryApprovalInterface.getPublicEntries();
+            Map<Long, Long> subsetEntryMap = new HashMap<Long, Long>();
+            if (entriesSubset.equalsIgnoreCase("DiseaseForecasters")) {
+                showAllEntries = false;
+                List<Entry> entriesSubCategory = entryService.getAllEntriesPertainingToCategory(entriesSubset);
+                for (Entry entrySubCategory : entriesSubCategory) {
+                    subsetEntryMap.put(entrySubCategory.getId().getEntryId(), entrySubCategory.getCategory().getId());
+                }
+            }
 
             for (EntryView entry : entries) {
-                Category category = entry.getCategory();
-                if (category != null) {
-                    Long categoryId = category.getId();
+                if (showAllEntries || subsetEntryMap.containsKey(entry.getId().getEntryId())) {
+                    Category category = entry.getCategory();
+                    if (category != null) {
+                        Long categoryId = category.getId();
 
-                    if (categoryEntryMap.containsKey(categoryId)) {
-                        List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
-                        categoryEntries.add(entry);
-                        categoryEntryMap.put(categoryId, categoryEntries);
-                    } else {
-                        List<EntryView> categoryEntries = new ArrayList<>();
-                        categoryEntries.add(entry);
-                        categoryEntryMap.put(categoryId, categoryEntries);
+                        if (categoryEntryMap.containsKey(categoryId)) {
+                            List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
+                            categoryEntries.add(entry);
+                            categoryEntryMap.put(categoryId, categoryEntries);
+                        } else {
+                            List<EntryView> categoryEntries = new ArrayList<>();
+                            categoryEntries.add(entry);
+                            categoryEntryMap.put(categoryId, categoryEntries);
+                        }
                     }
                 }
             }
@@ -156,6 +171,19 @@ public class CategoryHelper {
                 List<EntryView> items = categoryEntryMap.get(id);
                 items.sort(Comparator.comparing(EntryView::getTitle, String.CASE_INSENSITIVE_ORDER));
             }
+
+/*
+            Iterator iterator = categoryEntryMap.keySet().iterator();
+            while (iterator.hasNext()) {
+                Long id = (Long) iterator.next();
+                List<EntryView> items = categoryEntryMap.get(id);
+                if (items.size() == 0) {
+                    iterator.remove();
+                } else items.sort(Comparator.comparing(EntryView::getTitle, String.CASE_INSENSITIVE_ORDER));
+
+            }
+*/
+
         }
         return categoryEntryMap;
     }
@@ -187,14 +215,14 @@ public class CategoryHelper {
         return countryTreeInfo;
     }
 
-    public List<Map<String,String>> getEntryTrees() throws MdcEntryDatastoreException {
+    public List<Map<String,String>> getEntryTrees(String entriesSubset) throws MdcEntryDatastoreException {
         Map<String, Object> map = this.getCategoryOrderMap();
         Category rootCategory = (Category) map.get("root");
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
 
         Boolean resetTree = true;
-        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree);
-        this.getTreePaths();
+        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree, entriesSubset);
+        this.getTreePaths(entriesSubset);
 
         List<Map<String,String>> treeInfoArr = new ArrayList<>();
         if(categoryOrderMap.size() > 0) {
@@ -203,6 +231,9 @@ public class CategoryHelper {
                 tree = this.recurseCategories(node.getCategory(), categoryOrderMap, categoryEntryMap, tree);
                 JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
 
+                //Remove nodes with Zero count
+                cleanTreeNodes(treeNodes);
+
                 Map<String, String> treeInfo = new HashMap<>();
                 treeInfo.put("category", node.getCategoryName());
                 treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
@@ -210,8 +241,24 @@ public class CategoryHelper {
             }
         }
 
-        treeInfoArr.add(this.getInfoByCountry());
+        if(entriesSubset.equalsIgnoreCase("AllEntries")){
+            treeInfoArr.add(this.getInfoByCountry());
+        }
         return treeInfoArr;
+    }
+
+    private void cleanTreeNodes(JsonArray treeNodes) {
+        for (Iterator<JsonElement> iterator = treeNodes.iterator(); iterator.hasNext(); ) {
+            JsonElement treeNode = iterator.next();
+            if(treeNode.getAsJsonObject().has("count")) {
+                int count = treeNode.getAsJsonObject().get("count").getAsInt();
+                if (count == 0) {
+                    iterator.remove();
+                } else if(treeNode.getAsJsonObject().has("nodes")) {
+                        cleanTreeNodes(treeNode.getAsJsonObject().get("nodes").getAsJsonArray());
+                }
+            }
+        }
     }
 
     private JsonArray recurseCategories(Category category, Map<Category, List<CategoryWithOrder>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, JsonArray tree) {
@@ -275,13 +322,13 @@ public class CategoryHelper {
         return tree;
     }
 
-    public Map<Long, String> getTreePaths() throws MdcEntryDatastoreException {
+    public Map<Long, String> getTreePaths(String entriesSubset) throws MdcEntryDatastoreException {
         Map<String, Object> map = this.getCategoryOrderMap();
         Category rootCategory = (Category) map.get("root");
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
 
         Boolean resetTree = false;
-        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree);
+        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree, entriesSubset);
         Map<Long, String> result = this.recurseTreePaths(rootCategory, categoryOrderMap, categoryEntryMap, new HashMap<Long, String>(), "");
         return MapUtil.sortByValue(result);
     }

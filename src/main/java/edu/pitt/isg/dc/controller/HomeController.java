@@ -50,9 +50,11 @@ public class HomeController {
     private static String SPEW_CACHE_FILE = "";
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private static String TREE_INFO_CACHE_FILE = "";
+    private static String DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
 
     private static List<Map<String, String>> treeInfoArr;
+    private static List<Map<String, String>> diseaseForecastersTreeInfoArr;
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -61,6 +63,7 @@ public class HomeController {
         SPEW_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.SPEW_CACHE_FILE_LOCATION);
         LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
         TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.TREE_INFO_CACHE_FILE_LOCATION);
+        DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE_LOCATION);
     }
 
     @Autowired
@@ -163,12 +166,18 @@ public class HomeController {
         }
 
         if (treeInfoArr == null) {
-            treeInfoArr = categoryHelper.getEntryTrees();
+            treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
             writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
+        }
+
+        if (diseaseForecastersTreeInfoArr == null) {
+            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees("DiseaseForecasters");
+            writeFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
         }
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
+        model.addAttribute("diseaseForecastersTreeInfoArr", diseaseForecastersTreeInfoArr);
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
@@ -212,6 +221,13 @@ public class HomeController {
         populateCommonsMainModel(model);
 
         return "commons";
+    }
+
+    @RequestMapping(value = "/disease-forecasters", method = RequestMethod.GET)
+    public String showDiseaseForecasters(Model model, HttpSession session) throws Exception {
+        populateCommonsMainModel(model);
+
+        return "commonsDF";
     }
 
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
@@ -319,7 +335,7 @@ public class HomeController {
                 treeInfoArr = (List<Map<String, String>>) ois.readObject();
                 return treeInfoArr;
             } catch (Exception e) {
-                treeInfoArr = categoryHelper.getEntryTrees();
+                treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
                 writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
                 return treeInfoArr;
             }
@@ -343,12 +359,19 @@ public class HomeController {
     @RequestMapping(value = "api/cache-tree-info", method = RequestMethod.GET)
     public String cacheTreeInfo(Model model) {
         try {
-            treeInfoArr = categoryHelper.getEntryTrees();
+            treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
             Path path = Paths.get(TREE_INFO_CACHE_FILE);
             FileOutputStream fos = new FileOutputStream(path.toFile());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(treeInfoArr);
+
+            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees("DiseaseForecasters");
+            Path pathDF = Paths.get(DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
+            FileOutputStream fosDF = new FileOutputStream(pathDF.toFile());
+            ObjectOutputStream oosDF = new ObjectOutputStream(fosDF);
+
+            oosDF.writeObject(diseaseForecastersTreeInfoArr);
 
             model.addAttribute("status", "success");
         } catch (Exception e) {
@@ -365,12 +388,19 @@ public class HomeController {
 
         Map<String, String> resultMap = new HashMap<>();
         try {
-            treeInfoArr = categoryHelper.getEntryTrees();
+            treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
             Path path = Paths.get(TREE_INFO_CACHE_FILE);
             FileOutputStream fos = new FileOutputStream(path.toFile());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(treeInfoArr);
+
+            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees("DiseaseForecasters");
+            Path pathDF = Paths.get(DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
+            FileOutputStream fosDF = new FileOutputStream(pathDF.toFile());
+            ObjectOutputStream oosDF = new ObjectOutputStream(fosDF);
+
+            oosDF.writeObject(diseaseForecastersTreeInfoArr);
 
             resultMap.put("result", "success");
 

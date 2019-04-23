@@ -21,7 +21,7 @@
             <div id="commons-main-body">
                 <div class="tab-content">
                     <div id="content" class="tab-pane fade show active" role="tabpanel">
-                        <myTags:content
+                        <myTags:contentDF
                                 softwareEntries="${softwareEntries}"
                                 datasetEntries="${datasetEntries}"
                                 dataStandardEntries="${dataStandardEntries}"
