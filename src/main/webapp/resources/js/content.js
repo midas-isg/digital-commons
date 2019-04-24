@@ -38,9 +38,10 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
 
     var jsonEntries = JSON.parse(entriesData);
     var entryType = jsonEntries[0]["type"];
-    if(entryType != null && entryType.includes("DataStandard")) {
-        var emptyIcon = "bullet-point";
-    }
+    // if(entryType != null && entryType.includes("DataStandard")) {
+    //     var emptyIcon = "bullet-point";
+    // }
+    var emptyIcon = "";
 
     return {
         data: entriesData,
