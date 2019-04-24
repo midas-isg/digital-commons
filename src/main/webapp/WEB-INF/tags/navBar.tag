@@ -16,7 +16,7 @@
             Content
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}">All Content</a>
+            <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#content">All Content</a>
             <a class="dropdown-item" href="${contextPath}/disease-forecasting">Disease forecasting</a>
         </div>
     </li>
