@@ -17,32 +17,32 @@
     <body id="commons-body">
         <div id="content-body">
 
-            <myTags:softwareModal/>
-            <div id="commons-main-body">
-                <div class="tab-content">
-                    <div id="content" class="tab-pane fade show active" role="tabpanel">
+            <%--<myTags:softwareModal/>--%>
+            <%--<div id="commons-main-body">--%>
+                <%--<div class="tab-content">--%>
+                    <%--<div id="content" class="tab-pane fade show active" role="tabpanel">--%>
                         <myTags:contentDF
                                 softwareEntries="${softwareEntries}"
                                 datasetEntries="${datasetEntries}"
                                 dataStandardEntries="${dataStandardEntries}"
                         />
-                    </div>
-                    <div id="compute-platform" class="tab-pane fade" role="tabpanel">
-                        <myTags:computePlatform/>
-                    </div>
-                    <div id="workflows" class="tab-pane fade" role="tabpanel">
-                        <myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>
-                    </div>
-                    <div id="search" class="tab-pane fade" role="tabpanel">
-                        <myTags:search/>
-                    </div>
-                    <div id="about" class="tab-pane fade" role="tabpanel">
-                        <myTags:about/>
-                    </div>
-                </div>
+                    <%--</div>--%>
+                    <%--<div id="compute-platform" class="tab-pane fade" role="tabpanel">--%>
+                        <%--<myTags:computePlatform/>--%>
+                    <%--</div>--%>
+                    <%--<div id="workflows" class="tab-pane fade" role="tabpanel">--%>
+                        <%--<myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>--%>
+                    <%--</div>--%>
+                    <%--<div id="search" class="tab-pane fade" role="tabpanel">--%>
+                        <%--<myTags:search/>--%>
+                    <%--</div>--%>
+                    <%--<div id="about" class="tab-pane fade" role="tabpanel">--%>
+                        <%--<myTags:about/>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
             </div>
 
-            <myTags:standardIdentifiers/>
+            <%--<myTags:standardIdentifiers/>--%>
         </div>
 
         <myTags:analytics/>
