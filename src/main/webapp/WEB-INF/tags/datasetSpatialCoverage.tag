@@ -8,7 +8,7 @@
 <%@ attribute name="lineage" required="true"
               type="java.util.List" %>
 
-<c:if test="${not empty entryView.entry.spatialCoverage or not empty entryView.entry.locationCoverage or not lineage.contains('Software')}">
+<c:if test="${not lineage.contains('Data Formats') and (not empty entryView.entry.spatialCoverage or not empty entryView.entry.locationCoverage or not lineage.contains('Software'))}">
     <tr>
         <td>Spatial coverage</td>
         <td>
@@ -26,8 +26,11 @@
                         <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!varStatus.last ? ',' : ''}
                     </c:forEach>
                 </c:when>
-                <c:otherwise>
+                <c:when test="${not empty entryView.category.category}">
                     ${entryView.category.category}
+                </c:when>
+                <c:otherwise>
+                    Undocumented
                 </c:otherwise>
             </c:choose>
         </td>

@@ -65,9 +65,11 @@
                             </h3>
                             <div id="tree-${country_index}" class="treeview" style="display: none"></div>
                         </c:when>
+                        <c:when test="${treeInfo.category == 'Models and Other Software'}">
+                            <h3 class="content-title-font">Disease Forecasters and Related Software</h3>
+                        </c:when>
                         <c:otherwise>
                             <h3 class="content-title-font">${treeInfo.category}
-                                <c:if test="${treeInfo.category == 'Disease forecasters'}"> Jeff</c:if>
                             </h3>
                         </c:otherwise>
                     </c:choose>
