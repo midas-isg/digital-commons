@@ -17,7 +17,7 @@
     <body id="commons-body">
         <div id="content-body">
 
-            <%--<myTags:softwareModal/>--%>
+            <myTags:softwareModal/>
             <%--<div id="commons-main-body">--%>
                 <%--<div class="tab-content">--%>
                     <%--<div id="content" class="tab-pane fade show active" role="tabpanel">--%>

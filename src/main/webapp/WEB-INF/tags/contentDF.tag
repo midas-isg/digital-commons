@@ -19,7 +19,7 @@
                     <div class="col-sm-12">
                         <h3 class="content-title-font">${treeInfo.category}</h3>
 
-                        <div id="tree-${treeLoop.index}" class="treeview" style="display: block"></div>
+                        <div id="tree-df-${treeLoop.index}" class="treeview" style="display: block"></div>
 
                     </div>
             </c:when>
@@ -34,7 +34,7 @@
 <%--
                 <div class="col-sm-12">
                     <h3 class="content-title-font">${treeInfo.category}</h3>
-                    <div id="tree-${treeLoop.index}" class="treeview" style="display: block"></div>
+                    <div id="tree-df-${treeLoop.index}" class="treeview" style="display: block"></div>
                 </div>
 --%>
                 </div>
@@ -63,7 +63,7 @@
                                 </div>
 --%>
                             </h3>
-                            <div id="tree-${country_index}" class="treeview" style="display: none"></div>
+                            <div id="tree-df-${country_index}" class="treeview" style="display: none"></div>
                         </c:when>
                         <c:when test="${treeInfo.category == 'Models and Other Software'}">
                             <h3 class="content-title-font">Disease Forecasters and Related Software</h3>
@@ -74,7 +74,7 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <div id="tree-${treeLoop.index}" class="treeview" style="display: block"></div>
+                    <div id="tree-df-${treeLoop.index}" class="treeview" style="display: block"></div>
                 </div>
             </c:otherwise>
         </c:choose>
@@ -122,14 +122,15 @@
             // });
 
 
+/*
             $("#drop-down-category").click(function () {
                 $('.sort-by-dropdown').html('Sort by Category <span class="caret"></span>');
                 $('.sort-by-dropdown').val($(this).data('value'));
 
                 var treeIndex = $(this).attr("value");
-                $("#tree-check-box-div").hide();
-                $("#tree-${country_index}").hide();
-                $("#tree-" + treeIndex).show();
+                $("#tree-df-check-box-div").hide();
+                $("#tree-df-${country_index}").hide();
+                $("#tree-df-" + treeIndex).show();
             });
 
             $("#drop-down-location").click(function () {
@@ -137,15 +138,18 @@
                 $('.sort-by-dropdown').val($(this).data('value'));
 
                 var treeIndex = $(this).attr("value");
-                $("#tree-check-box-div").show();
-                $("#tree-${country_index}").show();
-                $("#tree-" + treeIndex).hide();
+                $("#tree-df-check-box-div").show();
+                $("#tree-df-${country_index}").show();
+                $("#tree-df-" + treeIndex).hide();
             });
+*/
 
         });
 
-        $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
-        expandNodesInSessionVariable('#tree-${treeLoop.index}', 'tree${treeLoop.index}');
+        if('${treeInfo.category}' != 'Websites with data'){
+            $('#tree-df-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-df-${treeLoop.index}', 'treeDF${treeLoop.index}'));
+            expandNodesInSessionVariable('#tree-df-${treeLoop.index}', 'treeDF${treeLoop.index}');
+        }
     </script>
 </c:forEach>
 </div>
