@@ -476,8 +476,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         debugger;
     }
 */
-
-    if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage')) {
+    if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage' || key === 'humanReadableSpecification')) {
         var attribute;
         var isDiseaseForecaster = false;
         if(attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters'){
@@ -486,6 +485,25 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 
         if(key in attrs) {
             attribute = attrs[key];
+        } else if(key === 'humanReadableSpecification') {
+            if (attrs['extraProperties'] != null && attrs['extraProperties'].length > 1) {
+                for (var i = 0; i < attrs['extraProperties'].length; i++) {
+                    if (attrs['extraProperties'][i]['category'] === 'human-readable specification of data format' && attrs['extraProperties'][i]['values'][0]['value'] != null) {
+                        attribute = '<a class="underline" href="' + attrs['extraProperties'][i]['values'][0]['value'] + '">' + attrs['extraProperties'][i]['values'][0]['value'] + '</a>';
+                    }
+                }
+                if(attribute == undefined) {
+                   $(containerId).hide();
+                   return;
+                }
+            } else {
+                if (attrs['extraProperties'] != null && attrs['extraProperties'][0]['category'] === 'human-readable specification of data format' && attrs['extraProperties'][0]['values'][0]['value'] != null) {
+                    attribute = '<a class="underline" href="' + attrs['extraProperties'][0]['values'][0]['value'] + '">' + attrs['extraProperties'][0]['values'][0]['value'] + '</a>';
+                } else {
+                    $(containerId).hide();
+                    return;
+                }
+            }
         } else if(attrs['distributions'] !== null) {
             try {
                 if(key == "accessURL") {

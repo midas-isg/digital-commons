@@ -321,7 +321,7 @@ function toggleModalItems(entry, type) {
     toggleModalItem('landingPage', entry, 'landing-page', true, false);
     toggleModalItem('accessURL', entry, 'access-url', false, true);
     toggleModalItem('authorizations', entry, 'authorizations', false, false);
-    toggleModalItem('humanReadableSpecification', entry, 'human-readable-specification', true, false);
+    toggleModalItem('humanReadableSpecification', entry, 'human-readable-specification', false, true);
     toggleModalItem('machineReadableSpecification', entry, 'machine-readable-specification', true, false);
     toggleModalItem('validator', entry, 'validator', true, false);
     toggleModalItem('spatialCoverage', entry, 'spatial-coverage', false, false);
