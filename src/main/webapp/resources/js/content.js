@@ -7,6 +7,9 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
         var defaultExpandedNodeIds = [];
         for(var i = 0; i < defaultExpandedNodes.length; i++) {
             defaultExpandedNodeIds.push(defaultExpandedNodes[i].nodeId);
+            if(treeId.startsWith('#tree-df-')){
+                defaultExpandedNodeIds = getDefaultExpandedNodeIds(defaultExpandedNodes[i], defaultExpandedNodeIds);
+            }
         }
         sessionStorage.setItem(sessionVariable, JSON.stringify(defaultExpandedNodeIds));
         expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
@@ -30,6 +33,18 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
             sessionStorage.setItem(sessionVariable, JSON.stringify(expanded));
         }
     }
+}
+
+function getDefaultExpandedNodeIds(defaultExpandedNodes, defaultExpandedNodeIds){
+    if(defaultExpandedNodes.hasOwnProperty('nodes')){
+        for (var i = 0; i < defaultExpandedNodes.nodes.length; i++) {
+            defaultExpandedNodeIds.push(defaultExpandedNodes.nodes[i].nodeId);
+            if(defaultExpandedNodes.nodes[i].hasOwnProperty("nodes")){
+                defaultExpandedNodeIds.concat(getDefaultExpandedNodeIds(defaultExpandedNodes.nodes[i], defaultExpandedNodeIds));
+            }
+        }
+    }
+    return defaultExpandedNodeIds;
 }
 
 function getTreeviewInfo(entriesData, treeId, sessionVariable) {
