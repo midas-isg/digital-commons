@@ -23,7 +23,7 @@
                 <c:when test="${not empty entryView.entry.locationCoverage}">
                     <c:forEach items="${entryView.entry.locationCoverage}" var="coverage"
                                varStatus="varStatus">
-                        <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!varStatus.last ? ',' : ''}
+                        <span>${coverage.identifier.identifierDescription}</span>${!varStatus.last ? ',' : ''}
                     </c:forEach>
                 </c:when>
                 <c:when test="${not empty entryView.category.category}">

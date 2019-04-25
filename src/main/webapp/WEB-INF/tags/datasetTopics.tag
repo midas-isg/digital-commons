@@ -26,6 +26,8 @@
         <myTags:datasetSpatialCoverage entryView="${entryView}" lineage="${lineage}"/>
         <myTags:datasetIsAbout entryView="${entryView}"/>
         <myTags:datasetHostSpeciesIncluded entryView="${entryView}"/>
+        <myTags:datasetControlMeasures entryView="${entryView}"/>
+        <myTags:datasetPublicationsThatUsedRelease entryView="${entryView}"/>
         </tbody>
     </table>
 </div>
