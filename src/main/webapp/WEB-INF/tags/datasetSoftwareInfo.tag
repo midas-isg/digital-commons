@@ -36,7 +36,7 @@
         </c:if>
         <c:if test="${not empty entryView.entry.codeRepository}">
             <tr>
-                <td>Code Repository</td>
+                <td>Code repository</td>
                 <td>
                     <a class="underline" href="${entryView.entry.codeRepository}">${entryView.entry.codeRepository}</a>
                 </td>
@@ -44,7 +44,7 @@
         </c:if>
         <c:if test="${not empty entryView.entry.binaryUrl}">
             <tr>
-                <td>Binary URL</td>
+                <td>Binary Url</td>
                 <td>
                     <c:forEach items="${entryView.entry.binaryUrl}"
                                var="binary"

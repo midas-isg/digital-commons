@@ -15,7 +15,7 @@
         <table class="table table-condensed table-borderless table-discrete table-striped">
             <tbody>
             <tr>
-                <td>Is list of ${fn:toLowerCase(title)} complete</td>
+                <td>Is list of ${fn:toLowerCase(title)} complete?</td>
                 <td style="text-transform: capitalize">${fn:toLowerCase(entryView.entry.inputs[0].isListOfDataFormatsComplete)}</td>
             </tr>
             </tbody>
