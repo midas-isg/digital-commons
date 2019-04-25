@@ -133,13 +133,33 @@
                     <div class="metadata-table"></div>
                     <myTags:datasetTopics entryView="${entryView}" lineage="${lineage}"/>
 
+                     <c:if test="${not empty entryView.entry.types}">
+                        <myTags:datasetTypes entryView="${entryView}"></myTags:datasetTypes>
+                    </c:if>
+
+                    <c:if test="${not empty entryView.entry.softwareVersion}">
+                        <myTags:datasetSoftwareInfo entryView="${entryView}"></myTags:datasetSoftwareInfo>
+                    </c:if>
+
+                    <c:if test="${not empty entryView.entry.acknowledges}">
+                        <myTags:datasetAcknowledges entryView="${entryView}"></myTags:datasetAcknowledges>
+                    </c:if>
+
                     <c:if test="${not empty entryView.entry.distributions}">
                         <myTags:datasetDistributions entryView="${entryView}"></myTags:datasetDistributions>
                     </c:if>
 
-                    <c:if test="${not empty entryView.entry.sourceCodeRelease}">
-                        <myTags:datasetSourceCode entryView="${entryView}"></myTags:datasetSourceCode>
+                    <c:if test="${not empty entryView.entry.inputs}">
+                        <myTags:datasetInputOutput entryView="${entryView}" title="Inputs"
+                                                   items="${entryView.entry.inputs}"></myTags:datasetInputOutput>
                     </c:if>
+
+                    <c:if test="${not empty entryView.entry.outputs}">
+                        <myTags:datasetInputOutput entryView="${entryView}" title="Outputs"
+                                                   items="${entryView.entry.outputs}"></myTags:datasetInputOutput>
+                    </c:if>
+
+
 
                     <c:if test="${not empty entryView.entry.licenses}">
                         <myTags:datasetLicenses entryView="${entryView}"></myTags:datasetLicenses>

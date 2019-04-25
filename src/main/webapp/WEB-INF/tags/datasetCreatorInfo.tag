@@ -6,7 +6,7 @@
 <%@ attribute name="entryView" required="true"
               type="edu.pitt.isg.dc.entry.classes.EntryView" %>
 
-<div class="metadata-table"><h4 class="sub-title-font">Creator Information</h4>
+<div class="metadata-table"><h4 class="sub-title-font">Creator information</h4>
     <table class="table table-condensed table-borderless table-discrete table-striped">
         <tbody>
         <c:if test="${not empty entryView.entry.creators}">
@@ -75,6 +75,19 @@
                 <td>Code repository source</td>
                 <td><a href="${entryView.entry.source}"
                        class="underline">${entryView.entry.source}</a></td>
+            </tr>
+        </c:if>
+        <c:if test="${not empty entryView.entry.authors}">
+            <tr>
+                <td>Authors</td>
+                <td>
+                    <c:forEach items="${entryView.entry.authors}" var="author"
+                                               varStatus="varStatus">
+
+                                        ${author}${!varStatus.last ? ',' : ''}
+
+                                    </c:forEach>
+                </td>
             </tr>
         </c:if>
 

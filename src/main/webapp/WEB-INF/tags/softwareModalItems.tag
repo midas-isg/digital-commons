@@ -15,6 +15,11 @@
 
 <myTags:softwareModalItem id="description" title="Description" hasHref="false"></myTags:softwareModalItem>
 
+<myTags:softwareModalItem id="source-code" title="Link to code repository" hasHref="true"></myTags:softwareModalItem>
+
+<myTags:softwareModalItem id="source-code-release" title="Source code release"
+                          hasHref="false"></myTags:softwareModalItem>
+
 <myTags:softwareModalItem id="creator" title="" hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="landing-page" title="Landing page" hasHref="true"></myTags:softwareModalItem>
@@ -91,11 +96,6 @@
 
 <myTags:softwareModalItem id="produced-by" title="Produced by"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="source-code" title="Link to code repository" hasHref="true"></myTags:softwareModalItem>
-
-<myTags:softwareModalItem id="source-code-release" title="Source code release"
-                          hasHref="false"></myTags:softwareModalItem>
-
 <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="rest-documentation" title="REST documentation" hasHref="true"></myTags:softwareModalItem>
@@ -130,5 +130,4 @@
 
 <myTags:softwareModalItem id="spatial-coverage" title="Spatial coverage" hasHref="false"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="is-about" title="Is About" hasHref="false"></myTags:softwareModalItem>
-
+<myTags:softwareModalItem id="is-about" title="Is about" hasHref="false"></myTags:softwareModalItem>
