@@ -30,7 +30,11 @@
             <tr>
                 <td>Source code links</td>
                 <td>
-                        ${entryView.entry.sourceCodeRelease}
+                     <c:forEach items="${entryView.entry.sourceCodeRelease}"
+                               var="source"
+                               varStatus="varStatus">
+                        <a class="underline" href="${source}">${source}</a>${!varStatus.last ? ',' : ''}
+                    </c:forEach>
                 </td>
             </tr>
         </c:if>
