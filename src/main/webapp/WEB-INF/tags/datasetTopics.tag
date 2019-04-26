@@ -38,22 +38,6 @@
             </tr>
         </c:if>
 
-        <c:if test="${not empty entryView.entry.type}">
-            <tr>
-                <td>Type</td>
-                <td>
-                    <c:choose>
-                        <c:when test="${not empty entryView.entry.type.valueIRI}">
-                            <a class="underline" href="${entryView.entry.type.valueIRI}">${entryView.entry.type.value}</a>
-                        </c:when>
-                        <c:otherwise>
-                            ${entryView.entry.type.value}
-                        </c:otherwise>
-                    </c:choose>
-                </td>
-            </tr>
-        </c:if>
-
         <c:if test="${not empty entryView.entry.extraProperties}">
             <c:forEach items="${entryView.entry.extraProperties}" var="extraProperty" varStatus="varStatus">
                 <tr>
