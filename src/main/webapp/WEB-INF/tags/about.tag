@@ -41,6 +41,50 @@
         </p>
 
         <div class="font-size-16 standard-font">
+            <h3 class="sub-title-font font-size-20">Standard Identifiers</h3>
+            <div id="standard-identifiers">
+                <ul class="list-group">
+                    <li class="list-group-item-wrap">
+                        <span class="icon bullet-point"></span>
+                        <span class="icon node-icon"></span>
+                        <span>Apollo Location Codes (for locations)</span> <b><i class="sso-color"><sup>SSO</sup></i></b>
+                        <span> - Locations for specific time intervals, including intervals that start in the past and are still open at present (i.e., the identifier should be used to refer to the location today.</span>
+                    </li>
+                    <li class="list-group-item-wrap">
+                        <span class="icon bullet-point"></span>
+                        <span class="icon node-icon"></span>
+                        <span>LOINC codes (for lab tests)</span>
+                        <span> - Applies universal code names and identifiers to medical terminology related to electronic health records.</span>
+                    </li>
+                    <li class="list-group-item-wrap">
+                        <span class="icon bullet-point"></span>
+                        <span class="icon node-icon"></span>
+                        <span>NCBI Taxon identifiers (for host and pathogen taxa)</span>
+                        <span> - A curated classification and nomenclature for all of the organisms in the public sequence databases.</span>
+                    </li>
+                    <li class="list-group-item-wrap">
+                        <span class="icon bullet-point"></span>
+                        <span class="icon node-icon"></span>
+                        <span>RxNorm codes (for drugs)</span>
+                        <span> - A standardized nomenclature for clinical drugs, is produced by the National Library of Medicine</span>
+                    </li>
+                    <li class="list-group-item-wrap">
+                        <span class="icon bullet-point"></span>
+                        <span class="icon node-icon"></span>
+                        <span>SNOMED CT codes (for diagnoses)</span>
+                        <span> - A systematically organized computer processable collection of medical terms providing codes, terms, synonyms and definitions used in clinical documentation and reporting.</span>
+                    </li>
+                    <li class="list-group-item-wrap">
+                        <span class="icon bullet-point"></span>
+                        <span class="icon node-icon"></span>
+                        <span>Vaccine Ontology identifiers (for vaccines)</span>
+                        <span> - describes the detailed classification and definitions of vaccine components and vaccine administration processes.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="font-size-16 standard-font">
             <h3 class="sub-title-font font-size-20">FAIR-o-meter</h3>
             <span>We track conformance to FAIR guidelines <a
                     class="underline" href="http://meterdev.onbc.io/#/">here</a>.</span>

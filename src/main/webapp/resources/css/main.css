@@ -366,6 +366,11 @@ a.badge-primary:hover{
 
 }
 
+.list-group-item-wrap {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .list-group-item {
     overflow: hidden;
     white-space: nowrap;
