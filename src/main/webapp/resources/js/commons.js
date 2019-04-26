@@ -489,7 +489,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             if (attrs['extraProperties'] != null && attrs['extraProperties'].length > 1) {
                 for (var i = 0; i < attrs['extraProperties'].length; i++) {
                     if ((attrs['extraProperties'][i]['category'] === 'human-readable specification of data format' || attrs['extraProperties'][i]['category'] === 'human readable description of format') && attrs['extraProperties'][i]['values'][0]['value'] != null) {
-                        attribute = '<a class="underline" href="' + attrs['extraProperties'][i]['values'][0]['value'] + '">' + attrs['extraProperties'][i]['values'][0]['value'] + '</a>';
+                        attribute = urlify(attrs['extraProperties'][i]['values'][0]['value'] );
                     }
                 }
                 if (attribute == undefined) {
@@ -498,7 +498,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 }
             } else {
                 if (attrs['extraProperties'] != null && (attrs['extraProperties'][0]['category'] === 'human-readable specification of data format' || attrs['extraProperties'][0]['category'] === 'human readable description of format') && attrs['extraProperties'][0]['values'][0]['value'] != null) {
-                    attribute = '<a class="underline" href="' + attrs['extraProperties'][0]['values'][0]['value'] + '">' + attrs['extraProperties'][0]['values'][0]['value'] + '</a>';
+                    attribute = urlify(attrs['extraProperties'][0]['values'][0]['value']);
                 } else {
                     $(containerId).hide();
                     return;
@@ -509,9 +509,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 for (var i = 0; i < attrs['extraProperties'].length; i++) {
                     if ((attrs['extraProperties'][i]['category'] === 'machine-readable specification of data format' || attrs['extraProperties'][i]['category'] === 'machine readable description of format')) {
                         if(attrs['extraProperties'][i]['values'][0]['valueIRI'] != null) {
-                            attribute = '<a class="underline" href="' + attrs['extraProperties'][i]['values'][0]['valueIRI'] + '">' + attrs['extraProperties'][i]['values'][0]['valueIRI'] + '</a>';
+                            attribute = urlify(attrs['extraProperties'][i]['values'][0]['valueIRI']);
                         } else if(attrs['extraProperties'][i]['values'][0]['value'] != null){
-                            attribute = '<a class="underline" href="' + attrs['extraProperties'][i]['values'][0]['value'] + '">' + attrs['extraProperties'][i]['values'][0]['value'] + '</a>';
+                            attribute = urlify(attrs['extraProperties'][i]['values'][0]['value']);
                         }
                     }
                 }
@@ -522,9 +522,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             } else {
                 if (attrs['extraProperties'] != null && (attrs['extraProperties'][0]['category'] === 'machine-readable specification of data format' || attrs['extraProperties'][0]['category'] === 'machine readable description of format')) {
                     if (attrs['extraProperties'][0]['values'][0]['valueIRI'] != null) {
-                        attribute = '<a class="underline" href="' + attrs['extraProperties'][0]['values'][0]['valueIRI'] + '">' + attrs['extraProperties'][0]['values'][0]['valueIRI'] + '</a>';
+                        attribute = urlify(attrs['extraProperties'][0]['values'][0]['valueIRI']);
                     } else if (attrs['extraProperties'][0]['values'][0]['value'] != null) {
-                        attribute = '<a class="underline" href="' + attrs['extraProperties'][0]['values'][0]['value'] + '">' + attrs['extraProperties'][0]['values'][0]['value'] + '</a>';
+                        attribute = urlify(attrs['extraProperties'][0]['values'][0]['value']);
                     }
                 } else {
                     $(containerId).hide();
@@ -535,7 +535,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             if (attrs['extraProperties'] != null && attrs['extraProperties'].length > 1) {
                 for (var i = 0; i < attrs['extraProperties'].length; i++) {
                     if (attrs['extraProperties'][i]['category'] === 'validator' && (attrs['extraProperties'][i]['values'] != undefined && attrs['extraProperties'][i]['values'][0]['value'] != "")) {
-                        attribute = '<a class="underline" href="' + attrs['extraProperties'][i]['values'][0]['value'] + '">' + attrs['extraProperties'][i]['values'][0]['value'] + '</a>';
+                        attribute = urlify(attrs['extraProperties'][i]['values'][0]['value']);
                     }
                 }
                 if (attribute == undefined) {
@@ -544,7 +544,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 }
             } else {
                 if (attrs['extraProperties'] != null && attrs['extraProperties'][0]['category'] === 'validator' && (attrs['extraProperties'][0]['values'] != undefined && attrs['extraProperties'][0]['values'][0]['value'] != "")) {
-                    attribute = '<a class="underline" href="' + attrs['extraProperties'][0]['values'][0]['value'] + '">' + attrs['extraProperties'][0]['values'][0]['value'] + '</a>';
+                    attribute = urlify(attrs['extraProperties'][0]['values'][0]['value']);
                 } else {
                     $(containerId).hide();
                     return;
@@ -663,6 +663,14 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     } else {
         $(containerId).hide();
     }
+}
+
+function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, function(url) {
+        return '<a class="underline" href="' + url + '">' + url + '</a>';
+    })
+
 }
 
 function toTitleCase(str) {

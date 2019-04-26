@@ -49,7 +49,7 @@
 <myTags:softwareModalItem id="software-version" title="Software version"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="human-readable-specification" title="Human readable specification"
-                          hasHref="true"></myTags:softwareModalItem>
+                          hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="machine-readable-specification" title="Machine readable specification"
                           hasHref="true"></myTags:softwareModalItem>
