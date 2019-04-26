@@ -18,7 +18,7 @@
 <myTags:softwareModalItem id="source-code" title="Link to code repository" hasHref="true"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="source-code-release" title="Source code release"
-                          hasHref="false"></myTags:softwareModalItem>
+                          hasHref="true"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="creator" title="" hasHref="false"></myTags:softwareModalItem>
 
