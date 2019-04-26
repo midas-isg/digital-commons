@@ -40,35 +40,37 @@
 
         <c:if test="${not empty entryView.entry.extraProperties}">
             <c:forEach items="${entryView.entry.extraProperties}" var="extraProperty" varStatus="varStatus">
-                <tr>
-                    <td>
-                        <c:choose>
-                            <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'human-readable') or fn:contains(fn:toLowerCase(extraProperty.category), 'human readable')}">
-                                Human readable specification
-                            </c:when>
-                            <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'machine-readable') or fn:contains(fn:toLowerCase(extraProperty.category), 'machine readable')}">
-                                Machine readable specification
-                            </c:when>
-                            <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'validator') and extraProperty.values ne null}">
-                                Validator
-                            </c:when>
-                        </c:choose>
-                    </td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${not empty extraProperty.values[0].valueIRI}">
-                                <script>
-                                    document.write(urlify('${extraProperty.values[0].valueIRI}'));
-                                </script>
-                            </c:when>
-                            <c:when test="${not empty extraProperty.values[0].value}">
-                                 <script>
-                                    document.write(urlify('${extraProperty.values[0].value}'));
-                                </script>
-                            </c:when>
-                        </c:choose>
-                    </td>
-                </tr>
+                <c:if test="${not empty  extraProperty.values[0].valueIRI or not empty  extraProperty.values[0].value}">
+                    <tr>
+                        <td>
+                            <c:choose>
+                                <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'human-readable') or fn:contains(fn:toLowerCase(extraProperty.category), 'human readable')}">
+                                    Human readable specification
+                                </c:when>
+                                <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'machine-readable') or fn:contains(fn:toLowerCase(extraProperty.category), 'machine readable')}">
+                                    Machine readable specification
+                                </c:when>
+                                <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'validator')}">
+                                    Validator
+                                </c:when>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${not empty extraProperty.values[0].valueIRI}">
+                                    <script>
+                                        document.write(urlify('${extraProperty.values[0].valueIRI}'));
+                                    </script>
+                                </c:when>
+                                <c:when test="${not empty extraProperty.values[0].value}">
+                                    <script>
+                                        document.write(urlify('${extraProperty.values[0].value}'));
+                                    </script>
+                                </c:when>
+                            </c:choose>
+                        </td>
+                    </tr>
+                </c:if>
             </c:forEach>
         </c:if>
 

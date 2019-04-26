@@ -11,7 +11,7 @@
               type="java.util.List" %>
 <div class="metadata-table">
     <h4 class="sub-title-font">${title}</h4>
-    <c:if test="${title eq 'Inputs'}">
+    <c:if test="${title eq 'Inputs' and not empty entryView.entry.inputs[0].isListOfDataFormatsComplete}">
         <table class="table table-condensed table-borderless table-discrete table-striped">
             <tbody>
             <tr>
@@ -21,7 +21,7 @@
             </tbody>
         </table>
     </c:if>
-    <c:if test="${title eq 'Outputs'}">
+    <c:if test="${title eq 'Outputs' and not empty entryView.entry.outputs[0].isListOfDataFormatsComplete}">
         <table class="table table-condensed table-borderless table-discrete table-striped">
             <tbody>
             <tr>
