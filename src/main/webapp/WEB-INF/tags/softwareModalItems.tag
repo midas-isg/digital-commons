@@ -20,6 +20,9 @@
 <myTags:softwareModalItem id="source-code-release" title="Source code release"
                           hasHref="true"></myTags:softwareModalItem>
 
+<myTags:softwareModalItem id="code-repository" title="Code repository"
+                          hasHref="true"></myTags:softwareModalItem>
+
 <myTags:softwareModalItem id="creator" title="" hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="landing-page" title="Landing page" hasHref="true"></myTags:softwareModalItem>
