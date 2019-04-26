@@ -79,7 +79,9 @@ public class EntryController{
         String xmlString = entryView.getXmlString();
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("json", jsonString);
+        //Replace smart single quote, smart double quote, and em dashes
+        jsonObject.addProperty("json", jsonString.replaceAll("[\\u2018\\u2019]", "'")
+           .replaceAll("[\\u201C\\u201D]", "\\\\\"").replaceAll("\\p{Pd}", "-"));
         jsonObject.addProperty("type", type);
         jsonObject.addProperty("xml", xmlString);
 
