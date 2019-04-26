@@ -6,7 +6,7 @@
 <%@ attribute name="entryView" required="true"
               type="edu.pitt.isg.dc.entry.classes.EntryView" %>
 
-<div class="metadata-table"><h4 class="sub-title-font">Licensing and Attribution</h4>
+<div class="metadata-table"><h4 class="sub-title-font">Licensing and attribution</h4>
     <table class="table table-condensed table-borderless table-discrete table-striped">
         <tbody>
         <tr>

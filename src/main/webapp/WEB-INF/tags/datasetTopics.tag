@@ -28,6 +28,61 @@
         <myTags:datasetHostSpeciesIncluded entryView="${entryView}"/>
         <myTags:datasetControlMeasures entryView="${entryView}"/>
         <myTags:datasetPublicationsThatUsedRelease entryView="${entryView}"/>
+
+        <%--Data standard information--%>
+        <c:if test="${not empty entryView.entry.version}">
+            <tr>
+                <td>Version</td>
+                <td>${entryView.entry.version}</td>
+            </tr>
+        </c:if>
+
+        <c:if test="${not empty entryView.entry.type}">
+            <tr>
+                <td>Type</td>
+                <td>
+                    <c:choose>
+                        <c:when test="${not empty entryView.entry.type.valueIRI}">
+                            <a class="underline" href="${entryView.entry.type.valueIRI}">${entryView.entry.type.value}</a>
+                        </c:when>
+                        <c:otherwise>
+                            ${entryView.entry.type.value}
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+            </tr>
+        </c:if>
+
+        <c:if test="${not empty entryView.entry.extraProperties}">
+            <c:forEach items="${entryView.entry.extraProperties}" var="extraProperty" varStatus="varStatus">
+                <tr>
+                    <td>
+                        <c:choose>
+                            <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'human-readable') or fn:contains(fn:toLowerCase(extraProperty.category), 'human readable')}">
+                                Human readable specification
+                            </c:when>
+                            <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'machine-readable') or fn:contains(fn:toLowerCase(extraProperty.category), 'machine readable')}">
+                                Machine readable specification
+                            </c:when>
+                            <c:when test="${fn:contains(fn:toLowerCase(extraProperty.category), 'validator') and extraProperty.values ne null}">
+                                Validator
+                            </c:when>
+                        </c:choose>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${not empty extraProperty.values[0].valueIRI}">
+                                <a href="${extraProperty.values[0].valueIRI}" class="underline">${extraProperty.values[0].valueIRI}</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${extraProperty.values[0].value}" class="underline">${extraProperty.values[0].value}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+                </tr>
+            </c:forEach>
+        </c:if>
+
         </tbody>
     </table>
 </div>
