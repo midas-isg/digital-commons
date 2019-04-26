@@ -59,12 +59,12 @@
                             <c:choose>
                                 <c:when test="${not empty extraProperty.values[0].valueIRI}">
                                     <script>
-                                        document.write(urlify('${extraProperty.values[0].valueIRI}'));
+                                        document.write(urlify("${extraProperty.values[0].valueIRI}"));
                                     </script>
                                 </c:when>
                                 <c:when test="${not empty extraProperty.values[0].value}">
                                     <script>
-                                        document.write(urlify('${extraProperty.values[0].value}'));
+                                        document.write(urlify("${extraProperty.values[0].value}"));
                                     </script>
                                 </c:when>
                             </c:choose>
