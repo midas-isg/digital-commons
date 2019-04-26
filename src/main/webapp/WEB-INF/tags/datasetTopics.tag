@@ -7,6 +7,7 @@
               type="edu.pitt.isg.dc.entry.classes.EntryView" %>
 <%@ attribute name="lineage" required="true"
               type="java.util.List" %>
+<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
 
 <div class="metadata-table"><h4 class="sub-title-font">Topics</h4>
     <table class="table table-condensed table-borderless table-discrete table-striped">
@@ -72,11 +73,15 @@
                     <td>
                         <c:choose>
                             <c:when test="${not empty extraProperty.values[0].valueIRI}">
-                                <a href="${extraProperty.values[0].valueIRI}" class="underline">${extraProperty.values[0].valueIRI}</a>
+                                <script>
+                                    document.write(urlify('${extraProperty.values[0].valueIRI}'));
+                                </script>
                             </c:when>
-                            <c:otherwise>
-                                <a href="${extraProperty.values[0].value}" class="underline">${extraProperty.values[0].value}</a>
-                            </c:otherwise>
+                            <c:when test="${not empty extraProperty.values[0].value}">
+                                 <script>
+                                    document.write(urlify('${extraProperty.values[0].value}'));
+                                </script>
+                            </c:when>
                         </c:choose>
                     </td>
                 </tr>
