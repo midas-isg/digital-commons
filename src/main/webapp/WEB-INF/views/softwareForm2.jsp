@@ -145,8 +145,7 @@
                                         listItems="${digitalObject.locationCoverage}">
             </myTags:editMasterUnbounded>
             <div class="row edit-form-group">
-            <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus"
-                                 checked="${digitalObject.availableOnOlympus}"></myTags:editCheckbox>
+
             <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"
                                  checked="${digitalObject.availableOnUIDS}"></myTags:editCheckbox>
             <myTags:editCheckbox label="Sign In Required" path="signInRequired"

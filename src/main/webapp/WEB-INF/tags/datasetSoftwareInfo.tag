@@ -32,8 +32,16 @@
                 <td>
                      <c:forEach items="${entryView.entry.sourceCodeRelease}"
                                var="source"
-                               varStatus="varStatus">
-                        <a class="underline" href="${source}">${source}</a>${!varStatus.last ? ',' : ''}
+                                varStatus="varStatus">
+                         <c:choose>
+                             <c:when test="${fn:contains(source, 'a href')}">
+                                 ${source}
+                             </c:when>
+                             <c:otherwise>
+                                 <a class="underline" href="${source}">${source}</a>${!varStatus.last ? ',' : ''}
+
+                             </c:otherwise>
+                         </c:choose>
                     </c:forEach>
                 </td>
             </tr>

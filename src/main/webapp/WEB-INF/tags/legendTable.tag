@@ -11,11 +11,6 @@
     </tr>
 
     <tr>
-        <td><i class="olympus-color legend-font"><b>AOC</b></i></td>
-        <td><i><span class="underline">A</span>vailable on <span class="underline">O</span>lympus <span class="underline">C</span>luster</i></td>
-    </tr>
-
-    <tr>
         <td><i class="sso-color legend-font"><b>SSO</b></i></td>
         <td><i>Requires (<span class="underline">S</span>ingle) <span class="underline">S</span>ign <span class="underline">O</span>n</i></td>
     </tr>

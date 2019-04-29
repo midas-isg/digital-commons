@@ -8,14 +8,14 @@
 
 <c:if test="${not empty region.children}">
     <c:if test="${region.name == 'united states of america'}">
-        currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}") + " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b><span class='badge'>[${region.children.size()}]</span>", 'nodes': []});
+        currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}") + " <span class='badge'>[${region.children.size()}]</span>", 'nodes': []});
         var childNodes = currentNode[currentNode.length - 1].nodes;
         <c:forEach items="${region.children}" var="child" varStatus="childLoop">
             if("${child.value.name}" in stateHash) {
                 $('#location-select').append('<option value="' + '${child.value.name}_${child.value.code}' + '">' + formatLocation(stateHash["${child.value.name}"]) + '</option>');
                 childNodes.push({
                     'name': stateHash["${child.value.name}"],
-                    'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticEcosystems\", \"${child.value.name}\")'>" + formatLocation(stateHash["${child.value.name}"]) + "</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
+                    'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticEcosystems\", \"${child.value.name}\")'>" + formatLocation(stateHash["${child.value.name}"]) + "</span>"
                 });
             }
         </c:forEach>
@@ -40,7 +40,7 @@
 
     currentNode.push({
         'name': "${region.name}",
-        'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticEcosystems\", \"${region.code}\")'>" + formatLocation("${region.name}") + " </span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
+        'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticEcosystems\", \"${region.code}\")'>" + formatLocation("${region.name}") + " </span>"
     });
 
     $.getJSON( ctx + '/resources/spew-dats-json/' + "${region.code}" + '.json' + '?v=' + Date.now(), function( data ) {
