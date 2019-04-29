@@ -734,7 +734,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             } else if (key === 'outputs') {
                 property = 'outputNumber';
                 label = '';
-                acceptOrProduce = 'accept';
+                acceptOrProduce = 'produce';
             }
             // debugger;
             if (Object.prototype.toString.call( attribute ) === '[object Array]') {
