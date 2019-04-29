@@ -169,7 +169,11 @@ public class EntryObject {
             }
         }
 
-        title = name + version;
+        if(this.getProperty("type").contains("DiseaseForecaster")) {
+            title = name;
+        } else {
+            title = name + version;
+        }
         return title;
     }
 

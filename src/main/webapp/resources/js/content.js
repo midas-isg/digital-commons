@@ -302,7 +302,7 @@ function toggleModalItems(entry, type) {
     toggleModalItem('controlMeasures', entry, 'control-measures', false, false);
     toggleModalItem('title', entry, 'title', false, false);
     toggleModalItem('humanReadableSynopsis', entry, 'human-readable-synopsis', false, true);
-    toggleModalItem('sourceCodeRelease', entry, 'source-code-release', false, true);
+    toggleModalItem('sourceCodeRelease', entry, 'source-code-release', true, false);
     toggleModalItem('publicationsAboutRelease', entry, 'publications-about-release', false, true);
     toggleModalItem('publicationsThatUsedRelease', entry, 'publications-that-used-release', false, true);
     toggleModalItem('webApplication', entry, 'web-application', true, false);

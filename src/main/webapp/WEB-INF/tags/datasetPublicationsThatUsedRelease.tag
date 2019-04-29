@@ -15,7 +15,7 @@
                     <c:forEach items="${entryView.entry.publicationsThatUsedRelease}"
                                var="publicationThatUsedRelease"
                                varStatus="varStatus">
-                      ${publicationThatUsedRelease}${!varStatus.last ? ',' : ''}
+                      ${publicationThatUsedRelease}${!varStatus.last ? ',<br>' : ''}
                     </c:forEach>
                 </div>
             </div>
