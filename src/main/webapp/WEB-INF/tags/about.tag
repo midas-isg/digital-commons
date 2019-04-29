@@ -42,6 +42,7 @@
 
         <div class="font-size-16 standard-font">
             <h3 class="sub-title-font font-size-20">Standard Identifiers</h3>
+            The MDC encourages the use of the following standard identifier systems when representing data and metadata:
             <div id="standard-identifiers">
                 <ul class="list-group">
                     <li class="list-group-item-wrap">
@@ -98,11 +99,9 @@
 
         <div class="font-size-16 standard-font">
             <h3 class="sub-title-font font-size-20">Web service</h3>
-            <span>A programmatic interface to the MIDAS Digital Commons is available in the form of a RESTful Web service.
+            <span>A programmatic interface to the MIDAS Digital Commons is available in the form of a RESTful Web service. The webservice conforms to the Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH), which enables users to harvest data from the Digital Commons in order to build value-added services.
 
-            The Web service (1) returns a list of the DOIs in MDC, (2) returns an object's metadata when presented with a DOI, and (3) returns data when presented with a DOI and a distribution identifier (there are one our more distributions of a dataset in the metadata) of a dataset.
-
-           The MDC Web service is documented using the Swagger software library which describes the endpoint URLs, HTTP methods, required parameters, optional parameters, response syntaxes and input forms to test the API directly from a web browser.  The Web service documentation is available  <a
+The MDC Web service is documented using the Swagger software library which describes the endpoint URLs, HTTP methods, required parameters, optional parameters, response syntaxes and input forms to test the API directly from a web browser. The Web service documentation is available <a
                         class="underline" href="${pageContext.request.contextPath}/sdoc.jsp">here</a>.
 
             </span>
