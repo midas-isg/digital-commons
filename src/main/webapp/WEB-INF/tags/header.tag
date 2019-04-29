@@ -16,7 +16,7 @@
             <%--<img src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_smaller.png" height="50" class="d-inline-block align-top" alt="">--%>
         <%--</a>--%>
         <h5 id="page-title"
-            class="leaf d-lg-none d-xl-block">Digital Commons</h5>
+            class="leaf">Digital Commons</h5>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

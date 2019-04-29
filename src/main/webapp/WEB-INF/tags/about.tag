@@ -27,12 +27,12 @@
             The <strong>digital objects</strong> include software, datasets, and data formats.
         </p>
 
-        <p class="font-size-16 standard-font">
-            The <strong>compute platform</strong> hosts programming languages and other software tools and some of the
-            digital objects (e.g., disease transmission models and synthetic ecosystems). The locally hosted digital
-            objects are labelled <i>AOC</i> (Available on the Olympus Cluster). Other digital objects are hosted
-            remotely (i.e., they are virtual w.r.t. this digital commons).
-        </p>
+        <%--<p class="font-size-16 standard-font">--%>
+            <%--The <strong>compute platform</strong> hosts programming languages and other software tools and some of the--%>
+            <%--digital objects (e.g., disease transmission models and synthetic ecosystems). The locally hosted digital--%>
+            <%--objects are labelled <i>AOC</i> (Available on the Olympus Cluster). Other digital objects are hosted--%>
+            <%--remotely (i.e., they are virtual w.r.t. this digital commons).--%>
+        <%--</p>--%>
 
         <p class="font-size-16 standard-font">
             We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable)
