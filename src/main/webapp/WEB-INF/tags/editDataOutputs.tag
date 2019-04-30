@@ -74,7 +74,7 @@
 <myTags:editYesNoUnknownEnum path="${path}.isOptional"
                              specifier="${specifier}-isOptional"
                              label="Is Output Optional"
-                             yesNoUnknown="${dataInputs.isOptional}"
+                             yesNoUnknown="${dataOutputs.isOptional}"
                              tagName="dataOutputs"
                              id="${specifier}-isOptional">
 </myTags:editYesNoUnknownEnum>
@@ -83,7 +83,7 @@
                              specifier="${specifier}-isListOfDataFormatsComplete"
                              label="Is List Of Data Formats Complete"
                              yesNoUnknown="${dataOutputs.isListOfDataFormatsComplete}"
-                             tagName="dataInputs"
+                             tagName="dataOutputs"
                              id="${specifier}-isListOfDataFormatsComplete">
 </myTags:editYesNoUnknownEnum>
 
