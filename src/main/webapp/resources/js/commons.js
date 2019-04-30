@@ -653,7 +653,17 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             }
 
             if(hasHref) {
-                $(elementId).attr('href', attribute);
+                var href = urlify(attribute);
+                if (href.includes('href')) {
+                    $(elementId).html(href);
+
+                } else {
+                    $(elementId).html(attribute);
+                }
+                //
+                // if(href.includes('href')) {
+                //     $(elementId).attr('href', attribute);
+                // }
             }
 
             $(containerId).show();
@@ -666,6 +676,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 }
 
 function urlify(text) {
+    if(text.includes('a href')) {
+        return text;
+    }
     var urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, function(url) {
         return '<a class="underline" href="' + url + '">' + url + '</a>';
