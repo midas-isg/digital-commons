@@ -286,9 +286,9 @@ function getNodeData(name, key, treeDictionary) {
         'name': title
     };
 
-    if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] === true) {
-        nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
-    }
+    // if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] === true) {
+    //     nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
+    // }
 
     if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] === true) {
         nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
@@ -312,11 +312,11 @@ function getNodeData(name, key, treeDictionary) {
             nodeData['url'] = url;
             nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
-            if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] === true) {
-                nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
-            }
+            // if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] === true) {
+            //     nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
+            // }
 
-            if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] === true) {
+            if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] === true) {
                 nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
             }
 

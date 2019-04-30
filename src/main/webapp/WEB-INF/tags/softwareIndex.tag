@@ -33,7 +33,6 @@
                 <li><a href="#" onclick="submitForm('codeRepository')">Code Repository</a></li>
                 <li><a href="#" onclick="submitForm('website')">Website</a></li>
                 <li><a href="#" onclick="submitForm('documentation')">Documentation</a></li>
-                <li><a href="#" onclick="submitForm('availableOnOlympus')">Available On Olympus</a></li>
                 <li><a href="#" onclick="submitForm('availableOnUIDS')">Available On UIDS</a></li>
                 <li><a href="#" onclick="submitForm('signInRequired')">Sign In Required</a></li>
                 <li><a href="#" onclick="submitForm('authors')">Authors</a></li>

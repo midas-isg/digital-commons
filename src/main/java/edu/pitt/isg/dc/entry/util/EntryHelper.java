@@ -169,10 +169,7 @@ public class EntryHelper {
         }
     }
 
-    public static String getBadge(String key) {
-        if(key.equals("availableOnOlympus")) {
-            return " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>";
-        } else if(key.equals("availableOnUIDS")) {
+    public static String getBadge(String key) { if(key.equals("availableOnUIDS")) {
             return " <b><i class=\"udsi-color\"><sup>UIDS</sup></i></b>";
         } else if(key.equals("signInRequired")) {
             return " <b><i class=\"sso-color\"><sup>SSO</sup></i></b>";

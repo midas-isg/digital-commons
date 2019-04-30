@@ -26,12 +26,12 @@
                                 dataStandardEntries="${dataStandardEntries}"
                         />
                     </div>
-                    <div id="compute-platform" class="tab-pane fade" role="tabpanel">
-                        <myTags:computePlatform/>
-                    </div>
-                    <div id="workflows" class="tab-pane fade" role="tabpanel">
-                        <myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>
-                    </div>
+                    <%--<div id="compute-platform" class="tab-pane fade" role="tabpanel">--%>
+                        <%--<myTags:computePlatform/>--%>
+                    <%--</div>--%>
+                    <%--<div id="workflows" class="tab-pane fade" role="tabpanel">--%>
+                        <%--<myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>--%>
+                    <%--</div>--%>
                     <div id="search" class="tab-pane fade" role="tabpanel">
                         <myTags:search/>
                     </div>
