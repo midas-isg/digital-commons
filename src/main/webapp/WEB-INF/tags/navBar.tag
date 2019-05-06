@@ -27,7 +27,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="${contextPath}/search">Conventional DB search</a>
-            <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#search">Ontology-based search</a>
+            <a class="dropdown-item" target="_blank" href="http://mdcsearchdev.onbc.io/#/">Ontology-based search</a>
         </div>
     </li>
     <%--<li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>--%>
