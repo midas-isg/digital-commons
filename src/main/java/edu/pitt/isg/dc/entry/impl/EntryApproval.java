@@ -119,6 +119,8 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getPublicEntries() throws MdcEntryDatastoreException {
+        return mdcEntryDatastoreInterface.getPublicEntries();
+/*
         List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
         List<EntryView> entries = new ArrayList<>();
         for(EntryId entryId : entryIds) {
@@ -129,6 +131,7 @@ public class EntryApproval implements EntryApprovalInterface {
             }
         }
         return entries;
+*/
     }
 
     @Override

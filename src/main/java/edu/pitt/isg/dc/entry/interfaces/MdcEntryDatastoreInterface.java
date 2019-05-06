@@ -32,6 +32,8 @@ public interface MdcEntryDatastoreInterface {
 
     List<EntryView> getLatestApprovedNotPublicEntries() throws MdcEntryDatastoreException;
 
+    List<EntryView> getPublicEntries() throws MdcEntryDatastoreException;
+
     void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException;
 
     Comments getComments(Long id) throws MdcEntryDatastoreException;

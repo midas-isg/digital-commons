@@ -130,39 +130,34 @@ public class CategoryHelper {
     }
 
     private Map<Long, List<EntryView>> getCategoryEntryMap(Boolean resetTree, String entriesSubset) throws MdcEntryDatastoreException {
-        boolean showAllEntries = true;
-
         if (categoryEntryMap.size() == 0 || resetTree) {
             List<Category> categories = categoryRepository.findAll();
             for (Category category : categories) {
                 categoryEntryMap.put(category.getId(), new ArrayList<>());
             }
 
-            List<EntryView> entries = entryApprovalInterface.getPublicEntries();
-            Map<Long, Long> subsetEntryMap = new HashMap<Long, Long>();
+            List<EntryView> entries = new ArrayList<>();
             if (entriesSubset.equalsIgnoreCase("DiseaseForecasters")) {
-                showAllEntries = false;
-                List<Entry> entriesSubCategory = entryService.getAllEntriesPertainingToCategory(entriesSubset);
-                for (Entry entrySubCategory : entriesSubCategory) {
-                    subsetEntryMap.put(entrySubCategory.getId().getEntryId(), entrySubCategory.getCategory().getId());
+                for (Entry entrySubCategory : entryService.getAllEntriesPertainingToCategory(entriesSubset)){
+                    entries.add(new EntryView(entrySubCategory));
                 }
-            }
+            } else entries = entryApprovalInterface.getPublicEntries();
+
+            Map<Long, Long> subsetEntryMap = new HashMap<Long, Long>();
 
             for (EntryView entry : entries) {
-                if (showAllEntries || subsetEntryMap.containsKey(entry.getId().getEntryId())) {
-                    Category category = entry.getCategory();
-                    if (category != null) {
-                        Long categoryId = category.getId();
+                Category category = entry.getCategory();
+                if (category != null) {
+                    Long categoryId = category.getId();
 
-                        if (categoryEntryMap.containsKey(categoryId)) {
-                            List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
-                            categoryEntries.add(entry);
-                            categoryEntryMap.put(categoryId, categoryEntries);
-                        } else {
-                            List<EntryView> categoryEntries = new ArrayList<>();
-                            categoryEntries.add(entry);
-                            categoryEntryMap.put(categoryId, categoryEntries);
-                        }
+                    if (categoryEntryMap.containsKey(categoryId)) {
+                        List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
+                        categoryEntries.add(entry);
+                        categoryEntryMap.put(categoryId, categoryEntries);
+                    } else {
+                        List<EntryView> categoryEntries = new ArrayList<>();
+                        categoryEntries.add(entry);
+                        categoryEntryMap.put(categoryId, categoryEntries);
                     }
                 }
             }

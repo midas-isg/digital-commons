@@ -133,6 +133,16 @@ public class Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
+    @Transactional
+    public List<EntryView> getPublicEntries() throws MdcEntryDatastoreException {
+        List<EntryView> list = new ArrayList<>();
+        for (Entry entry: repo.findPublicEntries()) {
+            list.add(new EntryView(entry));
+        }
+        return list;
+    }
+
+    @Override
     public List<EntryId> getEntryIds() {
         List<EntryId> list = new ArrayList<>();
         for (Entry entry: repo.findAll()) {
