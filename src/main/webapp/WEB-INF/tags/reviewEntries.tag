@@ -158,6 +158,8 @@
 
 
     function approveButton(id) {
+        $(".ajax-loader").html("<img src='../resources/img/spinner.gif'>");
+        $("#approve-btn-"+id).button.disabled;
         var endId = "-" + id;
         var entryId = $("#approve-entry-id" + endId).val();
         var revisionId = $("#approve-entry-revision-id" + endId).val();
@@ -197,6 +199,8 @@
     }
 
     function rejectButton(id) {
+        $(".ajax-loader").html("<img src='../resources/img/spinner.gif'>");
+        $("#reject-btn-"+id).button.disabled;
         var endId = "-" + id;
         var entryId = $("#approve-entry-id" + endId).val();
         var revisionId = $("#approve-entry-revision-id" + endId).val();

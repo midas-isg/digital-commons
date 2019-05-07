@@ -44,6 +44,7 @@
                     </div>
                 </c:if>
                 <div class="sub-title-font font-size-16 modal-software-item form-group" id="category-form-group-${id}">
+                    <div class="ajax-loader"></div>
                     <c:choose>
                         <c:when test="${type == 'approve'}">
                             <h4 class="inline bold" id="category-label-${id}">Category*: </h4><br>
@@ -78,7 +79,7 @@
                         <button id="approve-btn-${id}" type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>
                     </c:when>
                     <c:when test="${type == 'reject'}">
-                        <button type="button" class="btn btn-danger" onclick="rejectButton('${id}')">Reject</button>
+                        <button id="reject-btn-${id}" type="button" class="btn btn-danger" onclick="rejectButton('${id}')">Reject</button>
                     </c:when>
                     <%--<c:otherwise>--%>
                         <%--<button type="button" class="btn btn-default" onclick="commentButton('${id}')">Submit</button>--%>
