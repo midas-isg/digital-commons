@@ -159,7 +159,7 @@
 
     function approveButton(id) {
         $(".ajax-loader").html("<img src='../resources/img/spinner.gif'>");
-        $("#approve-btn-"+id).button.disabled;
+        $("#approve-btn-"+id).attr("disabled", true);
         var endId = "-" + id;
         var entryId = $("#approve-entry-id" + endId).val();
         var revisionId = $("#approve-entry-revision-id" + endId).val();
@@ -200,7 +200,7 @@
 
     function rejectButton(id) {
         $(".ajax-loader").html("<img src='../resources/img/spinner.gif'>");
-        $("#reject-btn-"+id).button.disabled;
+        $("#reject-btn-"+id).attr("disabled", true);
         var endId = "-" + id;
         var entryId = $("#approve-entry-id" + endId).val();
         var revisionId = $("#approve-entry-revision-id" + endId).val();
