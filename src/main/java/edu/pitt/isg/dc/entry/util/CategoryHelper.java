@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.math.BigInteger;
 import java.util.*;
 
 @Component
@@ -34,18 +35,20 @@ public class CategoryHelper {
     @Autowired
     private EntryService entryService;
 
-    private Map<String, String> subcategoriesToCategories;
+//    private Map<String, String> subcategoriesToCategories;
 
     Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
 
+/*
     public CategoryHelper() {
         this.subcategoriesToCategories = new HashMap<>();
     }
+*/
 
     public CategoryHelper(CategoryOrderRepository categoryOrderRepository, EntryApprovalInterface entryApprovalInterface) {
         this.categoryOrderRepository = categoryOrderRepository;
         this.entryApprovalInterface = entryApprovalInterface;
-        this.subcategoriesToCategories = new HashMap<>();
+//        this.subcategoriesToCategories = new HashMap<>();
     }
 
     private Map<String, Object> getCategoryOrderMap() {
@@ -54,18 +57,22 @@ public class CategoryHelper {
         Category rootCategory = new Category();
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = new HashMap<>();
 
+/*
         boolean populateSubcategoriesToCategories = false;
         if(subcategoriesToCategories.size() == 0) {
             populateSubcategoriesToCategories = true;
         }
+*/
 
         for(CategoryOrder co : categoryOrders) {
+/*
             if(populateSubcategoriesToCategories) {
                 String subcategory = co.getSubcategory().getCategory() + " " + co.getSubcategory().getId();
                 String category = co.getCategory().getCategory() + " " + co.getCategory().getId();
 
                 subcategoriesToCategories.put(subcategory, category);
             }
+*/
 
             Category category = co.getCategory();
             CategoryWithOrder subcategory = new CategoryWithOrder(co.getSubcategory(), co.getOrdering());
@@ -318,6 +325,7 @@ public class CategoryHelper {
     }
 
     public Map<Long, String> getTreePaths(String entriesSubset) throws MdcEntryDatastoreException {
+/*
         Map<String, Object> map = this.getCategoryOrderMap();
         Category rootCategory = (Category) map.get("root");
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
@@ -325,7 +333,27 @@ public class CategoryHelper {
         Boolean resetTree = false;
         Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree, entriesSubset);
         Map<Long, String> result = this.recurseTreePaths(rootCategory, categoryOrderMap, categoryEntryMap, new HashMap<Long, String>(), "");
-        return MapUtil.sortByValue(result);
+
+//        return MapUtil.sortByValue(result);
+*/
+        Map<Long, String> treePathMap = new HashMap<Long, String>();
+        List<Object[]> treePathObject;
+        if(entriesSubset.equalsIgnoreCase("DiseaseForecasters")){
+            treePathObject = categoryRepository.getTreePathsSubset(9L);
+        } else treePathObject = categoryRepository.getTreePaths();
+
+        for(Object[] obj : treePathObject){
+            if(obj.length == 2){
+                Long key = ((BigInteger) obj[0]).longValue();
+                String value = (String) obj[1];
+                //Root (1) and Standard Identifiers (5) do not need to be in the map
+                if(!treePathMap.containsKey(key) && !(key == 1 || key == 5)){
+                    treePathMap.put(key, value);
+                }
+            }
+        }
+
+        return MapUtil.sortByValue(treePathMap);
     }
 
     private Map<Long,String> recurseTreePaths(Category category, Map<Category, List<CategoryWithOrder>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, Map<Long, String> paths, String path) {

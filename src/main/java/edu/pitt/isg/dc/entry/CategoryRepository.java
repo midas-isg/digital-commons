@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -33,5 +34,14 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             "from vw_findsetsview as fs \n" +
             "where fs.setid = :identifier ;")
     String getTopCategory(@Param("identifier") Long identifier);
+
+    @Query(nativeQuery = true, value="select setid, tree_path \n" +
+            "from vw_findsetsview as fs ;")
+    List<Object[]> getTreePaths();
+
+    @Query(nativeQuery = true, value="select setid, tree_path \n" +
+            "from vw_findsetsview as fs " +
+            "where fs.top_category_id = :identifier ;")
+    List<Object[]> getTreePathsSubset(@Param("identifier") Long identifier);
 
 }
