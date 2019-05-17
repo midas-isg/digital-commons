@@ -145,7 +145,7 @@ public class DataEntryController {
 
     @RequestMapping(value = "/add-data-gov-record-by-id", method = RequestMethod.GET)
     public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
-        model.addAttribute("categoryPaths", categoryHelper.getTreePaths("AllEntries"));
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths(1L)); // 1L = Root
         //model.addAttribute("category", category);
 
         if (!ifISGAdmin(session) && !ifMDCEditor(session)) {

@@ -394,7 +394,7 @@ List<Object[]> match2Software();
                     "       join vw_findsetsview as fsv  \n" +
                     "         on e.category_id = fsv.setid \n" +
                     "where \n" +
-                    "    fsv.top_category = ?1 \n" +
+                    "    fsv.top_category_id = ?1 \n" +
                     "  and \n" +
                     "    e.is_public = true \n" +
                     "union \n" +
@@ -409,7 +409,7 @@ List<Object[]> match2Software();
                     "             join vw_findsetsview as fsv \n" +
                     "               on e.category_id = fsv.setid \n" +
                     "      where \n" +
-                    "          fsv.top_category = ?1 \n" +
+                    "          fsv.top_category_id = ?1 \n" +
                     "        and \n" +
                     "          e.is_public = true \n" +
                     "      union \n" +
@@ -418,7 +418,7 @@ List<Object[]> match2Software();
                     "             join vw_findsetsview as fsv \n" +
                     "               on e.category_id = fsv.setid \n" +
                     "      where \n" +
-                    "          fsv.top_category = ?1 \n" +
+                    "          fsv.top_category_id = ?1 \n" +
                     "        and \n" +
                     "          e.is_public = true \n" +
                     "      ) \n" +
@@ -457,7 +457,7 @@ List<Object[]> match2Software();
                     "                join vw_findsetsview as fsv \n" +
                     "                  on e.category_id = fsv.setid \n" +
                     "         where \n" +
-                    "             fsv.top_category = ?1 \n" +
+                    "             fsv.top_category_id = ?1 \n" +
                     "           and \n" +
                     "             e.is_public = true \n" +
                     "         union \n" +
@@ -466,7 +466,7 @@ List<Object[]> match2Software();
                     "                join vw_findsetsview as fsv \n" +
                     "                  on e.category_id = fsv.setid \n" +
                     "         where \n" +
-                    "             fsv.top_category = ?1 \n" +
+                    "             fsv.top_category_id = ?1 \n" +
                     "           and \n" +
                     "             e.is_public = true \n" +
                     "       ) \n" +
@@ -497,11 +497,11 @@ List<Object[]> match2Software();
                             "    , date_added \n" +
                             "    , user_id \n" +
                             "    , jsonb_array_elements(jsonb_array_elements(content #> '{entry, inputs}') #> '{dataFormats}') as dataFormats \n" +
-                            "    , fsv.top_category \n" +
+                            "    , fsv.top_category_id \n" +
                             "from entry \n" +
                             "       join vw_findsetsview as fsv \n" +
                             "         on category_id = fsv.setid \n" +
-                            "where fsv.top_category != ?1 \n" +
+                            "where fsv.top_category_id != ?1 \n" +
                             "  and is_public = true \n" +
                             "union \n" +
                             "select \n" +
@@ -515,11 +515,11 @@ List<Object[]> match2Software();
                             "    , date_added \n" +
                             "    , user_id \n" +
                             "    , jsonb_array_elements(jsonb_array_elements(content #> '{entry, outputs}') #> '{dataFormats}') as dataFormats \n" +
-                            "    , fsv.top_category \n" +
+                            "    , fsv.top_category_id \n" +
                             "    from entry \n" +
                             "    join vw_findsetsview as fsv \n" +
                             "    on category_id = fsv.setid \n" +
-                            "    where fsv.top_category != ?1 \n" +
+                            "    where fsv.top_category_id != ?1 \n" +
                             "      and is_public = true \n" +
                             ") as e \n" +
                             "  join \n" +
@@ -533,7 +533,7 @@ List<Object[]> match2Software();
                             "                   join vw_findsetsview as fsv \n" +
                             "                     on e.category_id = fsv.setid \n" +
                             "            where \n" +
-                            "                fsv.top_category = ?1 \n" +
+                            "                fsv.top_category_id = ?1 \n" +
                             "              and \n" +
                             "                e.is_public = true \n" +
                             "            union \n" +
@@ -542,7 +542,7 @@ List<Object[]> match2Software();
                             "                   join vw_findsetsview as fsv \n" +
                             "                     on e.category_id = fsv.setid \n" +
                             "            where \n" +
-                            "                fsv.top_category = ?1 \n" +
+                            "                fsv.top_category_id = ?1 \n" +
                             "              and \n" +
                             "                e.is_public = true \n" +
                             "           ) \n" +
@@ -551,6 +551,6 @@ List<Object[]> match2Software();
                             "where \n" +
                             "    e.is_public = true; "
     )
-    List<Entry> getAllEntriesPertainingToCategory(@Param("category") String category);
+    List<Entry> getAllEntriesPertainingToCategory(@Param("categoryId") Long categoryId);
 
 }

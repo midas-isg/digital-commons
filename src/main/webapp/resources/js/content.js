@@ -1,4 +1,4 @@
-function expandNodesInSessionVariable(treeId, sessionVariable) {
+function expandNodesInSessionVariable(treeId, sessionVariable, treeSub) {
     var expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
     var toRemove = [];
 
@@ -7,7 +7,7 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
         var defaultExpandedNodeIds = [];
         for(var i = 0; i < defaultExpandedNodes.length; i++) {
             defaultExpandedNodeIds.push(defaultExpandedNodes[i].nodeId);
-            if(treeId.startsWith('#tree-df-')){
+            if(treeId.startsWith('#tree-' + treeSub + '-')){
                 defaultExpandedNodeIds = getDefaultExpandedNodeIds(defaultExpandedNodes[i], defaultExpandedNodeIds);
             }
         }
