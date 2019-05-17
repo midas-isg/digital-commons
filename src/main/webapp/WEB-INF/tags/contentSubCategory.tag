@@ -8,8 +8,25 @@
               type="java.util.List" %>
 <%@ attribute name="softwareEntries" required="true"
               type="java.util.List" %>
+<%@ attribute name="subCategoryId" required="true"
+              type="java.lang.Long" %>
+
+<c:choose>
+    <c:when test="${subCategoryId == 9}">
+        <c:set var="subCategoryTreeInfoArr" scope="page" value="${diseaseForecastersTreeInfoArr}"/>
+        <c:set var="softwareColumnHeader" scope="page" value="Disease Forecasters and Related Software"/>
+    </c:when>
+    <c:when test="${subCategoryId == 14}">
+        <c:set var="subCategoryTreeInfoArr" scope="page" value="${pathogenEvolutionModelsTreeInfoArr}"/>
+        <c:set var="softwareColumnHeader" scope="page" value="Pathogen Evolution Models and Related Software"/>
+    </c:when>
+    <c:when test="${subCategoryId == 10}">
+        <c:set var="subCategoryTreeInfoArr" scope="page" value="${diseaseTransmissionModelsTreeInfoArr}"/>
+        <c:set var="softwareColumnHeader" scope="page" value="Disease Transmisson Models and Related Software"/>
+    </c:when>
+</c:choose>
 <div class="row">
-<c:forEach items="${diseaseForecastersTreeInfoArr}" var="treeInfo" varStatus="treeLoop">
+<c:forEach items="${subCategoryTreeInfoArr}" var="treeInfo" varStatus="treeLoop">
     <c:if test="${treeInfo.category != 'Country' }">
         <%--In the last column we want Data Formats, then Standard Identifiers, then Websites with data.--%>
         <c:choose>
@@ -24,13 +41,6 @@
                     </div>
             </c:when>
             <c:when test="${treeInfo.category == 'Websites with data'}">
-<%--
-                <div class="col-sm-12">
-                    <h3 class="content-title-font">Standard Identifiers</h3>
-                    <div id="standard-identifiers-treeview" class="treeview"></div>
-                </div>
---%>
-
 <%--
                 <div class="col-sm-12">
                     <h3 class="content-title-font">${treeInfo.category}</h3>
@@ -51,22 +61,11 @@
                             </c:forEach>
 
                             <h3 class="content-title-font">${treeInfo.category}
-<%--
-                                <div class="btn-group mr-1 mb-1">
-                                    <button type="button" class="btn btn-default sort-by-dropdown btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Sort by Category
-                                    </button>
-                                    <div class="dropdown-menu open-left" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                        <a href="#" class="dropdown-item" id="drop-down-category" value="${treeLoop.index}">Category</a>
-                                        <a href="#" class="dropdown-item" id="drop-down-location" value="${treeLoop.index}">Location</a>
-                                    </div>
-                                </div>
---%>
                             </h3>
                             <div id="tree-df-${country_index}" class="treeview" style="display: none"></div>
                         </c:when>
                         <c:when test="${treeInfo.category == 'Models and Other Software'}">
-                            <h3 class="content-title-font">Disease Forecasters and Related Software</h3>
+                            <h3 class="content-title-font">${softwareColumnHeader}</h3>
                         </c:when>
                         <c:otherwise>
                             <h3 class="content-title-font">${treeInfo.category}
@@ -82,26 +81,6 @@
     </c:if>
     <script>
         $(document).ready(function () {
-            // function setModalMaxHeight(element) {
-            //     this.$element     = $(element);
-            //     this.$content     = this.$element.find('.modal-content');
-            //     var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
-            //     var dialogMargin  = $(window).width() < 768 ? 20 : 100;
-            //     var contentHeight = $(window).height() - (dialogMargin + borderWidth);
-            //     var headerHeight  = 96;
-            //     var footerHeight  = this.$element.find('.modal-footer').outerHeight() || 0;
-            //     var maxHeight     = contentHeight - (headerHeight + footerHeight);
-            //     this.$content.css({
-            //         'overflow': 'hidden'
-            //     });
-            //
-            //     // this.$element
-            //     //     .find('.modal-body').css({
-            //     //     'max-height': maxHeight,
-            //     //     'height': maxHeight,
-            //     //     'overflow-y': 'auto'
-            //     // });
-            // }
 
             $('.modal').on('show.bs.modal', function() {
                 $(this).show();
@@ -114,35 +93,6 @@
                 $(".helpicon-is-about").show();
                 $(".hideicon-is-about").hide();
             });
-            //
-            // $(window).resize(function() {
-            //     if ($('.modal.in').length != 0) {
-            //         setModalMaxHeight($('.modal.in'));
-            //     }
-            // });
-
-
-/*
-            $("#drop-down-category").click(function () {
-                $('.sort-by-dropdown').html('Sort by Category <span class="caret"></span>');
-                $('.sort-by-dropdown').val($(this).data('value'));
-
-                var treeIndex = $(this).attr("value");
-                $("#tree-df-check-box-div").hide();
-                $("#tree-df-${country_index}").hide();
-                $("#tree-df-" + treeIndex).show();
-            });
-
-            $("#drop-down-location").click(function () {
-                $('.sort-by-dropdown').html('Sort by Location <span class="caret"></span>');
-                $('.sort-by-dropdown').val($(this).data('value'));
-
-                var treeIndex = $(this).attr("value");
-                $("#tree-df-check-box-div").show();
-                $("#tree-df-${country_index}").show();
-                $("#tree-df-" + treeIndex).hide();
-            });
-*/
 
         });
 

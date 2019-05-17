@@ -17,7 +17,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#content">All Content</a>
+            <a class="dropdown-item" href="${contextPath}/disease-transmission-modeling">Disease transmission modeling</a>
             <a class="dropdown-item" href="${contextPath}/disease-forecasting">Disease forecasting</a>
+            <a class="dropdown-item" href="${contextPath}/pathogen-evolution-modeling">Pathogen evolution modeling</a>
         </div>
     </li>
 

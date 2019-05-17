@@ -155,7 +155,7 @@ public class DatasetWebflowValidator {
 
     public Map<Long, String> categoryListForDropdown(String digitalObjectType) {
         try {
-            Map<Long, String> categoryMap = categoryHelper.getTreePaths("AllEntries");
+            Map<Long, String> categoryMap = categoryHelper.getTreePaths(1L); // 1L = Root
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Software"));
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Data"));
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Websites with data"));
@@ -231,7 +231,7 @@ public class DatasetWebflowValidator {
 
     public String getCategoryNameFromID(Long categoryID) {
         try {
-            Map<Long, String> categoryMap = categoryHelper.getTreePaths("AllEntries");
+            Map<Long, String> categoryMap = categoryHelper.getTreePaths(1L); // 1L = Root
             return categoryMap.get(categoryID);
         } catch (Exception e) {
             return null;

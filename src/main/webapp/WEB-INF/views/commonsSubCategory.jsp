@@ -21,10 +21,11 @@
             <%--<div id="commons-main-body">--%>
                 <%--<div class="tab-content">--%>
                     <%--<div id="content" class="tab-pane fade show active" role="tabpanel">--%>
-                        <myTags:contentDF
+                        <myTags:contentSubCategory
                                 softwareEntries="${softwareEntries}"
                                 datasetEntries="${datasetEntries}"
                                 dataStandardEntries="${dataStandardEntries}"
+                                subCategoryId="${subCategoryId}"
                         />
                     <%--</div>--%>
                     <%--<div id="compute-platform" class="tab-pane fade" role="tabpanel">--%>

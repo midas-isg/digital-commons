@@ -18,6 +18,8 @@ public class DigitalCommonsProperties extends Properties {
     public static final String ENTRIES_ADMIN_AUTHENTICATION = "entriesAdminAuthentication";
     public static final String TREE_INFO_CACHE_FILE_LOCATION = "treeInfoCacheFileLocation";
     public static final String DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE_LOCATION = "diseaseForecastersTreeInfoCacheFileLocation";
+    public static final String PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE_LOCATION = "pathogenEvolutionModelsTreeInfoCacheFileLocation";
+    public static final String DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE_LOCATION = "diseaseTransmissionModelsTreeInfoCacheFileLocation";
     public static final String TEMP_FILEPATH = "tempFilepath";
 
 

@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -51,10 +52,14 @@ public class HomeController {
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private static String TREE_INFO_CACHE_FILE = "";
     private static String DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE = "";
+    private static String PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE = "";
+    private static String DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
 
     private static List<Map<String, String>> treeInfoArr;
     private static List<Map<String, String>> diseaseForecastersTreeInfoArr;
+    private static List<Map<String, String>> pathogenEvolutionModelsTreeInfoArr;
+    private static List<Map<String, String>> diseaseTransmissionModelsTreeInfoArr;
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -64,6 +69,8 @@ public class HomeController {
         LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
         TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.TREE_INFO_CACHE_FILE_LOCATION);
         DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE_LOCATION);
+        PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE_LOCATION);
+        DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE_LOCATION);
     }
 
     @Autowired
@@ -118,39 +125,6 @@ public class HomeController {
     }
 
     public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
-//        try {
-//            model.addAttribute("spewRegions", spewRule.treeRegions());
-//            spewCount=0;
-//            spewAmericaCount = 0;
-//            for(SpewLocation location : spewRule.treeRegions()) {
-//                if (location.getName().toLowerCase().contains("america")) {
-//                    recureAmericaTree(location, false);
-//                }
-//                recurseSpewTree(location, false);
-//            }
-//            //we do not show burkina faso
-//            spewCount--;
-//            model.addAttribute("spewRegionCount", spewCount);
-//            model.addAttribute("spewAmericaCount", spewAmericaCount);
-//
-//        } catch (Exception e) {
-//            try {
-//                Path path = Paths.get(SPEW_CACHE_FILE);
-//
-//                FileInputStream fis = new FileInputStream(path.toFile());
-//                ObjectInputStream ois = new ObjectInputStream(fis);
-//                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
-//
-//                model.addAttribute("spewRegions", spewLocationIterable);
-//            } catch (Exception ee) {
-//                SpewLocation emptySpew = new SpewLocation();
-//                emptySpew.setName("Error loading data from SPEW");
-//                List<SpewLocation> tree = new ArrayList<>();
-//                tree.add(emptySpew);
-//                model.addAttribute("spewRegions", tree);
-//            }
-//        }
-
         List<Object[]> spewLocationsAndAccessUrls = workflows.getSpewLocationsAndAccessUrls();
 
         Pattern pattern = Pattern.compile(".*(\\d{2}).tar.gz");
@@ -166,18 +140,30 @@ public class HomeController {
         }
 
         if (treeInfoArr == null) {
-            treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
+            treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
             writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
         }
 
         if (diseaseForecastersTreeInfoArr == null) {
-            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees("DiseaseForecasters");
+            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees(9L); // 9L = DiseaseForecasters
             writeFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
+        }
+
+        if (pathogenEvolutionModelsTreeInfoArr == null) {
+            pathogenEvolutionModelsTreeInfoArr = categoryHelper.getEntryTrees(14L); // 9L = DiseaseForecasters
+            writeFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE);
+        }
+
+        if (diseaseTransmissionModelsTreeInfoArr == null) {
+            diseaseTransmissionModelsTreeInfoArr = categoryHelper.getEntryTrees(10L); // 9L = DiseaseForecasters
+            writeFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE);
         }
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
         model.addAttribute("diseaseForecastersTreeInfoArr", diseaseForecastersTreeInfoArr);
+        model.addAttribute("pathogenEvolutionModelsTreeInfoArr", pathogenEvolutionModelsTreeInfoArr);
+        model.addAttribute("diseaseTransmissionModelsTreeInfoArr", diseaseTransmissionModelsTreeInfoArr);
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
@@ -225,9 +211,26 @@ public class HomeController {
 
     @RequestMapping(value = "/disease-forecasting", method = RequestMethod.GET)
     public String showDiseaseForecasters(Model model, HttpSession session) throws Exception {
+        model.addAttribute("subCategoryId", 9L);
         populateCommonsMainModel(model);
 
-        return "commonsDF";
+        return "commonsSubCategory";
+    }
+
+    @RequestMapping(value = "/pathogen-evolution-modeling", method = RequestMethod.GET)
+    public String showPathogenEvolutionModels(Model model, HttpSession session) throws Exception {
+        model.addAttribute("subCategoryId", 14L);
+        populateCommonsMainModel(model);
+
+        return "commonsSubCategory";
+    }
+
+    @RequestMapping(value = "/disease-transmission-modeling", method = RequestMethod.GET)
+    public String showDiseaseTransmissionModels(Model model, HttpSession session) throws Exception {
+        model.addAttribute("subCategoryId", 10L);
+        populateCommonsMainModel(model);
+
+        return "commonsSubCategory";
     }
 
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
@@ -335,7 +338,7 @@ public class HomeController {
                 treeInfoArr = (List<Map<String, String>>) ois.readObject();
                 return treeInfoArr;
             } catch (Exception e) {
-                treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
+                treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
                 writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
                 return treeInfoArr;
             }
@@ -345,6 +348,8 @@ public class HomeController {
     private void writeFile(Object fileToWrite, String fileString) {
         try {
             Path path = Paths.get(fileString);
+            Files.createDirectories(path.getParent());
+            Files.createFile(path);
             FileOutputStream fos = new FileOutputStream(path.toFile());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -356,22 +361,32 @@ public class HomeController {
         }
     }
 
+    private void writeCacheFile(List<Map<String, String>> categoryTreeInfoArr, String cache_file, Long subCategoryId) throws Exception {
+        categoryTreeInfoArr = categoryHelper.getEntryTrees(subCategoryId);
+        Path path = Paths.get(cache_file);
+        Files.createDirectories(path.getParent());
+        Files.createFile(path);
+        FileOutputStream fos = new FileOutputStream(path.toFile());
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        oos.writeObject(categoryTreeInfoArr);
+    }
+
     @RequestMapping(value = "api/cache-tree-info", method = RequestMethod.GET)
     public String cacheTreeInfo(Model model) {
         try {
-            treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
+            writeCacheFile(treeInfoArr, TREE_INFO_CACHE_FILE, 1L); // 1L = Root
+            writeCacheFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE, 9L); // 9L = DiseaseForecasters
+            writeCacheFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE, 14L); // 14L = PathogenEvolutionModels
+            writeCacheFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE, 10L); // 10L = DieseaseTransmissionModels
+/*
+            treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
             Path path = Paths.get(TREE_INFO_CACHE_FILE);
             FileOutputStream fos = new FileOutputStream(path.toFile());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(treeInfoArr);
-
-            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees("DiseaseForecasters");
-            Path pathDF = Paths.get(DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
-            FileOutputStream fosDF = new FileOutputStream(pathDF.toFile());
-            ObjectOutputStream oosDF = new ObjectOutputStream(fosDF);
-
-            oosDF.writeObject(diseaseForecastersTreeInfoArr);
+*/
 
             model.addAttribute("status", "success");
         } catch (Exception e) {
@@ -388,19 +403,18 @@ public class HomeController {
 
         Map<String, String> resultMap = new HashMap<>();
         try {
-            treeInfoArr = categoryHelper.getEntryTrees("AllEntries");
+            writeCacheFile(treeInfoArr, TREE_INFO_CACHE_FILE, 1L); // 1L = Root
+            writeCacheFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE, 9L); // 9L = DiseaseForecasters
+            writeCacheFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE, 14L); // 14L = PathogenEvolutionModels
+            writeCacheFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE, 10L); // 10L = DieseaseTransmissionModels
+/*
+            treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
             Path path = Paths.get(TREE_INFO_CACHE_FILE);
             FileOutputStream fos = new FileOutputStream(path.toFile());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(treeInfoArr);
-
-            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees("DiseaseForecasters");
-            Path pathDF = Paths.get(DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
-            FileOutputStream fosDF = new FileOutputStream(pathDF.toFile());
-            ObjectOutputStream oosDF = new ObjectOutputStream(fosDF);
-
-            oosDF.writeObject(diseaseForecastersTreeInfoArr);
+*/
 
             resultMap.put("result", "success");
 

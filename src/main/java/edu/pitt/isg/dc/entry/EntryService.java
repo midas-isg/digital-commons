@@ -212,24 +212,8 @@ public class EntryService {
         return getContentFromEntryLists(entryRepository.findByMetadataIdentifierIncludeNotPublic(identifier));
     }
 
-    public List<Entry> getAllEntriesPertainingToCategory(String categoryName) {
-        String category = categoryName;
-
-        switch (categoryName) {
-            case "Disease forecasters":
-                break;
-            case "DiseaseForecasters":
-                category = "Disease forecasters";
-                break;
-            case "Disease Forecasters":
-                category = "Disease forecasters";
-                break;
-            case "diseaseforecasters":
-                category = "Disease forecasters";
-                break;
-        }
-
-        return entryRepository.getAllEntriesPertainingToCategory(category);
+    public List<Entry> getAllEntriesPertainingToCategory(Long categoryId) {
+        return entryRepository.getAllEntriesPertainingToCategory(categoryId);
     }
 
 }
