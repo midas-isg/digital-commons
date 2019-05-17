@@ -15,14 +15,17 @@
     <c:when test="${subCategoryId == 9}">
         <c:set var="subCategoryTreeInfoArr" scope="page" value="${diseaseForecastersTreeInfoArr}"/>
         <c:set var="softwareColumnHeader" scope="page" value="Disease Forecasters and Related Software"/>
+        <c:set var="treeCategory" scope="page" value="df"/>
     </c:when>
     <c:when test="${subCategoryId == 14}">
         <c:set var="subCategoryTreeInfoArr" scope="page" value="${pathogenEvolutionModelsTreeInfoArr}"/>
         <c:set var="softwareColumnHeader" scope="page" value="Pathogen Evolution Models and Related Software"/>
+        <c:set var="treeCategory" scope="page" value="pem"/>
     </c:when>
     <c:when test="${subCategoryId == 10}">
         <c:set var="subCategoryTreeInfoArr" scope="page" value="${diseaseTransmissionModelsTreeInfoArr}"/>
         <c:set var="softwareColumnHeader" scope="page" value="Disease Transmisson Models and Related Software"/>
+        <c:set var="treeCategory" scope="page" value="dtm"/>
     </c:when>
 </c:choose>
 <div class="row">
@@ -36,7 +39,7 @@
                     <div class="col-sm-12">
                         <h3 class="content-title-font">${treeInfo.category}</h3>
 
-                        <div id="tree-df-${treeLoop.index}" class="treeview" style="display: block"></div>
+                        <div id="tree-${treeCategory}-${treeLoop.index}" class="treeview" style="display: block"></div>
 
                     </div>
             </c:when>
@@ -44,7 +47,7 @@
 <%--
                 <div class="col-sm-12">
                     <h3 class="content-title-font">${treeInfo.category}</h3>
-                    <div id="tree-df-${treeLoop.index}" class="treeview" style="display: block"></div>
+                    <div id="tree-${treeCategory}-${treeLoop.index}" class="treeview" style="display: block"></div>
                 </div>
 --%>
                 </div>
@@ -54,15 +57,17 @@
                 <div class="col-md-4">
                     <c:choose>
                         <c:when test="${treeInfo.category == 'Data'}">
+<%--
                             <c:forEach items="${treeInfoArr}" var="checkTreeInfo" varStatus="loop">
                                 <c:if test="${checkTreeInfo.category == 'Country'}">
                                     <c:set var="country_index" value="${loop.index}"/>
                                 </c:if>
                             </c:forEach>
+--%>
 
                             <h3 class="content-title-font">${treeInfo.category}
                             </h3>
-                            <div id="tree-df-${country_index}" class="treeview" style="display: none"></div>
+                            <%--<div id="tree-${treeCategory}-${country_index}" class="treeview" style="display: none"></div>--%>
                         </c:when>
                         <c:when test="${treeInfo.category == 'Models and Other Software'}">
                             <h3 class="content-title-font">${softwareColumnHeader}</h3>
@@ -73,7 +78,7 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <div id="tree-df-${treeLoop.index}" class="treeview" style="display: block"></div>
+                    <div id="tree-${treeCategory}-${treeLoop.index}" class="treeview" style="display: block"></div>
                 </div>
             </c:otherwise>
         </c:choose>
@@ -97,8 +102,8 @@
         });
 
         if('${treeInfo.category}' != 'Websites with data'){
-            $('#tree-df-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-df-${treeLoop.index}', 'treeDF${treeLoop.index}'));
-            expandNodesInSessionVariable('#tree-df-${treeLoop.index}', 'treeDF${treeLoop.index}');
+            $('#tree-${treeCategory}-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeCategory}-${treeLoop.index}', 'tree${treeCategory}${treeLoop.index}'));
+            expandNodesInSessionVariable('#tree-${treeCategory}-${treeLoop.index}', 'tree${treeCategory}${treeLoop.index}', '${treeCategory}');
         }
     </script>
 </c:forEach>
