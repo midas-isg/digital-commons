@@ -404,6 +404,16 @@
                                                     label="${label}">
                             </myTags:editPublication>
                         </c:when>
+                        <c:when test="${tagName == 'pathogens'}">
+                            <myTags:editPathogen label="${label}"
+                                                           path="${path}[${varStatus.count-1}]"
+                                                           pathogen="${listItem}"
+                                                           isUnboundedList="${true}"
+                                                           isRequired="${isRequired}"
+                                                           id="${specifier}-${varStatus.count-1}"
+                                                           specifier="${specifier}-${varStatus.count-1}">
+                            </myTags:editPathogen>
+                        </c:when>
                         <c:when test="${tagName == 'softwareIdentifier'}">
                             <myTags:editSoftwareIdentifier label="${label}"
                                                            path="${path}[${varStatus.count-1}].identifier"
@@ -587,6 +597,15 @@
                             specifier="${specifier}-00">
         </myTags:editLicense>
     </c:when>
+    <c:when test="${tagName == 'pathogens'}">
+        <myTags:editPathogen label="${label}"
+                             path="${path}[0]"
+                             isUnboundedList="${true}"
+                             id="${specifier}-${tagName}-copy-tag"
+                             tagName="${tagName}"
+                             specifier="${specifier}-00">
+        </myTags:editPathogen>
+    </c:when>
     <c:when test="${tagName == 'place'}">
         <myTags:editPlace path="${path}[0]"
                           specifier="${specifier}-00"
@@ -669,6 +688,7 @@
                                         isUnboundedList="${true}">
         </myTags:editNonZeroLengthString>
     </c:when>
+
     <c:when test="${tagName == 'type'}">
         <myTags:editType path="${path}[0]"
                          specifier="${specifier}-00"

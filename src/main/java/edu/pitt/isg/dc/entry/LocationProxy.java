@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -69,11 +70,15 @@ public class LocationProxy {
         final RestTemplate rest = new RestTemplate();
         Map<String, String> query = new HashMap<>();
         query.put("_onlyFeatureFields", "properties.name,properties.locationTypeName,properties.gid,properties.lineage");
-        final ResponseEntity<FeatureCollection> exchange = rest.getForEntity(toLocationUri(alc), FeatureCollection.class, query);
-        if (exchange.getStatusCode().is2xxSuccessful()) {
-            final FeatureCollection fc = exchange.getBody();
-            final Properties properties = fc.getFeatures().get(0).getProperties();
-            return of(properties, fetchRelatives(alc));
+        try {
+            final ResponseEntity<FeatureCollection> exchange = rest.getForEntity(toLocationUri(alc), FeatureCollection.class, query);
+            if (exchange.getStatusCode().is2xxSuccessful()) {
+                final FeatureCollection fc = exchange.getBody();
+                final Properties properties = fc.getFeatures().get(0).getProperties();
+                return of(properties, fetchRelatives(alc));
+            }
+        } catch (RestClientException e) {
+            System.out.println(e.getMessage());
         }
         return null;
     }

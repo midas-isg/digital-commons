@@ -26,6 +26,8 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
 
 
 <fmt:message key="software.identifier" var="cardText" />
@@ -74,6 +76,7 @@
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier Description"
+                                updateCardTabTitleText="${updateCardTabTitleText}"
                                 string="${identifier.identifierDescription}">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterElementWrapper path="${path}"

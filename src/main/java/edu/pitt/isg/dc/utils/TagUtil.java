@@ -8,10 +8,12 @@ import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
 import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.*;
+import edu.pitt.isg.mdc.v1_0.Identifier;
 import org.springframework.binding.message.MessageCriteria;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.file.Path;
 import java.util.List;
 
 import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
@@ -196,6 +198,16 @@ public class TagUtil {
                     cardTabToolTip = ((edu.pitt.isg.mdc.v1_0.Identifier) listItem).getIdentifier();
                     break;
                 }
+
+            case "Pathogen":
+                Identifier identifier = ((Pathogen) listItem).getIdentifier();
+                if (identifier != null) {
+                        String description = identifier.getIdentifierDescription();
+                    if (!description.isEmpty()) {
+                        cardTabToolTip = description;
+                    }
+                }
+                break;
             case "Person":
                 if (isObjectEmpty(((Person) listItem).getFullName())) {
                     if (!isObjectEmpty(((Person) listItem).getFirstName())) {

@@ -27,7 +27,7 @@
                                         specifier="pathogens"
                                         label="Pathogens"
                                         addButtonLabel="Pathogen"
-                                        tagName="softwareIdentifier"
+                                        tagName="pathogens"
                                         placeholder="${pathogensPlaceHolder}"
                                         cardText="${pathogensPlaceHolder}"
                                         cardIcon="fas fa-microscope"

@@ -46,39 +46,39 @@ var geneticSequenceSettings = {};
 var tycho = [];
 
 /* Change includes method in IE */
-if(!String.prototype.includes) {
-    String.prototype.includes = function() {
+if (!String.prototype.includes) {
+    String.prototype.includes = function () {
         'use strict';
         return String.prototype.indexOf.apply(this, arguments) !== -1;
     };
 }
 
 function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, treeSettings, treeviewTag, expandedInfo, name) {
-    $.getJSON( contextPath + location + '?v=' + Date.now(), function( data ) {
+    $.getJSON(contextPath + location + '?v=' + Date.now(), function (data) {
         var directories = new Set();
         var subdirectories = new Set();
-        for(var i = 0; i < data.length; i ++) {
+        for (var i = 0; i < data.length; i++) {
             directories.add(data[i]["subtype"]);
-            if(data[i].hasOwnProperty("product")) {
+            if (data[i].hasOwnProperty("product")) {
                 subdirectories.add(data[i]["subtype"] + "-->" + data[i]["product"]);
             }
         }
         directories = Array.from(directories);
         subdirectories = Array.from(subdirectories);
 
-        if(directories[0] == null) {
+        if (directories[0] == null) {
             directories = [];
         }
 
-        if(subdirectories[0] == null) {
+        if (subdirectories[0] == null) {
             subdirectories = [];
         }
 
         var openByDefault = JSON.parse(JSON.stringify(directories));
 
         var uniqueTreeArray = [];
-        $.each(treeArray, function(i, el){
-            if($.inArray(el, uniqueTreeArray) == -1) uniqueTreeArray.push(el);
+        $.each(treeArray, function (i, el) {
+            if ($.inArray(el, uniqueTreeArray) == -1) uniqueTreeArray.push(el);
         });
 
         addTreeDirectories(directories, uniqueTreeArray);
@@ -86,15 +86,15 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
         buildBootstrapTree(name, contextPath, uniqueTreeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault);
 
         $('[data-toggle="tooltip"]').tooltip({
-            trigger : 'hover',
+            trigger: 'hover',
             delay: 350
         });
     });
 }
 
 function addTreeDirectories(directories, treeArray) {
-    for(var i = 0; i < directories.length; i++) {
-        if(typeof directories[i] === 'string') {
+    for (var i = 0; i < directories.length; i++) {
+        if (typeof directories[i] === 'string') {
             treeArray.push({
                 "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
                 "nodes": [],
@@ -105,7 +105,7 @@ function addTreeDirectories(directories, treeArray) {
             var topDirectory = keys[0];
             var nodes = [];
 
-            for(var x = 0; x < directories[i][topDirectory].length; x++) {
+            for (var x = 0; x < directories[i][topDirectory].length; x++) {
                 nodes.push({
                     "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x],
                     "nodes": [],
@@ -123,28 +123,28 @@ function addTreeDirectories(directories, treeArray) {
 }
 
 function addTreeNodes(name, data, treeDictionary, treeArray) {
-    for(var key in data) {
+    for (var key in data) {
         treeDictionary[key] = data[key];
 
-        if('subtype' in treeDictionary[key]) {
+        if ('subtype' in treeDictionary[key]) {
             addNodesToDirectory(name, key, treeArray, treeDictionary);
-        } else if(key !== "settings" && key !== "EpiCaseMap") {
+        } else if (key !== "settings" && key !== "EpiCaseMap") {
             var nodeData = getNodeData(name, key, treeDictionary);
             nodeData["nodes"] = [];
             treeArray.push(nodeData);
         }
     }
 
-    for(var i = 0; i < treeArray.length; i++) {
+    for (var i = 0; i < treeArray.length; i++) {
         var rootSoftwareLength = 0;
-        for(var x = 0; x < treeArray[i].nodes.length; x++) {
-            if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
-                rootSoftwareLength += (treeArray[i].nodes[x].nodes.length-1);
+        for (var x = 0; x < treeArray[i].nodes.length; x++) {
+            if (treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
+                rootSoftwareLength += (treeArray[i].nodes[x].nodes.length - 1);
                 treeArray[i].nodes[x].text += " [" + treeArray[i].nodes[x].nodes.length + "]";
             }
         }
 
-        if(treeArray[i].nodes.length > 0) {
+        if (treeArray[i].nodes.length > 0) {
             rootSoftwareLength += treeArray[i].nodes.length;
             treeArray[i].text += " [" + rootSoftwareLength + "]";
         }
@@ -153,8 +153,8 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
 }
 
 function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault) {
-    for(var i = 0; i < treeArray.length; i++) {
-        if('nodes' in treeArray[i]) {
+    for (var i = 0; i < treeArray.length; i++) {
+        if ('nodes' in treeArray[i]) {
             treeArray[i].nodes.sort(compareNodes);
         }
     }
@@ -169,22 +169,25 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         expandIcon: "fa fa-chevron-right",
         collapseIcon: "fa fa-chevron-down",
 
-        onNodeSelected: function(event, data) {
-            if(typeof data['nodes'] !== undefined) {
-                $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+        onNodeSelected: function (event, data) {
+            if (typeof data['nodes'] !== undefined) {
+                $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, {
+                    levels: 1,
+                    silent: true
+                }]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
 
             var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
 
-            if(data.state.expanded) {
-                if(expandedSoftware !== null) {
+            if (data.state.expanded) {
+                if (expandedSoftware !== null) {
                     var index = expandedSoftware.indexOf(data.nodeId);
                     if (index > -1) {
                         expandedSoftware.splice(index, 1);
                     }
                 }
             } else {
-                if(expandedSoftware !== null) {
+                if (expandedSoftware !== null) {
                     var index = expandedSoftware.indexOf(data.nodeId);
                     if (index <= -1) {
                         expandedSoftware.push(data.nodeId);
@@ -197,7 +200,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
 
             sessionStorage.setItem(expandedInfo, JSON.stringify(expandedSoftware));
 
-            if(data.url !== null && data.state.selected === true) {
+            if (data.url !== null && data.state.selected === true) {
                 ga('send', {
                     hitType: 'event',
                     eventCategory: 'Clickthrough',
@@ -210,39 +213,39 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         }
     };
 
-    if(name === "diseaseTransmissionModels" || name === "systemSoftware" || name === "tools" || name === "standardIdentifiers") {
+    if (name === "diseaseTransmissionModels" || name === "systemSoftware" || name === "tools" || name === "standardIdentifiers") {
         treeviewInfo['expandIcon'] = "bullet-point";
         treeviewInfo['collapseIcon'] = "bullet-point";
         treeviewInfo['highlightSelected'] = false;
-        treeviewInfo['onNodeSelected'] = function(event, data) {
+        treeviewInfo['onNodeSelected'] = function (event, data) {
             $('[data-toggle="tooltip"]').tooltip('hide');
             event.stopPropagation();
         };
         $(treeviewTag).treeview(treeviewInfo);
-        $(treeviewTag).treeview('expandAll', { silent: true });
+        $(treeviewTag).treeview('expandAll', {silent: true});
     } else {
-        if(name === "standardIdentifiers") {
+        if (name === "standardIdentifiers") {
             treeviewInfo['expandIcon'] = "";
             treeviewInfo['collapseIcon'] = "";
         }
 
         $(treeviewTag).treeview(treeviewInfo);
-        $(treeviewTag).treeview('collapseAll', { silent: true });
+        $(treeviewTag).treeview('collapseAll', {silent: true});
     }
 
     var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
     var toRemove = [];
 
-    if(expandedSoftware === null) {
+    if (expandedSoftware === null) {
         var openByDefaultIds = [];
-        for(var i = 0; i < openByDefault.length; i++) {
-            var matchingNode = $(treeviewTag).treeview('search', [ openByDefault[i], {
+        for (var i = 0; i < openByDefault.length; i++) {
+            var matchingNode = $(treeviewTag).treeview('search', [openByDefault[i], {
                 ignoreCase: false,     // case insensitive
                 exactMatch: false,    // like or equals
                 revealResults: false  // reveal matching nodes
             }])[0];
             $(treeviewTag).treeview('clearSearch');
-            if(matchingNode !== null) {
+            if (matchingNode !== null) {
                 openByDefaultIds.push(matchingNode.nodeId);
             }
         }
@@ -251,17 +254,17 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         sessionStorage.setItem(expandedInfo, JSON.stringify(openByDefaultIds));
     }
 
-    if(expandedSoftware !== null) {
-        for(var i = 0; i < expandedSoftware.length; i++) {
+    if (expandedSoftware !== null) {
+        for (var i = 0; i < expandedSoftware.length; i++) {
             try {
-                $(treeviewTag).treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
-            } catch(err) {
+                $(treeviewTag).treeview('expandNode', [expandedSoftware[i], {silent: true}]);
+            } catch (err) {
                 toRemove.push(i);
             }
         }
 
-        if(toRemove.length > 0) {
-            for(var i = 0; i < toRemove.length; i++) {
+        if (toRemove.length > 0) {
+            for (var i = 0; i < toRemove.length; i++) {
                 expandedSoftware.splice(toRemove[i], 1);
             }
 
@@ -273,9 +276,9 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
 
 function getNodeData(name, key, treeDictionary) {
     var title = key;
-    if('version' in treeDictionary[key]) {
+    if ('version' in treeDictionary[key]) {
         title = getSoftwareTitle(treeDictionary[key]['title'], treeDictionary[key]['version'].join(', '));
-    } else if('softwareVersion' in treeDictionary[key]) {
+    } else if ('softwareVersion' in treeDictionary[key]) {
         title = getSoftwareTitle(treeDictionary[key]['title'], treeDictionary[key]['softwareVersion'].join(', '));
     } else {
         title = treeDictionary[key]['title'];
@@ -290,25 +293,25 @@ function getNodeData(name, key, treeDictionary) {
     //     nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
     // }
 
-    if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] === true) {
+    if ('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] === true) {
         nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
     }
 
-    if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] === true) {
+    if ('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] === true) {
         nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
     }
 
-    if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] === true) {
+    if ('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] === true) {
         var url = '';
-        if('source' in treeDictionary[key]) {
+        if ('source' in treeDictionary[key]) {
             url = treeDictionary[key]['source'];
         }
 
-        if('website' in treeDictionary[key]) {
+        if ('website' in treeDictionary[key]) {
             url = treeDictionary[key]['website'];
         }
 
-        if(url.length > 0) {
+        if (url.length > 0) {
             nodeData['url'] = url;
             nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
@@ -316,18 +319,18 @@ function getNodeData(name, key, treeDictionary) {
             //     nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
             // }
 
-            if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] === true) {
+            if ('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] === true) {
                 nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
             }
 
-            if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] === true) {
+            if ('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] === true) {
                 nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
                 nodeData['signInRequired'] = treeDictionary[key]['signInRequired'];
             }
         }
     }
 
-    if(name !== "software" && name !== "webServices" && name !== "dataFormats" && name !== "standardIdentifiers") {
+    if (name !== "software" && name !== "webServices" && name !== "dataFormats" && name !== "standardIdentifiers") {
         nodeData.text = "<span data-placement='top' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
     }
 
@@ -339,14 +342,14 @@ function getSoftwareTitle(name, version) {
 
     var splitTitle = title.split(' ');
     var titleEnd = splitTitle[splitTitle.length - 1];
-    if(titleEnd.length === 3 && titleEnd.startsWith('[') && titleEnd.endsWith(']')) {
+    if (titleEnd.length === 3 && titleEnd.startsWith('[') && titleEnd.endsWith(']')) {
         title = splitTitle.slice(0, splitTitle.length - 1).join(' ');
     }
 
     version = version.split(' - ')[0];
 
-    if(version !== '') {
-        if(isNaN(version[0]) || version === '2010 U.S. Synthesized Population') {
+    if (version !== '') {
+        if (isNaN(version[0]) || version === '2010 U.S. Synthesized Population') {
             title += ' - ' + version;
         } else {
             title += ' - v' + version;
@@ -387,33 +390,51 @@ identifierCodes = {
     "542920": "South America"
 };
 
-function identifierToString(attribute, useDescription) {
-    var overrideWithDescription = false;
-    if(useDescription){
-        overrideWithDescription = true;
-    }
-    if(attribute.hasOwnProperty('identifier')) {
+function pathogenToString(attribute) {
+    var strain = 'unspecified';
+    if (attribute.hasOwnProperty("strainName"))
+        if (attribute.strainName !== null)
+            strain = attribute.strainName;
+    if (attribute.hasOwnProperty('identifier')) {
         var identifier = attribute['identifier'];
-        if(!overrideWithDescription && identifierCodes.hasOwnProperty(identifier['identifier'])) {
+        if (identifierCodes.hasOwnProperty(identifier['identifier'])) {
             attribute = identifierCodes[identifier['identifier']];
-        } else if(identifier.hasOwnProperty('identifierDescription') ) {
+        } else if (identifier.hasOwnProperty('identifierDescription')) {
             attribute = identifier['identifierDescription'];
         }
+
+    }
+    return attribute + " <span class=\"italic\"> (Strain: " + strain + ")</span>";
+}
+
+function identifierToString(attribute, useDescription) {
+    var overrideWithDescription = false;
+    if (useDescription) {
+        overrideWithDescription = true;
+    }
+    if (attribute.hasOwnProperty('identifier')) {
+        var identifier = attribute['identifier'];
+        if (!overrideWithDescription && identifierCodes.hasOwnProperty(identifier['identifier'])) {
+            attribute = identifierCodes[identifier['identifier']];
+        } else if (identifier.hasOwnProperty('identifierDescription')) {
+            attribute = identifier['identifierDescription'];
+        }
+
     }
     return attribute;
 }
 
 function nameToString(attribute) {
     var name = {};
-    if(attribute.hasOwnProperty('name')) {
+    if (attribute.hasOwnProperty('name')) {
         name = attribute['name'];
     }
 
-    if(attribute.hasOwnProperty('location')) {
+    if (attribute.hasOwnProperty('location')) {
         name += ", " + attribute['location'];
     }
 
-    if(Object.keys(name).length === 0){
+    if (Object.keys(name).length === 0) {
         return attribute;
     }
     return name;
@@ -434,22 +455,22 @@ function listToHtmlStringDataFormats(attributeList) {
 }
 
 function displayList(attributeList) {
-    for(var i=attributeList.length-1; i>=0; i--) {
-        if(Object.prototype.toString.call( attributeList[i] ) === '[object Object]') {
+    for (var i = attributeList.length - 1; i >= 0; i--) {
+        if (Object.prototype.toString.call(attributeList[i]) === '[object Object]') {
             attributeList.splice(i, 1);
         }
     }
     var attribute = attributeList.join(', ');
-    if(!attribute.includes('http')) {
+    if (!attribute.includes('http')) {
         attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
     }
     return attribute;
 }
 
 function parseAttributeList(attributeList, hasNulls) {
-    for(var i = 0; i < attributeList.length; i++) {
+    for (var i = 0; i < attributeList.length; i++) {
         attributeList[i] = identifierToString(attributeList[i]);
-        if(attributeList[i] !== null && attributeList[i].length > 0) {
+        if (attributeList[i] !== null && attributeList[i].length > 0) {
             hasNulls = false;
         }
     }
@@ -471,30 +492,30 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
 
-/*
-    if (key === 'binaryUrl') {
-        debugger;
-    }
-*/
-    if((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage' || key === 'humanReadableSpecification' || key === 'machineReadableSpecification' || key === 'validator')) {
+    /*
+        if (key === 'binaryUrl') {
+            debugger;
+        }
+    */
+    if ((key in attrs && attrs[key] !== null) || (key === 'accessURL' || key === 'landingPage' || key === 'humanReadableSpecification' || key === 'machineReadableSpecification' || key === 'validator')) {
         var attribute;
         var isDiseaseForecaster = false;
-        if(attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters'){
+        if (attrs['class'] === 'edu.pitt.isg.mdc.v1_0.DiseaseForecasters') {
             isDiseaseForecaster = true;
         }
 
-        if(key in attrs) {
+        if (key in attrs) {
             attribute = attrs[key];
         } else if (key === 'humanReadableSpecification') {
             if (attrs['extraProperties'] != null && attrs['extraProperties'].length > 1) {
                 for (var i = 0; i < attrs['extraProperties'].length; i++) {
                     if ((attrs['extraProperties'][i]['category'] === 'human-readable specification of data format' || attrs['extraProperties'][i]['category'] === 'human readable description of format') && attrs['extraProperties'][i]['values'][0]['value'] != null) {
-                        attribute = urlify(attrs['extraProperties'][i]['values'][0]['value'] );
+                        attribute = urlify(attrs['extraProperties'][i]['values'][0]['value']);
                     }
                 }
                 if (attribute == undefined) {
                     $(containerId).hide();
-                   return;
+                    return;
                 }
             } else {
                 if (attrs['extraProperties'] != null && (attrs['extraProperties'][0]['category'] === 'human-readable specification of data format' || attrs['extraProperties'][0]['category'] === 'human readable description of format') && attrs['extraProperties'][0]['values'][0]['value'] != null) {
@@ -508,9 +529,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             if (attrs['extraProperties'] != null && attrs['extraProperties'].length > 1) {
                 for (var i = 0; i < attrs['extraProperties'].length; i++) {
                     if ((attrs['extraProperties'][i]['category'] === 'machine-readable specification of data format' || attrs['extraProperties'][i]['category'] === 'machine readable description of format')) {
-                        if(attrs['extraProperties'][i]['values'][0]['valueIRI'] != null) {
+                        if (attrs['extraProperties'][i]['values'][0]['valueIRI'] != null) {
                             attribute = urlify(attrs['extraProperties'][i]['values'][0]['valueIRI']);
-                        } else if(attrs['extraProperties'][i]['values'][0]['value'] != null){
+                        } else if (attrs['extraProperties'][i]['values'][0]['value'] != null) {
                             attribute = urlify(attrs['extraProperties'][i]['values'][0]['value']);
                         }
                     }
@@ -540,7 +561,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 }
                 if (attribute == undefined) {
                     $(containerId).hide();
-                   return;
+                    return;
                 }
             } else {
                 if (attrs['extraProperties'] != null && attrs['extraProperties'][0]['category'] === 'validator' && (attrs['extraProperties'][0]['values'] != undefined && attrs['extraProperties'][0]['values'][0]['value'] != "")) {
@@ -550,13 +571,13 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                     return;
                 }
             }
-        } else if(attrs['distributions'] !== null) {
+        } else if (attrs['distributions'] !== null) {
             try {
-                if(key == "accessURL") {
-                    if(attrs['distributions'].length > 1) {
+                if (key == "accessURL") {
+                    if (attrs['distributions'].length > 1) {
                         attribute = new Array();
                         for (var i = 0; i < attrs['distributions'].length; i++) {
-                            if(attrs['distributions'][i]['formats'][0] != null) {
+                            if (attrs['distributions'][i]['formats'][0] != null) {
                                 attribute.push('<a class="underline" href="' + attrs['distributions'][i]['access'][key] + '">' + attrs['distributions'][i]['formats'][0] + '</a>');
                             } else {
                                 attribute.push('<a class="underline" href="' + attrs['distributions'][i]['access'][key] + '">' + attrs['distributions'][i]['access'][key] + '</a>');
@@ -564,7 +585,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                         }
                         attribute = uniqueArray(attribute);
                     } else {
-                        if(attrs['distributions'][0]['formats'][0] != null) {
+                        if (attrs['distributions'][0]['formats'][0] != null) {
                             attribute = '<a class="underline" href="' + attrs['distributions'][0]['access'][key] + '">' + attrs['distributions'][0]['formats'][0] + '</a>';
                         } else {
                             attribute = '<a class="underline" href="' + attrs['distributions'][0]['access'][key] + '">' + attrs['distributions'][0]['access'][key] + '</a>';
@@ -578,7 +599,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 return;
             }
 
-            if(attribute === null || attribute === undefined) {
+            if (attribute === null || attribute === undefined) {
                 $(containerId).hide();
                 return;
             }
@@ -587,11 +608,15 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             return;
         }
         var hasNulls = true;
-        if(Object.prototype.toString.call( attribute ) === '[object Array]') {
-            for(var i = 0; i < attribute.length; i++) {
-                if(key == 'diseases' && attribute[i]['identifier']['identifierDescription'] === 'influenza-like illness'){
+        if (Object.prototype.toString.call(attribute) === '[object Array]') {
+            for (var i = 0; i < attribute.length; i++) {
+                if (key == 'diseases' && attribute[i]['identifier']['identifierDescription'] === 'influenza-like illness') {
                     attribute[i] = identifierToString(attribute[i], true);
-                } else attribute[i] = identifierToString(attribute[i]);
+                } else if (key === 'pathogens') {
+                    attribute[i] = pathogenToString(attribute[i]);
+                } else {
+                }
+                attribute[i] = identifierToString(attribute[i]);
                 if (attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
@@ -604,18 +629,18 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 
             }
 
-            if(hasNulls) {
+            if (hasNulls) {
                 $(containerId).hide();
             }
 
-            if(convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
+            if (convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
                 attribute = listToHtmlString(attribute);
-            }  else {
+            } else {
                 attribute = displayList(attribute);
             }
-        } else if(key === 'producedBy') {
-            if(Object.keys(attribute).length !== 0) {
-                if(Object.keys(attribute).includes('location') && Object.keys(attribute['location']).length !== 0) {
+        } else if (key === 'producedBy') {
+            if (Object.keys(attribute).length !== 0) {
+                if (Object.keys(attribute).includes('location') && Object.keys(attribute['location']).length !== 0) {
                     attribute = attribute['name'] + ", " + attribute['location']['postalAddress'];
                 } else {
                     attribute = attribute['name'];
@@ -625,11 +650,11 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 $(containerId).hide();
             }
         } else if (key === 'type') {
-            if(Object.keys(attribute).length !== 0) {
-                if(Object.prototype.toString.call( attribute ) === "[object Object]") {
+            if (Object.keys(attribute).length !== 0) {
+                if (Object.prototype.toString.call(attribute) === "[object Object]") {
                     attribute = attribute['value'];
                 }
-                if(attribute.length > 0) {
+                if (attribute.length > 0) {
                     hasNulls = false;
                 }
             } else {
@@ -643,16 +668,16 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         }
 
         if (!hasNulls) {
-            if(renderHtml) {
-                if(elementId === '#software-description'){
-                    attribute = replaceAll(attribute,'\n', '<br>');
+            if (renderHtml) {
+                if (elementId === '#software-description') {
+                    attribute = replaceAll(attribute, '\n', '<br>');
                 }
                 $(elementId).html(attribute);
             } else {
                 $(elementId).text(attribute);
             }
 
-            if(hasHref) {
+            if (hasHref) {
                 var href = urlify(attribute);
                 if (href.includes('href')) {
                     $(elementId).html(href);
@@ -676,11 +701,11 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 }
 
 function urlify(text) {
-    if(text.includes('a href')) {
+    if (text.includes('a href')) {
         return text;
     }
     var urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.replace(urlRegex, function(url) {
+    return text.replace(urlRegex, function (url) {
         return '<a class="underline" href="' + url + '">' + url + '</a>';
     })
 
@@ -689,11 +714,12 @@ function urlify(text) {
 function toTitleCase(str) {
     return str.replace(
         /\w\S*/g,
-        function(txt) {
+        function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         }
     );
 }
+
 function escapeRegExp(str) {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
@@ -707,26 +733,26 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     var containerId = elementId + '-container';
     var nothingFoundMessage = 'Syntax Not Available';
 
-    if (key === 'inputs' || key === 'outputs'){
+    if (key === 'inputs' || key === 'outputs') {
         nothingFoundMessage = 'None';
         document.getElementById("software-" + key + "-container").innerHTML = '';
         var insertTitle = '';
-        if(key === 'outputs'){
+        if (key === 'outputs') {
             insertTitle = '<h4 class="inline bold" id="software-' + key + '-tag">' + key.charAt(0).toUpperCase() + key.slice(1) + ' and their formats: </h4><br>';
         } else insertTitle = '<h4 class="inline bold" id="software-' + key + '-tag">' + key.charAt(0).toUpperCase() + key.slice(1) + ' and their required formats: </h4><br>';
         document.getElementById("software-" + key + "-container").insertAdjacentHTML('afterbegin', insertTitle);
         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', '<span id="software-' + key + '"></span>');
     }
 
-    if(key in attrs) {
+    if (key in attrs) {
         var attribute = attrs[key];
         var hasNulls = true;
 
         if (key === 'identifier') {
-            if (Object.prototype.toString.call( attribute ) === '[object Array]') {
-                for(var i = 0; i < attribute.length; i++) {
+            if (Object.prototype.toString.call(attribute) === '[object Array]') {
+                for (var i = 0; i < attribute.length; i++) {
                     attribute[i] = identifierToString(attribute[i]);
-                    if(attribute[i].identifier !== 'undefined') {
+                    if (attribute[i].identifier !== 'undefined') {
                         attribute = attribute[i].identifier;
                         hasNulls = false;
                         break;
@@ -736,7 +762,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 attribute = attribute['identifier'];
             }
             hasNulls = attribute === null;
-        } else if (key === 'inputs' || key === 'outputs'){
+        } else if (key === 'inputs' || key === 'outputs') {
             var property = '';
             var label = '';
             var acceptOrProduce = '';
@@ -750,7 +776,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 acceptOrProduce = 'have';
             }
             // debugger;
-            if (Object.prototype.toString.call( attribute ) === '[object Array]') {
+            if (Object.prototype.toString.call(attribute) === '[object Array]') {
                 var inputOutput = attribute;
                 for (var i = 0; i < inputOutput.length; i++) {
                     var descriptionHTML = '';
@@ -767,7 +793,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                         var dataFormats = new Array();
                         for (var j = 0; j < inputOutput[i].dataFormats.length; j++) {
                             var dataFormatName = getDataFormatName(inputOutput[i].dataFormats[j]);
-                            if(dataFormatName === 'Undocumented'){
+                            if (dataFormatName === 'Undocumented') {
                                 numUndocumented++;
                             } else {
                                 dataFormats[numDocumented] = dataFormatName;
@@ -775,15 +801,15 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                             }
                         }
                         var ioNumber = i + 1;
-                        if(numUndocumented > 0){
-                            if(numDocumented > 0){
+                        if (numUndocumented > 0) {
+                            if (numDocumented > 0) {
                                 dataFormats[numDocumented] = '(' + toTitleCase(key).slice(0, -1) + ' ' + ioNumber + ' has additional undocumented data formats)';
                             } else {
                                 $('#software-' + key + '-' + i + '-dataFormats').remove();
                                 noDocumentedDataFormats = ' Undocumented';
                             }
-                        } else if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')){
-                            if(inputOutput[i]['isListOfDataFormatsComplete'] === 'UNKNOWN'){
+                        } else if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
+                            if (inputOutput[i]['isListOfDataFormatsComplete'] === 'UNKNOWN') {
                                 dataFormats[numDocumented] = '(' + toTitleCase(key).slice(0, -1) + ' ' + ioNumber + ' may ' + acceptOrProduce + ' additional data formats)';
                             }
                         }
@@ -793,41 +819,41 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                         noDocumentedDataFormats = ' Undocumented';
                     }
 
-                    if(numDocumented + numUndocumented > 1){
+                    if (numDocumented + numUndocumented > 1) {
                         singluarOrPluralDataFormats = 'Data Formats:'
                     }
 
-/*
-                    if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
-                        var isListOfDataFormatsComplete = inputOutput[i]['isListOfDataFormatsComplete'];
-                        if(isListOfDataFormatsComplete === 'YES'){
-                            isListOfDataFormatsCompleteDisplayHTML = '';
-                        } else if(isListOfDataFormatsComplete === 'NO'){
-                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is not a complete listing of data formats for this '+key.slice(0,-1)+'.)</span>'
-                        } else if(isListOfDataFormatsComplete === 'UNKNOWN'){
-                            isListOfDataFormatsCompleteDisplayHTML = ' <span>(We (or \'the curator\') has not determined whether this is a complete listing of data formats for this '+key.slice(0,-1)+'.)</span>'
-                        }
-                    }
-*/
-                    if(inputOutput[i].hasOwnProperty('description')){
+                    /*
+                                        if (inputOutput[i].hasOwnProperty('isListOfDataFormatsComplete')) {
+                                            var isListOfDataFormatsComplete = inputOutput[i]['isListOfDataFormatsComplete'];
+                                            if(isListOfDataFormatsComplete === 'YES'){
+                                                isListOfDataFormatsCompleteDisplayHTML = '';
+                                            } else if(isListOfDataFormatsComplete === 'NO'){
+                                                isListOfDataFormatsCompleteDisplayHTML = ' <span>(This is not a complete listing of data formats for this '+key.slice(0,-1)+'.)</span>'
+                                            } else if(isListOfDataFormatsComplete === 'UNKNOWN'){
+                                                isListOfDataFormatsCompleteDisplayHTML = ' <span>(We (or \'the curator\') has not determined whether this is a complete listing of data formats for this '+key.slice(0,-1)+'.)</span>'
+                                            }
+                                        }
+                    */
+                    if (inputOutput[i].hasOwnProperty('description')) {
                         descriptionHTML = '<span class="italic" id="software-' + key + '-' + i + '-description"></span>.';
                     }
-                    if(inputOutput[i].hasOwnProperty('isOptional')){
-                        if(inputOutput[i]['isOptional'] === 'YES'){
+                    if (inputOutput[i].hasOwnProperty('isOptional')) {
+                        if (inputOutput[i]['isOptional'] === 'YES') {
                             optionalHTML = ' (optional)';
                         }
                     }
                     // var dataFormatsTextForDescriptionHTML = '<div style="padding-left:19px">Data Format(s):</div>';
-                    var dataFormatsTextForDescriptionHTML = '<span style="padding-left:10px">'+ singluarOrPluralDataFormats + noDocumentedDataFormats + '</span>';
+                    var dataFormatsTextForDescriptionHTML = '<span style="padding-left:10px">' + singluarOrPluralDataFormats + noDocumentedDataFormats + '</span>';
                     // descriptionHTML = descriptionHTML + isListOfDataFormatsCompleteDisplayHTML;
                     descriptionHTML = descriptionHTML + dataFormatsTextForDescriptionHTML;
-                    if(inputOutput[i].hasOwnProperty(property)){
+                    if (inputOutput[i].hasOwnProperty(property)) {
                         // var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span>'+toTitleCase(key).slice(0,-1)+' </span><span id="software-' + key + '-' + i + '-' + property + '"></span><span>' + optionalHTML + ': </span>' + descriptionHTML + '</div>';
                         var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container">';
-                        insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span>' + toTitleCase(key).slice(0,-1) + ' </span>';
+                        insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span>' + toTitleCase(key).slice(0, -1) + ' </span>';
                         insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span id="software-' + key + '-' + i + '-' + property + '"></span>';
                         insertNumberAndDescriptionHTML = insertNumberAndDescriptionHTML + '<span>' + optionalHTML + ': </span>' + descriptionHTML + '</div>';
-                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', insertNumberAndDescriptionHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
                         toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
                     }
@@ -838,19 +864,19 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                     }
                 }
             }
-        } else if (Object.prototype.toString.call( attribute ) === '[object Array]')  {
-            for(var i = 0; i < attribute.length; i++) {
+        } else if (Object.prototype.toString.call(attribute) === '[object Array]') {
+            for (var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
-                if(attribute[i] !== null && attribute[i].length > 0) {
+                if (attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
             }
 
-            if(hasNulls) {
+            if (hasNulls) {
                 $(containerId).hide();
             }
 
-            if(convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
+            if (convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
                 attribute = listToHtmlString(attribute);
             } else {
                 attribute = displayList(attribute);
@@ -859,31 +885,31 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             hasNulls = false;
         }
 
-        if(!hasNulls) {
-            if(attribute.startsWith('http') && !attribute.includes(' ')) {
+        if (!hasNulls) {
+            if (attribute.startsWith('http') && !attribute.includes(' ')) {
                 attribute = "<a class='underline' href='" + attribute + "'>" + attribute + "</a>";
             }
 
-            if(renderHtml) {
+            if (renderHtml) {
                 $(elementId).html(attribute);
             } else {
                 $(elementId).text(attribute);
             }
 
-            if(hasHref) {
+            if (hasHref) {
                 $(elementId).attr('href', attribute);
             }
 
-        //    $(containerId).show();
-        //} else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
-        //    $(containerId).show();
-        //    $(elementId).html('N/A');
+            //    $(containerId).show();
+            //} else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
+            //    $(containerId).show();
+            //    $(elementId).html('N/A');
         }
         //else {
 //      }
         //let's always show the identifier and see how it goes
         $(containerId).show();
-    } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
+    } else if (!type.includes('Dataset') && !type.includes('DataStandard')) {
         $(containerId).show();
         // $(elementId).html('N/A');
         $(elementId).html(nothingFoundMessage);
@@ -892,7 +918,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     }
 }
 
-function compareNodes(a,b) {
+function compareNodes(a, b) {
     if (a.name.trim().toLowerCase() < b.name.trim().toLowerCase())
         return -1;
     if (a.name.trim().toLowerCase() > b.name.trim().toLowerCase())
@@ -905,7 +931,7 @@ function toggleTitle(element) {
     $('[data-toggle="tooltip"]').tooltip();
 
 
-    if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
+    if ($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth) {
         $this.attr('data-original-title', $this.text());
 
     } else {
@@ -921,10 +947,10 @@ $('#commons-body').on('click', function (e) {
         $(".popover").remove();
     }
 
-    $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
+    $('[data-toggle="tooltip"]').tooltip({trigger: 'hover', delay: 350});
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     //comment out to turn off select2
@@ -938,17 +964,20 @@ $(document).ready(function() {
     if (location.hash && hashElement.length > 0) {
         try {
             hashElement.tab("show");
-        } catch (e) {}
-        if(location.hash === "#workflows") {
-            setTimeout(function(){drawDiagram()}, 300);
-        } else if(location.hash === "#modal-json") {
+        } catch (e) {
+        }
+        if (location.hash === "#workflows") {
+            setTimeout(function () {
+                drawDiagram()
+            }, 300);
+        } else if (location.hash === "#modal-json") {
             $('#modal-html-link').click();
             location.hash = '_';
         }
 
         var elementText = $("a[href='" + location.hash + "']").text();
 
-        if(elementText === '') {
+        if (elementText === '') {
             elementText = 'Data-augmented Publication';
         }
 
@@ -958,7 +987,7 @@ $(document).ready(function() {
             title: elementText
         });
 
-        if(location.hash.includes('publication')) {
+        if (location.hash.includes('publication')) {
             $('#content-tab').addClass('highlighted-item');
         }
     } else {
@@ -970,7 +999,7 @@ $(document).ready(function() {
         });
     }
 
-    $(document.body).on("click", "a[data-toggle]", function(event) {
+    $(document.body).on("click", "a[data-toggle]", function (event) {
         location.hash = this.getAttribute("href");
         ga('send', {
             hitType: 'pageview',
@@ -979,10 +1008,10 @@ $(document).ready(function() {
         });
     });
 
-    $(document.body).on("click", "a", function(event) {
+    $(document.body).on("click", "a", function (event) {
         var href = this.getAttribute("href");
 
-        try{
+        try {
             if (href != undefined && nulhref.includes('http')) {
                 ga('send', {
                     hitType: 'event',
@@ -991,7 +1020,7 @@ $(document).ready(function() {
                 });
             }
         } catch (e) {
-            
+
         }
     });
 
@@ -1003,7 +1032,7 @@ $(document).ready(function() {
         location.hash = '_';
     });
 
-    $(".has-error-card.card").each(function(){
+    $(".has-error-card.card").each(function () {
         highlightDiv($(this).attr("id"), "red");
     });
 
@@ -1032,7 +1061,9 @@ function scrollToAnchor(anchor) {
 function highlightDiv(div, color) {
 
     var colorToDisplay = "rgba(1, 255, 68, 0.9)";
-    if (color == "red") {colorToDisplay = "rgba(255, 0, 0, 0.7)"}
+    if (color == "red") {
+        colorToDisplay = "rgba(255, 0, 0, 0.7)"
+    }
 
     $("div.card").find('*').css("box-shadow", '');
 
@@ -1040,8 +1071,8 @@ function highlightDiv(div, color) {
         "boxShadow", "0px 0px 15px 15px " + colorToDisplay
     );
 
-    $(function() {
-        $("body").click(function(e) {
+    $(function () {
+        $("body").click(function (e) {
             if (e.target.id == div || $(e.target).parents("#" + div).length) {
                 $('#' + div).css(
                     "boxShadow", "0px 0px 15px 15px rgba(0, 150, 0, 0.0)"
@@ -1052,6 +1083,7 @@ function highlightDiv(div, color) {
 
 
 }
+
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
@@ -1072,8 +1104,8 @@ $(document).on('click', 'a[data-action="expand"]', function (e) {
 });
 
 function rearrangeCards(parentDiv) {
-    if($('#'+parentDiv).children('.card-button').length > 0 ) {
-        $('#'+parentDiv).children('.card-button').each(function () {
+    if ($('#' + parentDiv).children('.card-button').length > 0) {
+        $('#' + parentDiv).children('.card-button').each(function () {
             $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
         });
     } else {
@@ -1084,15 +1116,15 @@ function rearrangeCards(parentDiv) {
 }
 
 function makeAllTabsInactive(specifier) {
-    $("#"+ specifier+"-card-header").find("a").each(function () {
+    $("#" + specifier + "-card-header").find("a").each(function () {
         $(this).removeClass("active");
     });
 }
 
 function removeSection(specifier, tagName, event, isUnbounded, isAutoComplete) {
     var confirmation = true;
-    $("#" + specifier + "-card").find("input[type = 'text']").each(function() {
-        if(this.value != "" && !isAutoComplete) {
+    $("#" + specifier + "-card").find("input[type = 'text']").each(function () {
+        if (this.value != "" && !isAutoComplete) {
             confirmation = confirm("Are you sure you want to close this card?");
             return false;
         }
@@ -1104,16 +1136,16 @@ function removeSection(specifier, tagName, event, isUnbounded, isAutoComplete) {
 
         // clearAndHideEditControlGroup($(event.target).attr("for"));
 
-        if(isUnbounded) {
-            clearAndHideEditControlGroup(specifier+"-card");
-            closeAllTabs(event, $("#"+specifier+"-card"));
+        if (isUnbounded) {
+            clearAndHideEditControlGroup(specifier + "-card");
+            closeAllTabs(event, $("#" + specifier + "-card"));
             $("#" + specifier + "-card").addClass("hide");
-        }else {
-            clearAndHideEditControlGroup(specifier+"-input-block");
-            $("#"+specifier+"-input-block").addClass("hide");
+        } else {
+            clearAndHideEditControlGroup(specifier + "-input-block");
+            $("#" + specifier + "-input-block").addClass("hide");
         }
 
-        $("." + specifier+"-"+tagName+"-remove").closest('.card').addClass("hide").slideUp('fast');
+        $("." + specifier + "-" + tagName + "-remove").closest('.card').addClass("hide").slideUp('fast');
     }
 }
 
@@ -1122,25 +1154,25 @@ function showCard(specifier, tagName, id, unboundedList, required, quiet) {
     var isRequired = (required === 'true');
 
     // e.stopImmediatePropagation();
-    $("#"+id).removeClass("hide");
+    $("#" + id).removeClass("hide");
     $(this).closest('.card').children('.card-content').removeClass('collapse');
-    $("#"+specifier+"-input-block").removeClass("hide");
-    $("#"+specifier+"-input-block").addClass("collapse");
-    $("#"+specifier+"-input-block").addClass("show");
+    $("#" + specifier + "-input-block").removeClass("hide");
+    $("#" + specifier + "-input-block").addClass("collapse");
+    $("#" + specifier + "-input-block").addClass("show");
 
-    $("#"+specifier+"-input-block").show();
+    $("#" + specifier + "-input-block").show();
 
-    if(isUnboundedList || !isRequired) {
-        $("#"+specifier+"-add-input-button").addClass("hide");
+    if (isUnboundedList || !isRequired) {
+        $("#" + specifier + "-add-input-button").addClass("hide");
     }
 
-    $("#"+specifier+"-"+tagName).val("");
-    if(!quiet) {
+    $("#" + specifier + "-" + tagName).val("");
+    if (!quiet) {
         scrollToAnchor(specifier);
         highlightDiv(specifier, "green");
     }
 
-    $("#" + specifier+"-date-picker").datepicker({
+    $("#" + specifier + "-date-picker").datepicker({
         forceParse: false,
         orientation: 'top auto',
         todayHighlight: true,
@@ -1155,18 +1187,18 @@ function closeTab(e, div, specifier, tagName) {
     var confirmation = true;
     var prevDiv = undefined;
     var takeNext = false;
-    $("#"+$(div.parentElement.parentElement).attr("for")).find("input[type = 'text']").each(function() {
-        if(this.value != "") {
+    $("#" + $(div.parentElement.parentElement).attr("for")).find("input[type = 'text']").each(function () {
+        if (this.value != "") {
             confirmation = confirm("Are you sure you want to close this tab?");
             return false;
         }
     });
 
-    if(confirmation == true) {
+    if (confirmation == true) {
         //check if all other tabs have been "closed"
         var counter = 0;
         $("#" + specifier + "-card-header").find("li").each(function () {
-            if(!$(this).hasClass("hide")) {
+            if (!$(this).hasClass("hide")) {
                 counter++;
             }
         });
@@ -1175,11 +1207,11 @@ function closeTab(e, div, specifier, tagName) {
         $(".tooltip").remove();
 
         // TODO: need to fix bug where the next div that is show is one that was 'removed'
-        if(counter>1) {
+        if (counter > 1) {
             //find closest tab to the left tab to make it active (we don't just want to use the first tab)
             $("#" + specifier + "-card-header").find("a").each(function () {
                 if (takeNext) {
-                    if(!$(this.parentElement).hasClass("hide")) {
+                    if (!$(this.parentElement).hasClass("hide")) {
                         prevDiv = $(this.parentElement);
                         return false;
                     }
@@ -1192,7 +1224,7 @@ function closeTab(e, div, specifier, tagName) {
                     prevDiv = $(this.parentElement);
                     return false;
                 } else {
-                    if(!$(this.parentElement).hasClass("hide")) {
+                    if (!$(this.parentElement).hasClass("hide")) {
                         prevDiv = $(this.parentElement);
                     }
                 }
@@ -1218,9 +1250,9 @@ function closeTab(e, div, specifier, tagName) {
 
 //find each card header in the section and subsections and close all tabs
 function closeAllTabs(e, div) {
-    $(div).find(".card-header").each(function() {
+    $(div).find(".card-header").each(function () {
         closeAllTabs(e, $(this));
-        $(this).find("a").each(function(){
+        $(this).find("a").each(function () {
             if ($(this).hasClass("nav-link")) {
                 $(this.parentElement).remove();
             }
@@ -1236,7 +1268,7 @@ function showTab(e, div, specifier) {
 
     $(div).addClass("active");
 
-    $('#'+specifier+'-card .card-content').each(function (index) {
+    $('#' + specifier + '-card .card-content').each(function (index) {
         if ($(this).attr("id") != divToShow) {
             $(this).addClass("hide");
         }
@@ -1248,7 +1280,7 @@ function showTab(e, div, specifier) {
         //if card is unbounded list we find the 'active' tab and unhide that input block
         var inputBlockID = $(this).attr("id");
         var tabID = inputBlockID.replace("input-block", "tab");
-        var divBeforeInputBlockID = inputBlockID.replace("-input-block","");
+        var divBeforeInputBlockID = inputBlockID.replace("-input-block", "");
 
         //the card is not an unbounded list so display the input block
 
@@ -1260,7 +1292,7 @@ function showTab(e, div, specifier) {
         //added divBeforeInputBlockID to unhide if active
         if ($("#" + tabID).children().hasClass("active")) {
             $(this).removeClass("hide");
-            $("#"+divBeforeInputBlockID).removeClass("hide");
+            $("#" + divBeforeInputBlockID).removeClass("hide");
         }
     });
 };
@@ -1273,7 +1305,7 @@ function showTabNamed(tabToActivate, divToShow, specifier) {
     $('#' + divToShow).removeClass("hide");
     //   $(tabToActivate).addClass("active");
     $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
-    $('#'+specifier+'-card .card-content').each(function (index) {
+    $('#' + specifier + '-card .card-content').each(function (index) {
         if ($(this).attr("id") != divToShow) {
             $(this).addClass("hide");
         }
@@ -1305,25 +1337,25 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     // destroySelect2();
 
     $("#" + specifier + "-add-input-button").addClass("hide");
-    $("#"+specifier+"-card").removeClass("hide");
+    $("#" + specifier + "-card").removeClass("hide");
     if (tagName == 'personComprisedEntity') {
-        if (thisObject.id == ""+specifier+"-add-"+tagName+"-person") {
+        if (thisObject.id == "" + specifier + "-add-" + tagName + "-person") {
             if (listItemCount === 0 && isFirstRequired) {
-                html = $("#" + specifier+"-person-required-copy-tag").html();
-            } else html = $("#" + specifier+"-person-copy-tag").html();
-        } else if (thisObject.id == specifier+"-add-"+tagName+"-organization") {
+                html = $("#" + specifier + "-person-required-copy-tag").html();
+            } else html = $("#" + specifier + "-person-copy-tag").html();
+        } else if (thisObject.id == specifier + "-add-" + tagName + "-organization") {
             if (listItemCount === 0 && isFirstRequired) {
-                html = $("#" + specifier+"-organization-required-copy-tag").html();
-            } else html = $("#" + specifier+"-organization-copy-tag").html();
+                html = $("#" + specifier + "-organization-required-copy-tag").html();
+            } else html = $("#" + specifier + "-organization-copy-tag").html();
         }
     } else if (tagName == 'isAbout') {
-        if (thisObject.id == specifier+"-add-"+tagName+"-annotation") {
-            html = $("#" + specifier+"-annotation-copy-tag").html();
-        } else if (thisObject.id == specifier+"-add-"+tagName+"-biologicalEntity") {
-            html = $("#" + specifier+"-biologicalEntity-copy-tag").html();
+        if (thisObject.id == specifier + "-add-" + tagName + "-annotation") {
+            html = $("#" + specifier + "-annotation-copy-tag").html();
+        } else if (thisObject.id == specifier + "-add-" + tagName + "-biologicalEntity") {
+            html = $("#" + specifier + "-biologicalEntity-copy-tag").html();
         }
     } else {
-        html = $("#" + specifier + "-"+tagName+"-copy-tag").html();
+        html = $("#" + specifier + "-" + tagName + "-copy-tag").html();
     }
 
 
@@ -1332,13 +1364,13 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     regexPath = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
     regexPath = new RegExp(regexPath + '\\[0\\]', "g");
     regexSpecifier = new RegExp(specifier + '\\-00', "g");
-    html = html.replace(regexPath, path+'[' + listItemCount + ']')
-        .replace(regexSpecifier, specifier+'-' + listItemCount);
+    html = html.replace(regexPath, path + '[' + listItemCount + ']')
+        .replace(regexSpecifier, specifier + '-' + listItemCount);
     // debugger;
 
-    newDivId = html.match(specifier+"-\\d*[A-Za-z\-]*")[0];
-    $("."+specifier+"-"+tagName+"-add-more").before(html);
-    $("#"+specifier+"-" + listItemCount + "-date-picker").datepicker({
+    newDivId = html.match(specifier + "-\\d*[A-Za-z\-]*")[0];
+    $("." + specifier + "-" + tagName + "-add-more").before(html);
+    $("#" + specifier + "-" + listItemCount + "-date-picker").datepicker({
         forceParse: false,
         orientation: 'top auto',
         todayHighlight: true,
@@ -1348,37 +1380,37 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
     makeAllTabsInactive(specifier);
     //create a new tab
-    $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
-        " <a onclick=\"showTab(event, this, '"+specifier+"')\" id=\""+specifier+"-"+listItemCount+"-listItem\" class=\"wizard-nav-link nav-link active\" data-toggle=\"tooltip\" title=\""+label+"\">"+label+"   "+
-        "<i onclick=\"closeTab(event, this, '"+specifier+"', '"+tagName+"')\" class=\"ft-x\"></i></a></li>");
+    $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\"" + specifier + "-" + listItemCount + "-tab\" class=\"nav-item\">" +
+        " <a onclick=\"showTab(event, this, '" + specifier + "')\" id=\"" + specifier + "-" + listItemCount + "-listItem\" class=\"wizard-nav-link nav-link active\" data-toggle=\"tooltip\" title=\"" + label + "\">" + label + "   " +
+        "<i onclick=\"closeTab(event, this, '" + specifier + "', '" + tagName + "')\" class=\"ft-x\"></i></a></li>");
 
 
     //switch to newly created tab
-    showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
+    showTabNamed(specifier + "-" + listItemCount + "-tab", newDivId, specifier);
     $('[data-toggle="tooltip"]').tooltip();
 
     createSelect2();
 
 
-    $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
-    $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
+    $("#" + specifier + "-" + listItemCount + "-input-block").addClass("collapse");
+    $("#" + specifier + "-" + listItemCount + "-input-block").addClass("show");
     //move card buttons to the bottom
-    rearrangeCards(specifier+'-' + listItemCount + '-input-block');
+    rearrangeCards(specifier + '-' + listItemCount + '-input-block');
     //TODO: test cross-browser functionality for below
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
-    if(!isAutoComplete){
+    if (!isAutoComplete) {
         window.location.hash = $("#" + specifier + "-card").selector;
     }
 
 }
 
-function getLastIndex(specifier){
+function getLastIndex(specifier) {
     var index = 0;
     //get the last index of the specifier
-    for (var i=0; i<10; i++) {
-        if (specifier.includes(i+"-")){
-            var lastIndex = specifier.lastIndexOf(i+"-");
+    for (var i = 0; i < 10; i++) {
+        if (specifier.includes(i + "-")) {
+            var lastIndex = specifier.lastIndexOf(i + "-");
             if (lastIndex > index) {
                 index = lastIndex;
             }
@@ -1388,27 +1420,34 @@ function getLastIndex(specifier){
     return index;
 }
 
-function updateCardTabTitle(specifier){
+function updateCardTabTitle(specifier) {
     var index = getLastIndex(specifier);
-
+    debugger;
+    var id = specifier.substring(0, index + 2) + "listItem";
     var newCardTabTitleText = $("#" + specifier).val();
-    if (index > 0 && newCardTabTitleText.length > 0) {
-        var id = specifier.substring(0, index + 2) + "listItem";
+    if (index > 0) {
+        if (newCardTabTitleText.length == 0) {
+            var cardTitle = $($("#" + id).closest(".card").find(".card-title")[0]).html();
+            if (cardTitle.endsWith('s')) {
+                cardTitle = cardTitle.slice(0, -1);
+            }
+            newCardTabTitleText = cardTitle;
+        }
         setCardTabTitle(id, specifier, newCardTabTitleText);
     }
 }
 
-function updateCardTabTitleFromSelect(specifier){
+function updateCardTabTitleFromSelect(specifier) {
     var index = getLastIndex(specifier);
 
-    var newCardTabTitleText = document.getElementById(specifier+"-select").value;
+    var newCardTabTitleText = document.getElementById(specifier + "-select").value;
     if (index > 0 && newCardTabTitleText.length > 0) {
         var id = specifier.substring(0, index + 2) + "listItem";
         setCardTabTitle(id, specifier, newCardTabTitleText);
     }
 }
 
-function updateCardTabTitlePerson(specifier){
+function updateCardTabTitlePerson(specifier) {
     var index = getLastIndex(specifier);
 
     var fullNameId = specifier.substring(0, index + 2) + "fullname-string";
@@ -1446,7 +1485,7 @@ function updateCardTabTitlePerson(specifier){
     }
 }
 
-function updateCardTabTitleType(specifier){
+function updateCardTabTitleType(specifier) {
     var index = getLastIndex(specifier);
 
     var informationId = specifier.substring(0, index + 2) + "information-value-string";
@@ -1466,13 +1505,15 @@ function updateCardTabTitleType(specifier){
     }
 }
 
-function setCardTabTitle(id, specifier, cardTabTitle){
+function setCardTabTitle(id, specifier, cardTabTitle) {
     var maxLength = 35;
     var leftIndex = 20;
     var rightIndex = 10;
 
     // $('#'+ id +'[data-toggle="tooltip"]').attr("title",cardTabTitle);
-    $('#'+ id +'[data-toggle="tooltip"]').attr("data-original-title",cardTabTitle);
+
+
+    $('#' + id + '[data-toggle="tooltip"]').attr("data-original-title", cardTabTitle);
 
     if (cardTabTitle.includes(" ")) {
         var regex = /\s+/g;
@@ -1481,7 +1522,9 @@ function setCardTabTitle(id, specifier, cardTabTitle){
         if (size > 7) {
             leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + cardTabTitleWords[2].length + 2;
             rightIndex = cardTabTitleWords[size - 2].length + cardTabTitleWords[size - 1].length + 1;
-            if (rightIndex > 15) {rightIndex = 15}
+            if (rightIndex > 15) {
+                rightIndex = 15
+            }
             cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
         } else if (size > 5) {
             leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + 1;
@@ -1500,7 +1543,7 @@ function setCardTabTitle(id, specifier, cardTabTitle){
         cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
     }
 
-    if(cardTabTitle.length > 0) {
+    if (cardTabTitle.length > 0) {
         cardTabTitle = cardTabTitle + "   ";
         var currentCardTabTitleText = $("#" + id).text().trim();
         var currentCardTabTitleHTML = $("#" + id).html();
@@ -1511,11 +1554,11 @@ function setCardTabTitle(id, specifier, cardTabTitle){
 function clearMultiSelectIfEmpty(id) {
     // debugger;
     var multiSelectId = "#" + id;
-    if($(multiSelectId + " :selected").length === 0) {
-        $(multiSelectId + " > option").each(function() {
+    if ($(multiSelectId + " :selected").length === 0) {
+        $(multiSelectId + " > option").each(function () {
             this.disabled = false;
         });
-        setTimeout(function(){
+        setTimeout(function () {
             //comment out to turn off select2
             // $(multiSelectId).select2();
             // $(multiSelectId).val('');
@@ -1530,32 +1573,31 @@ function clearMultiSelectIfEmpty(id) {
                 $(multiSelectId).val(values).change();
             }
         }
-/*
-        if($(multiSelectId).val().includes('Undocumented') && $(multiSelectId).val().length > 1) {
-            var i = values.indexOf('Undocumented');
-            if (i >= 0) {
-                values.splice(i, 1);
-                $(multiSelectId).val(values).change();
-            }
-        }
-*/
+        /*
+                if($(multiSelectId).val().includes('Undocumented') && $(multiSelectId).val().length > 1) {
+                    var i = values.indexOf('Undocumented');
+                    if (i >= 0) {
+                        values.splice(i, 1);
+                        $(multiSelectId).val(values).change();
+                    }
+                }
+        */
 
 
-
-/*
-        if(!$(multiSelectId).val().includes('Undocumented')) {
-            $(multiSelectId + " > option").each(function() {
-                if(this.value === 'Undocumented')
-                    this.disabled = true;
-            });
-            $(multiSelectId).select2();
-        }
-*/
+        /*
+                if(!$(multiSelectId).val().includes('Undocumented')) {
+                    $(multiSelectId + " > option").each(function() {
+                        if(this.value === 'Undocumented')
+                            this.disabled = true;
+                    });
+                    $(multiSelectId).select2();
+                }
+        */
 
     }
 }
 
-$(window).on("popstate", function() {
+$(window).on("popstate", function () {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
     try {
         $("a[href='" + anchor + "']").tab("show");
@@ -1563,7 +1605,7 @@ $(window).on("popstate", function() {
 
     }
 
-    if(location.hash.includes('publication')) {
+    if (location.hash.includes('publication')) {
         $('#content-tab').addClass('highlighted-item');
     } else {
         $('#content-tab').removeClass('highlighted-item');
@@ -1572,14 +1614,17 @@ $(window).on("popstate", function() {
 
 function init() {
     var vidDefer = document.getElementsByTagName('iframe');
-    for (var i=0; i<vidDefer.length; i++) {
-        if(vidDefer[i].getAttribute('data-src')) {
-            vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-        } } }
+    for (var i = 0; i < vidDefer.length; i++) {
+        if (vidDefer[i].getAttribute('data-src')) {
+            vidDefer[i].setAttribute('src', vidDefer[i].getAttribute('data-src'));
+        }
+    }
+}
+
 window.onload = init;
 
 function convertDateNumToString(num) {
-    if(num < 10) {
+    if (num < 10) {
         num = '0' + num;
     } else {
         num += ''
@@ -1589,12 +1634,11 @@ function convertDateNumToString(num) {
 }
 
 
-
 function sortSelect(selectId) {
     var options = $(selectId + " option");
     var selected = $(selectId).val();
 
-    options.sort(function(a,b) {
+    options.sort(function (a, b) {
         if (a.text > b.text) return 1;
         if (a.text < b.text) return -1;
         return 0
@@ -1603,7 +1647,6 @@ function sortSelect(selectId) {
     $(selectId).empty().append(options);
     $(selectId).val(selected);
 }
-
 
 
 function copyToClipboard(elementId) {
@@ -1618,7 +1661,7 @@ function download(filename, elementId) {
     var text = $(elementId).text();
     var element = document.createElement('a');
 
-    if(text.includes('xmlns')) {
+    if (text.includes('xmlns')) {
         filename = filename.replace('.json', '.xml');
     }
 
@@ -1634,7 +1677,7 @@ function download(filename, elementId) {
 }
 
 function toggleModalView() {
-    if($('#modal-html').hasClass('active')) {
+    if ($('#modal-html').hasClass('active')) {
         // $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
         $('#modal-json-link').click();
         $('#modal-switch-btn').text('Switch to HTML View');
@@ -1645,45 +1688,45 @@ function toggleModalView() {
 }
 
 function toggleLegend(cmd) {
-    if(cmd === "hide") {
+    if (cmd === "hide") {
         $('#main-legend').hide();
         $('#show-legend').show();
-    } else if(cmd === "show") {
+    } else if (cmd === "show") {
         $('#show-legend').hide();
         $('#main-legend').show();
     }
 }
 
 function uniqueArray(arrArg) {
-    return arrArg.filter(function(elem, pos,arr) {
+    return arrArg.filter(function (elem, pos, arr) {
         return arr.indexOf(elem) == pos;
     });
 }
 
 
 function getDataFormatName(identifier) {
-    var contextPath =  ctx;
+    var contextPath = ctx;
     var dataFormatName;
     $.ajax({
         async: false,
-        type : "GET",
-        contentType : "text/plain",
-        url : contextPath + "/get-dataFormatNameByIdentifier",
-        dataType : 'text',
+        type: "GET",
+        contentType: "text/plain",
+        url: contextPath + "/get-dataFormatNameByIdentifier",
+        dataType: 'text',
         data: {identifier: identifier},
-        timeout : 100000,
-        beforeSend : function() {
+        timeout: 100000,
+        beforeSend: function () {
             $(".loading").show();
         },
-        success : function(data) {
+        success: function (data) {
             dataFormatName = data;
         },
-        error : function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
             console.log(textStatus);
             console.log(errorThrown);
         },
-        complete : function () {
+        complete: function () {
             $(".loading").hide();
         }
     });
@@ -1691,7 +1734,7 @@ function getDataFormatName(identifier) {
 }
 
 function autoCompleteFields(id, name, contextPath, typeOfList, typeOfSubList, updateCardTabTitleText) {
-    if(updateCardTabTitleText){
+    if (updateCardTabTitleText) {
         updateCardTabTitleFromSelect(id);
     }
     var selectText = $("#" + id + "-select option:selected").text().trim() + " " + $("#" + id + "-select option:selected")[0].getAttribute("identifier");
@@ -1700,49 +1743,49 @@ function autoCompleteFields(id, name, contextPath, typeOfList, typeOfSubList, up
     var fieldName = name.substring(0, name.lastIndexOf("."));
     var jsonList;
     $.ajax({
-        type : "GET",
-        contentType : "application/json; charset=utf-8",
-        url : contextPath + "/get-autocomplete-list",
-        dataType : 'json',
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        url: contextPath + "/get-autocomplete-list",
+        dataType: 'json',
         data: {type: typeOfList, subType: typeOfSubList},
-        timeout : 100000,
-        beforeSend : function() {
+        timeout: 100000,
+        beforeSend: function () {
             $(".loading").show();
         },
-        success : function(data) {
+        success: function (data) {
             jsonList = data;
-            if(jsonList) {
+            if (jsonList) {
                 for (var i = 0; i < jsonList.length; i++) {
                     var jsonObj = JSON.parse(jsonList[i]);
-                    if(typeOfList === 'license'){
+                    if (typeOfList === 'license') {
                         autoCompleteLicenseFields(jsonObj, path, selectText, fieldName);
                     }
                 }
             }
         },
-        error : function(xhr, textStatus, errorThrown) {
+        error: function (xhr, textStatus, errorThrown) {
             console.log(xhr.responseText);
             console.log(textStatus);
             console.log(errorThrown);
         },
-        complete : function () {
+        complete: function () {
             $(".loading").hide();
         }
     });
 }
 
-function autoCompleteLicenseFields(jsonObj, path, selectText, fieldName){
+function autoCompleteLicenseFields(jsonObj, path, selectText, fieldName) {
     // var compareText = jsonObj.name + " [" + jsonObj.identifier.identifier+ "]";
     var identifier = "";
     if (jsonObj.identifier != null) {
-        if(jsonObj.identifier.identifier != null) {
+        if (jsonObj.identifier.identifier != null) {
             identifier = jsonObj.identifier.identifier;
         }
     }
 
-    var compareText = jsonObj.name + " [" + identifier+ "]";
+    var compareText = jsonObj.name + " [" + identifier + "]";
 
-    if(compareText === selectText) {
+    if (compareText === selectText) {
         $("#" + path + "-version-string").val(jsonObj.version);
 
         //Identifier
@@ -1752,39 +1795,39 @@ function autoCompleteLicenseFields(jsonObj, path, selectText, fieldName){
     }
 }
 
-function autoCompleteIdentifierFields(jsonObj, path){
+function autoCompleteIdentifierFields(jsonObj, path) {
     //Identifier
     var identifier = "";
     var identifierSource = "";
-    if(jsonObj.identifier != null) {
+    if (jsonObj.identifier != null) {
         showCard(path, "identifier", path, "false", "", "true");
-        if(jsonObj.identifier.identifier != null) {
+        if (jsonObj.identifier.identifier != null) {
             identifier = jsonObj.identifier.identifier;
         }
-        if(jsonObj.identifier.identifierSource != null) {
+        if (jsonObj.identifier.identifierSource != null) {
             identifierSource = jsonObj.identifier.identifierSource;
         }
     }
     $("#" + path + "-identifier-string").val(identifier);
     $("#" + path + "-identifierSource-string").val(identifierSource);
-    if(jsonObj.identifier == null) {
+    if (jsonObj.identifier == null) {
         removeSection(path, "identifier", event, false, true);
     }
 }
 
-function autoCompleteAlternateIdentifierFields(jsonObj, path, fieldName){
+function autoCompleteAlternateIdentifierFields(jsonObj, path, fieldName) {
     removeSection(path, "identifier", event, true, true);
-    if(jsonObj.alternateIdentifiers != null){
+    if (jsonObj.alternateIdentifiers != null) {
         for (var i = 0; i < jsonObj.alternateIdentifiers.length; i++) {
             var alternateIdentifier = jsonObj.alternateIdentifiers[k];
-            createNewTab(document.getElementById(path+'-add-identifier'), path, fieldName + ".alternateIdentifiers", "identifier", "Alternate Identifier", false, i, true)
+            createNewTab(document.getElementById(path + '-add-identifier'), path, fieldName + ".alternateIdentifiers", "identifier", "Alternate Identifier", false, i, true)
             var identifier = "";
             var identifierSource = "";
 
-            if(alternateIdentifier.identifier != null){
+            if (alternateIdentifier.identifier != null) {
                 identifier = alternateIdentifier.identifier;
             }
-            if(alternateIdentifier.identifierSource != null){
+            if (alternateIdentifier.identifierSource != null) {
                 identifierSource = alternateIdentifier.identifierSource;
             }
             $("#" + path + "-identifier-string").val(identifier);
@@ -1794,22 +1837,22 @@ function autoCompleteAlternateIdentifierFields(jsonObj, path, fieldName){
     }
 }
 
-function autoCompleteCreatorsFields(jsonObj, path, fieldName){
+function autoCompleteCreatorsFields(jsonObj, path, fieldName) {
     removeSection(path, "personComprisedEntity", event, true, true);
-    if(jsonObj.creators != null){
+    if (jsonObj.creators != null) {
         for (var k = 0; k < jsonObj.creators.length; k++) {
             var creator = jsonObj.creators[k];
             var personOrganization = undefined;
-            if(creator.name != null){
+            if (creator.name != null) {
                 personOrganization = "organization";
             } else personOrganization = "person";
 
-            createNewTab(document.getElementById(path+"-add-personComprisedEntity-"+personOrganization), path, fieldName + ".creators", "personComprisedEntity", "Creator", "", k, true)
+            createNewTab(document.getElementById(path + "-add-personComprisedEntity-" + personOrganization), path, fieldName + ".creators", "personComprisedEntity", "Creator", "", k, true)
             //Identifier
             autoCompleteIdentifierFields(jsonObj.creators[k], path + "-" + k + "-identifier");
             autoCompleteAlternateIdentifierFields(jsonObj.creators[k], path + "-" + k + "-alternateIdentifiers", fieldName);
 
-            if(personOrganization === "organization"){
+            if (personOrganization === "organization") {
                 var creatorName = '';
                 var creatorAbbreviation = '';
                 if (creator.name != null) {
@@ -1827,17 +1870,17 @@ function autoCompleteCreatorsFields(jsonObj, path, fieldName){
 
 
 function formatAutoCompleteResult(license) {
-    if(!license.element) {
+    if (!license.element) {
         return license.text;
     }
     var $name = $(
-        '<span>' + license.element.value + '</span> <span class="select2-identifier">'+ license.element.getAttribute("identifier") + '</span>'
+        '<span>' + license.element.value + '</span> <span class="select2-identifier">' + license.element.getAttribute("identifier") + '</span>'
     );
     return $name;
 }
 
 function formatAutoCompleteSelect(license) {
-    if(!license.element) {
+    if (!license.element) {
         return license.text;
     }
     var $name = $(
@@ -1861,11 +1904,11 @@ function destroySelect2() {
 
 function createSelect2() {
     //comment out to turn off select2
-/*
-    $(".multiSelect").select2({
-        placeholder: "Please Select... "
-    });
-*/
+    /*
+        $(".multiSelect").select2({
+            placeholder: "Please Select... "
+        });
+    */
 
     $(".autoCompleteSelect").select2({
         placeholder: "License name",
