@@ -20,7 +20,7 @@ public class Entry {
     @EmbeddedId
     private EntryId id;
     @Type(type = JsonbType.NAME)
-    private HashMap content;
+    public HashMap content;
     private String status = Values.PENDING;
     private boolean isPublic;
     private String displayName;

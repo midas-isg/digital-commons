@@ -30,6 +30,70 @@
         <!-- This is the results panel -->
         <div class="col-md-12 font-size-16">
             <h3 class="title-font" id="subtitle">
+                FAIR Metrics Summary
+            </h3>
+
+            <table id="summary-fair-metrics-table" class="display table table-striped table-bordered" cellspacing="0"
+                   width="100%">
+                <thead>
+                <tr>
+                    <th rowspan="2" class="fair-metric-table-header">Digital Object Identifier</th>
+                    <th colspan="13" class="text-center fair-metric-table-header">
+                        <a class="color-white underline"
+                           href="${pageContext.request.contextPath}/fair-metrics/description"> FAIR Metrics</a>
+                    </th>
+                </tr>
+                <tr>
+                    <c:forEach items="${keys}" var="key">
+                        <th data-toggle="modal" class="pointer text-center underline"
+                            data-title="<fmt:message key="${key.concat('-Column-Header')}" />"
+                            data-target="#fairMetricsModal"
+                            title="<fmt:message key="${key.concat('-Name')}" />"
+                            data-fmid="<fmt:message key="${key}" />"
+                            data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
+                            data-url="<fmt:message key="${key.concat('-URL')}" />"
+                            data-name="<fmt:message key="${key.concat('-Name')}" />"
+                            data-principle="<fmt:message key="${key.concat('-Principle')}" />"
+                            data-measured="<fmt:message key="${key.concat('-Measured')}" />"
+                            data-why-measure="<fmt:message key="${key.concat('-Why-Measure')}" />"
+                            data-must-provided="<fmt:message key="${key.concat('-Must-Provided')}" />"
+                            data-how-measure="<fmt:message key="${key.concat('-How-Measure')}" />"
+                            data-valid-result="<fmt:message key="${key.concat('-Valid-Result')}" />"
+                            data-which-relevant="<fmt:message key="${key.concat('-Which-Relevant')}" />"
+                            data-examples="<fmt:message key="${key.concat('-Examples')}" />"
+                            data-comments="<fmt:message key="${key.concat('-Comments')}" />"
+                        ><fmt:message key="${key.concat('-Column-Header')}"/></th>
+                    </c:forEach>
+
+                </tr>
+                </thead>
+
+                <td>average score</td>
+                <td class="vertical-align-middle text-center">jeff 1</td>
+                <td class="vertical-align-middle text-center">jeff 2</td>
+                <td class="vertical-align-middle text-center">jeff 3</td>
+                <td class="vertical-align-middle text-center">jeff 4</td>
+                <td class="vertical-align-middle text-center">jeff 5</td>
+                <td class="vertical-align-middle text-center">jeff 6</td>
+                <td class="vertical-align-middle text-center">jeff 7</td>
+                <td class="vertical-align-middle text-center">jeff 8</td>
+                <td class="vertical-align-middle text-center">jeff 9</td>
+                <td class="vertical-align-middle text-center">jeff 10</td>
+                <td class="vertical-align-middle text-center">jeff 11</td>
+                <td class="vertical-align-middle text-center">jeff 12</td>
+                <td class="vertical-align-middle text-center">jeff 13</td>
+                </tr>
+
+            </table>
+            <button class="btn btn-primary run-metrics-button" onclick="$('#full-report').toggleClass('hidden')">Show Metrics Report</button>
+
+        </div>
+    </div>
+
+    <div id="full-report" class="row hidden">
+        <!-- This is the results panel -->
+        <div class="col-md-12 font-size-16">
+            <h3 class="title-font" id="subtitle">
                 FAIR Metrics (${report.results.size()} entries) since <fmt:formatDate type="both"
                                                                                       value="${createdDate}"/>
             </h3>
