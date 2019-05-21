@@ -20,7 +20,7 @@
 
             <div class="pull-right" style="margin-right:20px">
                 <!--Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.-->
-                <span class="leaf italic">MIDAS Digital Commons v1.1</span>
+                <span class="leaf italic">MIDAS Digital Commons v1.0</span>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
 
             <div id="dev-team-footer" class="col-12">
                 <!--Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.-->
-                <span class="leaf italic">MIDAS Digital Commons v1.1</span>
+                <span class="leaf italic">MIDAS Digital Commons v1.0</span>
             </div>
         </div>
     </div>
