@@ -50,7 +50,7 @@ public class FairMetricController {
         Map<String, String> scores = new HashMap<String, String>();
 
         for(Object[] obj : fairMetricReportRepo.getFairMetricReportSummary()){
-            DecimalFormat decimalFormat = new DecimalFormat("0.##");
+            DecimalFormat decimalFormat = new DecimalFormat("0.#####");
             scores.put(obj[0].toString(), String.valueOf(decimalFormat.format(obj[1])));
 //            scores.put(obj[0].toString(), String.valueOf(Double.valueOf(obj[1].toString())));
         }
