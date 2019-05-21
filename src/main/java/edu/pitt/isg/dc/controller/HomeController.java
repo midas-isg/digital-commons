@@ -124,6 +124,33 @@ public class HomeController {
         }
     }
 
+    private void writeGlobalArrays() {
+
+        try {
+            if (treeInfoArr == null) {
+                treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
+                writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
+            }
+
+            if (diseaseForecastersTreeInfoArr == null) {
+                diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees(9L); // 9L = DiseaseForecasters
+                writeFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
+            }
+
+            if (pathogenEvolutionModelsTreeInfoArr == null) {
+                pathogenEvolutionModelsTreeInfoArr = categoryHelper.getEntryTrees(14L); // 9L = DiseaseForecasters
+                writeFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE);
+            }
+
+            if (diseaseTransmissionModelsTreeInfoArr == null) {
+                diseaseTransmissionModelsTreeInfoArr = categoryHelper.getEntryTrees(10L); // 9L = DiseaseForecasters
+                writeFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE);
+            }
+        } catch (Exception e) {
+            System.out.println("Error writing new cache files!  Error: " + e.getMessage());
+        }
+    }
+
     public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
         List<Object[]> spewLocationsAndAccessUrls = workflows.getSpewLocationsAndAccessUrls();
 
@@ -139,25 +166,12 @@ public class HomeController {
             }
         }
 
-        if (treeInfoArr == null) {
-            treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
-            writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
-        }
+        treeInfoArr = getCachedTrees(1);
+        diseaseForecastersTreeInfoArr = getCachedTrees(9);
+        pathogenEvolutionModelsTreeInfoArr = getCachedTrees(14);
+        diseaseTransmissionModelsTreeInfoArr = getCachedTrees(10);
 
-        if (diseaseForecastersTreeInfoArr == null) {
-            diseaseForecastersTreeInfoArr = categoryHelper.getEntryTrees(9L); // 9L = DiseaseForecasters
-            writeFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE);
-        }
-
-        if (pathogenEvolutionModelsTreeInfoArr == null) {
-            pathogenEvolutionModelsTreeInfoArr = categoryHelper.getEntryTrees(14L); // 9L = DiseaseForecasters
-            writeFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE);
-        }
-
-        if (diseaseTransmissionModelsTreeInfoArr == null) {
-            diseaseTransmissionModelsTreeInfoArr = categoryHelper.getEntryTrees(10L); // 9L = DiseaseForecasters
-            writeFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE);
-        }
+        writeGlobalArrays();
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
@@ -173,6 +187,7 @@ public class HomeController {
     public String redirectHome() {
         return "redirect:/main";
     }
+
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(Model model, HttpSession session) throws Exception {
@@ -326,9 +341,9 @@ public class HomeController {
     @RequestMapping(value = "/getTreeInformation", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
-    List<Map<String, String>> getTreeInformation() throws Exception {
+    List<Map<String, String>> getTree(Long subcategoryId) throws Exception {
 
-        if (!treeInfoArr.isEmpty() && treeInfoArr != null) {
+        if (treeInfoArr != null && !treeInfoArr.isEmpty()) {
             return treeInfoArr;
         } else {
             try {
@@ -345,15 +360,73 @@ public class HomeController {
         }
     }
 
+    @RequestMapping(value = "/refresh", method = RequestMethod.GET)
+    private void refreshCachedFiles() {
+        treeInfoArr = null;
+        diseaseTransmissionModelsTreeInfoArr = null;
+        diseaseForecastersTreeInfoArr = null;
+        pathogenEvolutionModelsTreeInfoArr = null;
+        writeGlobalArrays();
+
+    }
+    private List<Map<String, String>> getCachedTrees(int subcategoryId) {
+        List<Map<String, String>> result = null;
+        String filename = "";
+        switch (subcategoryId) {
+            case 1:
+                filename = TREE_INFO_CACHE_FILE;
+                break;
+            case 9:
+                filename = DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE;
+                break;
+            case 14:
+                filename = PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE;
+                break;
+            case 10:
+                filename = DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE;
+            default:
+                //yikes
+        }
+
+        Path path = Paths.get(filename);
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(path.toFile());
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        ObjectInputStream ois = null;
+        try {
+            ois = new ObjectInputStream(fis);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            result = (List<Map<String, String>>) ois.readObject();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+
+    }
+
     private void writeFile(Object fileToWrite, String fileString) {
         try {
             Path path = Paths.get(fileString);
             Files.createDirectories(path.getParent());
-            Files.createFile(path);
+            if (!Files.exists(path)) {
+                Files.createFile(path);
+            }
             FileOutputStream fos = new FileOutputStream(path.toFile());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(fileToWrite);
+            System.out.println("Wrote cache file: " + path);
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (IOException ex) {
