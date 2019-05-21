@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -34,7 +36,18 @@ public class EntryRule {
         final Set<EntryId> results = searchEntryIds(q);
         if (results == null)
             return repo.findAllByIsPublic(true, pageRequest);
-        return repo.findByIdIn(results, pageRequest);
+        Page<Entry> resultToBeFiltered = repo.findByIdIn(results, pageRequest);
+        System.out.println(resultToBeFiltered);
+
+            for (int i = 0; i < resultToBeFiltered.getContent().size(); i++) {
+                if (resultToBeFiltered.getContent().get(i).content.get("entry").toString().contains("category=website")) {
+
+
+                    ((HashMap) (resultToBeFiltered.getContent().get(i).content.get("properties"))).put("type", "Website with data");
+                }
+
+        }
+        return resultToBeFiltered;
     }
 
     private Set<EntryId> searchEntryIds(EntryComplexQuery q) {
@@ -46,7 +59,7 @@ public class EntryRule {
         return results;
     }
 
-    public List<MatchedSoftware> listSoftwareMatched(){
+    public List<MatchedSoftware> listSoftwareMatched() {
         final List<Object[]> list = repo.match2Software();
         return list.stream()
                 .map(MatchedSoftware::of)
