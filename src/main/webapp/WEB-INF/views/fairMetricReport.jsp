@@ -96,7 +96,7 @@
                                                                                   value="${runningDate}"/></h4>
                 </c:otherwise>
             </c:choose>
-            <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
+            <form action="./fair-metrics/run" method="post" id="form1"/>
             <c:if test="${adminType == 'ISG_ADMIN'}">
                 <button class="btn btn-primary run-metrics-button" type="submit" form="form1" value="Submit">Rerun Metrics</button>
             </c:if>

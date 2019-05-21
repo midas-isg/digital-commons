@@ -119,7 +119,11 @@ public class LocationProxy {
 
     private Location fetchThenCache(Long id) {
         final Location location = fetchLocation(id);
-        repo.save(location);
+        if (location == null) {
+            System.out.println("location for id " + String.valueOf(id.intValue()) + " is null.");
+        } else {
+            repo.save(location);
+        }
         return location;
     }
 }

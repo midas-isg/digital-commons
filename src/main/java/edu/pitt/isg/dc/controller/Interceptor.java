@@ -24,7 +24,8 @@ public class Interceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest req, HttpServletResponse res,
                            Object handler, ModelAndView modelAndView) throws Exception {
-        HttpSession session = req.getSession();
+        HttpSession session = req.getSession(false);
+
         try {
             if (ifLoggedIn(session))
                 modelAndView.addObject("loggedIn", true);

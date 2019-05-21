@@ -36,7 +36,7 @@ public class FairMetricController {
 
     @GetMapping("")
     @Transactional
-    public String report(ModelMap model){
+    public String report(ModelMap model) {
         List<String> keys = getKeys();
         Map<String, String> scores = getSummaryScore(keys);
         model.addAttribute("keys", keys);
@@ -49,17 +49,23 @@ public class FairMetricController {
     private Map<String, String> getSummaryScore(List<String> keys) {
         Map<String, String> scores = new HashMap<String, String>();
 
+/*
+        Map<String, String> metricToShortNameLookupTable = getLookupTable();
+*/
+
+
         for(Object[] obj : fairMetricReportRepo.getFairMetricReportSummary()){
             DecimalFormat decimalFormat = new DecimalFormat("0.#####");
             scores.put(obj[0].toString(), String.valueOf(decimalFormat.format(obj[1])));
-//            scores.put(obj[0].toString(), String.valueOf(Double.valueOf(obj[1].toString())));
+
         }
         return scores;
 
     }
+
     @PostMapping(value = "/run", produces = JSON)
     @ResponseBody
-    public FairMetricReport post(){
+    public FairMetricReport post() {
         return service.run();
     }
 
@@ -74,14 +80,14 @@ public class FairMetricController {
 
     private int ensureInitialization(FairMetricReport report) {
         int count = 0;
-        for (FairMetricResultRow row: report.getResults())
-            for (FairMetricResult r: row.getResults())
+        for (FairMetricResultRow row : report.getResults())
+            for (FairMetricResult r : row.getResults())
                 count++;
         return count;
     }
 
     @RequestMapping(value = "/detailed-view", method = RequestMethod.GET)
-    public String detailedViewFAIRMetrics(Model model, HttpSession session,@RequestParam(value = "key") String key) throws Exception {
+    public String detailedViewFAIRMetrics(Model model, HttpSession session, @RequestParam(value = "key") String key) throws Exception {
         model.addAttribute("key", key);
         model.addAttribute("keys", getKeys());
 
@@ -112,7 +118,7 @@ public class FairMetricController {
             } else {
                 throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
 
@@ -120,7 +126,7 @@ public class FairMetricController {
     }
 
 
-    private List<String> getKeys(){
+    private List<String> getKeys() {
         ArrayList<String> keys = new ArrayList<String>();
         keys.add("FM-F1A");
         keys.add("FM-F1B");
@@ -136,5 +142,23 @@ public class FairMetricController {
         keys.add("FM-R1.1");
         keys.add("FM-R1.2");
         return keys;
+    }
+
+    private Map<String, String> getLookupTable() {
+        Map<String, String> lookupTable = new HashMap<>();
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_unique_identifier", "F1A");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_identifier_persistence", "F1B");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_machine_readable_metadata", "F2");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_identifier_in_metadata", "F3");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_searchable_index", "F4");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_access_protocol", "A1.1");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_access_authorization", "A1.2");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_metadata_longevity", "A2");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_knowledge_language", "I1");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_fair_vocabularies", "I2");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_has_linkset", "I3");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_accessible_license", "R1.1");
+        lookupTable.put("http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/metric_detailed_provenance_A", "R1.2");
+        return lookupTable;
     }
 }
