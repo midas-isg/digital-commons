@@ -1,11 +1,9 @@
 package edu.pitt.isg.dc.controller;
 
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.fm.FairMetricReport;
-import edu.pitt.isg.dc.fm.FairMetricResult;
-import edu.pitt.isg.dc.fm.FairMetricResultRow;
-import edu.pitt.isg.dc.fm.FairMetricService;
+import edu.pitt.isg.dc.fm.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import javax.transaction.Transactional;
@@ -32,6 +31,8 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class FairMetricController {
     private final FairMetricService service;
+    @Autowired
+    private FairMetricReportRepo fairMetricReportRepo;
 
     @GetMapping("")
     @Transactional
@@ -46,11 +47,12 @@ public class FairMetricController {
     }
 
     private Map<String, String> getSummaryScore(List<String> keys) {
-        Random rand = new Random(0);
         Map<String, String> scores = new HashMap<String, String>();
-        
-        for (String key : keys) {
-            scores.put(key, String.valueOf(rand.nextDouble()));
+
+        for(Object[] obj : fairMetricReportRepo.getFairMetricReportSummary()){
+            DecimalFormat decimalFormat = new DecimalFormat("0.##");
+            scores.put(obj[0].toString(), String.valueOf(decimalFormat.format(obj[1])));
+//            scores.put(obj[0].toString(), String.valueOf(Double.valueOf(obj[1].toString())));
         }
         return scores;
 
