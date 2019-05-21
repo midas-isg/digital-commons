@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
@@ -38,13 +36,25 @@ public class FairMetricController {
     @GetMapping("")
     @Transactional
     public String report(ModelMap model){
-        model.addAttribute("keys", getKeys());
-
+        List<String> keys = getKeys();
+        Map<String, String> scores = getSummaryScore(keys);
+        model.addAttribute("keys", keys);
+        model.addAttribute("scores", scores);
         model.addAttribute("report", currentReport());
         model.addAttribute("running", service.runningReport());
         return "fairMetricReport";
     }
 
+    private Map<String, String> getSummaryScore(List<String> keys) {
+        Random rand = new Random(0);
+        Map<String, String> scores = new HashMap<String, String>();
+        
+        for (String key : keys) {
+            scores.put(key, String.valueOf(rand.nextDouble()));
+        }
+        return scores;
+
+    }
     @PostMapping(value = "/run", produces = JSON)
     @ResponseBody
     public FairMetricReport post(){

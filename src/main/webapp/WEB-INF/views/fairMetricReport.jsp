@@ -69,19 +69,10 @@
                 </thead>
 
                 <td>average score</td>
-                <td class="vertical-align-middle text-center">jeff 1</td>
-                <td class="vertical-align-middle text-center">jeff 2</td>
-                <td class="vertical-align-middle text-center">jeff 3</td>
-                <td class="vertical-align-middle text-center">jeff 4</td>
-                <td class="vertical-align-middle text-center">jeff 5</td>
-                <td class="vertical-align-middle text-center">jeff 6</td>
-                <td class="vertical-align-middle text-center">jeff 7</td>
-                <td class="vertical-align-middle text-center">jeff 8</td>
-                <td class="vertical-align-middle text-center">jeff 9</td>
-                <td class="vertical-align-middle text-center">jeff 10</td>
-                <td class="vertical-align-middle text-center">jeff 11</td>
-                <td class="vertical-align-middle text-center">jeff 12</td>
-                <td class="vertical-align-middle text-center">jeff 13</td>
+                <c:forEach items="${keys}" var="key">
+                    <td class="vertical-align-middle text-center"><c:out value="${scores[key]}"/></td>
+                </c:forEach>
+
                 </tr>
 
             </table>
