@@ -87,6 +87,26 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             AND_PUBLIC)
     List<Object[]> filterIdsByTypes(Set<String> onlyTypes);
 
+/*
+    @Query(nativeQuery = true, value = "SELECT a.entry_id, a.revision_id " +
+            "FROM \n" +
+            "(select \n" +
+            "             entry_id, \n" +
+            "             revision_id, \n" +
+            "             is_public, \n" +
+            "             CASE \n" +
+            "                 WHEN fsv.top_category_id = 148 \n" +
+            "                 THEN 'edu.pitt.isg.mdc.dats2_2.WebsitesWithData' \n" +
+            "                 ELSE content->'properties'->>'type' \n" +
+            "             END as datatype \n" +
+            "     from entry as e \n" +
+            "     join vw_findsetsview as fsv \n" +
+            "     on e.category_id = fsv.setid) as a \n" +
+            " WHERE a.datatype IN ?1 \n" +
+            " and a.is_public = true ")
+    List<Object[]> filterIdsByTypes(Set<String> onlyTypes);
+*/
+
     @Query(nativeQuery = true, value = "SELECT * " + FROM_ENTRY +
             "WHERE content #>> '{properties,type}' IN ?1 " +
             AND_PUBLIC)
@@ -101,6 +121,20 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             FROM_ENTRY + "  WHERE " + IS_PUBLIC)
     List<String> listTypes();
+
+/*
+    @Query(nativeQuery = true, value = "SELECT DISTINCT \n" +
+            "CASE \n" +
+            "  when fsv.top_category_id = 148 \n" +
+            "    then 'edu.pitt.isg.mdc.dats2_2.WebsitesWithData' \n" +
+            "  else e.content #>> '{properties,type}' \n" +
+            "END \n" +
+            FROM_ENTRY + " as e \n"  +
+            "  JOIN vw_findsetsview as fsv \n" +
+            "  ON fsv.setid = e.category_id \n" +
+            "  WHERE " + IS_PUBLIC)
+    List<String> listTypes();
+*/
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             FROM_ENTRY +

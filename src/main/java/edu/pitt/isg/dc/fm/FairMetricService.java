@@ -174,7 +174,7 @@ public class FairMetricService {
 		return result;
 	}
 
-	private Map<String, String> initMetricUrls() {
+	public Map<String, String> initMetricUrls() {
 		final Map<String, String> map = new LinkedHashMap<>();
 		final String prefixUrl = "http://linkeddata.systems/cgi-bin/fair_metrics/Metrics/";
 		map.put(FM_F1A, prefixUrl + "metric_unique_identifier");
