@@ -76,7 +76,7 @@
                 </tr>
 
             </table>
-            <button class="btn btn-primary run-metrics-button" onclick="$('#full-report').toggleClass('hidden')">Show Metrics Report</button>
+            <button class="btn btn-primary run-metrics-button" onclick="toggleReport()">Show Metrics Report</button>
 
         </div>
     </div>
@@ -207,6 +207,11 @@
 </body>
 
 <script>
+    function toggleReport() {
+       $('#full-report').toggleClass('hidden');
+       $(window).trigger('resize');
+    }
+    
     $(document).ready(function () {
         //add a second pagination to the top of the table
         $('#fair-metrics-table').DataTable({
@@ -266,6 +271,7 @@
                         modal.find('#comments').html(comments);
             */
         })
+
     });
 </script>
 </html>
