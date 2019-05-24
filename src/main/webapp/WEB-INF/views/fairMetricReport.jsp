@@ -68,7 +68,7 @@
                 </tr>
                 </thead>
 
-                <td>average score</td>
+                <td>Average score by metric</td>
                 <c:forEach items="${keys}" var="key">
                     <td class="vertical-align-middle text-center"><c:out value="${scores[key]}"/></td>
                 </c:forEach>
@@ -211,7 +211,7 @@
        $('#full-report').toggleClass('hidden');
        $(window).trigger('resize');
     }
-    
+
     $(document).ready(function () {
         //add a second pagination to the top of the table
         $('#fair-metrics-table').DataTable({

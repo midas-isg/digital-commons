@@ -397,14 +397,18 @@ function pathogenToString(attribute) {
             strain = attribute.strainName;
     if (attribute.hasOwnProperty('identifier')) {
         var identifier = attribute['identifier'];
-        if (identifierCodes.hasOwnProperty(identifier['identifier'])) {
+        /*if (identifierCodes.hasOwnProperty(identifier['identifier'])) {
             attribute = identifierCodes[identifier['identifier']];
-        } else if (identifier.hasOwnProperty('identifierDescription')) {
+        } else*/ if (identifier.hasOwnProperty('identifierDescription')) {
             attribute = identifier['identifierDescription'];
         }
 
     }
-    return attribute + " <span class=\"italic\"> (Strain: " + strain + ")</span>";
+    if (strain === 'unspecified') {
+        return attribute;
+    } else {
+        return attribute + " <span class=\"italic\"> (Strain: " + strain + ")</span>";
+    }
 }
 
 function identifierToString(attribute, useDescription) {
