@@ -583,8 +583,8 @@ List<Object[]> match2Software();
                             "    ) as d \n" +
                             "    on e.dataFormats = d.identifier \n" +
                             "where \n" +
-                            "    e.is_public = true; "
-    )
-    List<Entry> getAllEntriesPertainingToCategory(@Param("categoryId") Long categoryId);
+                            "    e.is_public = true \n" +
+                            "   and e.top_category_id not in ?2 ; ")
+    List<Entry> getAllEntriesPertainingToCategory(@Param("categoryId") Long categoryId, @Param("excludeTopCategoryIds") List<Long> excludeTopCategoryIds);
 
 }

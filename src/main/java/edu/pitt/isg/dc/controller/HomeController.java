@@ -438,7 +438,9 @@ public class HomeController {
         categoryTreeInfoArr = categoryHelper.getEntryTrees(subCategoryId);
         Path path = Paths.get(cache_file);
         Files.createDirectories(path.getParent());
-        Files.createFile(path);
+        if(!Files.exists(path)){
+            Files.createFile(path);
+        }
         FileOutputStream fos = new FileOutputStream(path.toFile());
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -452,14 +454,6 @@ public class HomeController {
             writeCacheFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE, 9L); // 9L = DiseaseForecasters
             writeCacheFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE, 14L); // 14L = PathogenEvolutionModels
             writeCacheFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE, 10L); // 10L = DieseaseTransmissionModels
-/*
-            treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
-            Path path = Paths.get(TREE_INFO_CACHE_FILE);
-            FileOutputStream fos = new FileOutputStream(path.toFile());
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-            oos.writeObject(treeInfoArr);
-*/
 
             model.addAttribute("status", "success");
         } catch (Exception e) {
@@ -480,14 +474,6 @@ public class HomeController {
             writeCacheFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE, 9L); // 9L = DiseaseForecasters
             writeCacheFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE, 14L); // 14L = PathogenEvolutionModels
             writeCacheFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE, 10L); // 10L = DieseaseTransmissionModels
-/*
-            treeInfoArr = categoryHelper.getEntryTrees(1L); // 1L = Root
-            Path path = Paths.get(TREE_INFO_CACHE_FILE);
-            FileOutputStream fos = new FileOutputStream(path.toFile());
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-            oos.writeObject(treeInfoArr);
-*/
 
             resultMap.put("result", "success");
 

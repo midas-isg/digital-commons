@@ -13,6 +13,8 @@ public class DatasetFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         // next handler
-        filterChain.doFilter(new DatasetRequestWrapper(request), response);
+        if(!request.getRequestURI().contains("/api/")){
+            filterChain.doFilter(new DatasetRequestWrapper(request), response);
+        } else filterChain.doFilter(request, response);
     }
 }

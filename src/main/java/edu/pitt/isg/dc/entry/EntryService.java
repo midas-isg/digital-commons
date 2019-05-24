@@ -213,7 +213,26 @@ public class EntryService {
     }
 
     public List<Entry> getAllEntriesPertainingToCategory(Long categoryId) {
-        return entryRepository.getAllEntriesPertainingToCategory(categoryId);
+        List<Long> excludeTopCategoryIds = new ArrayList<>();
+        excludeTopCategoryIds.add(0L); // have to add something to the list or the database query will not be happy
+/*
+        if(categoryId == 9L){ // Disease Forecasters
+            excludeTopCategoryIds.add(469L); // Data-format validators
+            excludeTopCategoryIds.add(8L); // Data visualizers
+            excludeTopCategoryIds.add(6L); // Data-format converters
+            excludeTopCategoryIds.add(7L); // Data services
+        }
+        if(categoryId == 10L){ // Disease Transmission Models
+            excludeTopCategoryIds.add(8L); // Data visualizers
+            excludeTopCategoryIds.add(6L); // Data-format converters
+            excludeTopCategoryIds.add(7L); // Data services
+        }
+*/
+        if(categoryId == 14L){ // Pathogen Evolution Models
+            excludeTopCategoryIds.add(448L); // Metagenomic Analytics
+//            excludeTopCategoryIds.add(15L); // Phylogenetic tree constructors
+        }
+        return entryRepository.getAllEntriesPertainingToCategory(categoryId, excludeTopCategoryIds);
     }
 
 }

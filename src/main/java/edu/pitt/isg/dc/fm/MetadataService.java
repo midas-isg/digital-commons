@@ -83,13 +83,22 @@ public class MetadataService {
         }
     }
 
+    private Boolean isWebsiteWithData(String json){
+        return json.contains("\"extraProperties\": [\n" +
+                "    {\n" +
+                "      \"category\": \"website\"");
+    }
+
     public Map<String, Object> getMetadata(String identifier) throws IOException {
         try {
             String json = getJson(identifier);
+            if(isWebsiteWithData(json)) {
+                json = null;
+            }
             return toStringObjectMap(json);
         } catch (Exception e) {
             log.error("Failed to get metadata for identifier: " + identifier, e);
-            File file  = new File("/Users/mas400/Downloads/identifier_issues.txt");
+            File file  = new File("/Users/jbs82/Downloads/identifier_issues.txt");
             file.createNewFile();
             FileOutputStream oFile = new FileOutputStream(file, true);
             oFile.write(identifier.getBytes());
