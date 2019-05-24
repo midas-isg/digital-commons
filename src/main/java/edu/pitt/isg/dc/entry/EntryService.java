@@ -230,7 +230,7 @@ public class EntryService {
 */
         if(categoryId == 14L){ // Pathogen Evolution Models
             excludeTopCategoryIds.add(448L); // Metagenomic Analytics
-//            excludeTopCategoryIds.add(15L); // Phylogenetic tree constructors
+            excludeTopCategoryIds.add(15L); // Phylogenetic tree constructors
         }
         return entryRepository.getAllEntriesPertainingToCategory(categoryId, excludeTopCategoryIds);
     }
