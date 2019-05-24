@@ -266,7 +266,7 @@ public class WebService {
         String notFound = "noMetadataFormats - There are no metadata formats available for the specified item.";
         String identifierId = "";
 
-        if(identifier.isPresent() && !identifier.toString().isEmpty()) {
+        if(identifier.isPresent()) {
             identifierId = identifier.get();
             //List<String> identifiersList = apiUtil.getIdentifiers();
             List<String> identifiersList = apiUtil.getFirstClassIdentifiers();
