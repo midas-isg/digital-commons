@@ -17,7 +17,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+//import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -124,7 +125,7 @@ public class HomeController {
         }
     }
 
-    private void writeGlobalArrays() {
+    private String writeGlobalArrays() {
 
         try {
             if (treeInfoArr == null) {
@@ -146,8 +147,10 @@ public class HomeController {
                 diseaseTransmissionModelsTreeInfoArr = categoryHelper.getEntryTrees(10L); // 9L = DiseaseForecasters
                 writeFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE);
             }
+            return "success";
         } catch (Exception e) {
             System.out.println("Error writing new cache files!  Error: " + e.getMessage());
+            return "fail";
         }
     }
 
@@ -171,7 +174,7 @@ public class HomeController {
         pathogenEvolutionModelsTreeInfoArr = getCachedTrees(14);
         diseaseTransmissionModelsTreeInfoArr = getCachedTrees(10);
 
-        writeGlobalArrays();
+        String result = writeGlobalArrays();
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
@@ -274,7 +277,8 @@ public class HomeController {
         String libraryUrl = viewerUrl.replace("\"", "") + "collectionsJson/";
         String token = viewerToken.replace("\"", "");
 
-        HttpClient client = new DefaultHttpClient();
+        //HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(libraryUrl);
 
         request.addHeader("Authorization", token);
@@ -360,15 +364,22 @@ public class HomeController {
         }
     }
 
-    @RequestMapping(value = "/refresh", method = RequestMethod.GET)
-    private void refreshCachedFiles() {
+    private void resetTreeInfoArrays() {
         treeInfoArr = null;
         diseaseTransmissionModelsTreeInfoArr = null;
         diseaseForecastersTreeInfoArr = null;
         pathogenEvolutionModelsTreeInfoArr = null;
-        writeGlobalArrays();
-
     }
+
+    @RequestMapping(value = "/refresh", method = RequestMethod.GET)
+    private String refreshCachedFiles(Model model) {
+        resetTreeInfoArrays();
+        String result = writeGlobalArrays();
+        model.addAttribute("status", result);
+
+        return "cacheStatus";
+    }
+
     private List<Map<String, String>> getCachedTrees(int subcategoryId) {
         List<Map<String, String>> result = null;
         String filename = "";
@@ -434,52 +445,19 @@ public class HomeController {
         }
     }
 
-    private void writeCacheFile(List<Map<String, String>> categoryTreeInfoArr, String cache_file, Long subCategoryId) throws Exception {
-        categoryTreeInfoArr = categoryHelper.getEntryTrees(subCategoryId);
-        Path path = Paths.get(cache_file);
-        Files.createDirectories(path.getParent());
-        if(!Files.exists(path)){
-            Files.createFile(path);
-        }
-        FileOutputStream fos = new FileOutputStream(path.toFile());
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-        oos.writeObject(categoryTreeInfoArr);
-    }
-
     @RequestMapping(value = "api/cache-tree-info", method = RequestMethod.GET)
     public String cacheTreeInfo(Model model) {
-        try {
-            writeCacheFile(treeInfoArr, TREE_INFO_CACHE_FILE, 1L); // 1L = Root
-            writeCacheFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE, 9L); // 9L = DiseaseForecasters
-            writeCacheFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE, 14L); // 14L = PathogenEvolutionModels
-            writeCacheFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE, 10L); // 10L = DieseaseTransmissionModels
-
-            model.addAttribute("status", "success");
-        } catch (Exception e) {
-            model.addAttribute("status", "fail");
-        }
-
-        return "cacheStatus";
+        return "redirect:/refresh";
     }
 
 
     @RequestMapping(value = "api/cache-tree-info-json", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, String> cacheTreeInfoJSON() {
-
+        resetTreeInfoArrays();
         Map<String, String> resultMap = new HashMap<>();
-        try {
-            writeCacheFile(treeInfoArr, TREE_INFO_CACHE_FILE, 1L); // 1L = Root
-            writeCacheFile(diseaseForecastersTreeInfoArr, DISEASE_FORECASTERS_TREE_INFO_CACHE_FILE, 9L); // 9L = DiseaseForecasters
-            writeCacheFile(pathogenEvolutionModelsTreeInfoArr, PATHOGEN_EVOLUTION_MODELS_TREE_INFO_CACHE_FILE, 14L); // 14L = PathogenEvolutionModels
-            writeCacheFile(diseaseTransmissionModelsTreeInfoArr, DISEASE_TRANSMISSION_MODELS_TREE_INFO_CACHE_FILE, 10L); // 10L = DieseaseTransmissionModels
-
-            resultMap.put("result", "success");
-
-        } catch (Exception e) {
-            resultMap.put("result", "fail");
-        }
+        String result = writeGlobalArrays();
+        resultMap.put("result", result);
 
         return resultMap;
     }
